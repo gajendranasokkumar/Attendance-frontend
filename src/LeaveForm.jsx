@@ -18,8 +18,10 @@ const LeaveForm = () => {
                         <div className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer'><RxCross2 /></div>
                     </div>
                     <div className='p-5 flex flex-col justify-center z-0'>
-                        <Input placeholder={"Employee ID"} />
-                        <Input placeholder={"Name"} />
+                        <div className='w-[50%] mx-auto'>
+                            <Input type={"text"} placeholder={"Employee ID"} />
+                            <Input type={"text"} placeholder={"Name"} />
+                        </div>
                         <Radio option1={"Leave"} option2={"On Duty"} placeholder={'Leave Type'} />
                         <Radio option1={"Yes"} option2={"No"} placeholder={"Is it Half leave ?"} />
                         <div className='flex justify-around gap-2 w-[50%] mx-auto'>

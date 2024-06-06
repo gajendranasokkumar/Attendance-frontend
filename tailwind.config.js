@@ -20,6 +20,7 @@ export default {
       grey: "#9EA5B1",
       lightGrey: "#78787886",
       shadeWhite: "#e4e6eb",
+      loginBack: "#b5b6b7",
       selectedBlue: "#C2E7FF",
       lightBlack: "#1f1f1f",
       deepLightBlack: "#303030",
