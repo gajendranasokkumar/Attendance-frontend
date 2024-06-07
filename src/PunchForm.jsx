@@ -15,7 +15,7 @@ const PunchForm = () => {
                         <div className='w-[100%]  px-14'>
                             <Input type={"text"} placeholder={"Punch ID"} />
                         </div>
-                        <div className='w-[100%] px-14 flex justify-end gap-5'>
+                        <div className='w-[100%] px-14 flex justify-end gap-5'>  
                             <CheckOutBtn />
                             <CheckINbtn />
                         </div>
