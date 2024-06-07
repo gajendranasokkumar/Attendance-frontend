@@ -7,7 +7,9 @@ export default {
   ],
   theme: {
     extend: {
-      
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
+      }
     },
     colors:{
       bgGreen: "#006769",
@@ -25,7 +27,15 @@ export default {
       lightBlack: "#1f1f1f",
       deepLightBlack: "#303030",
       inputBorder: "rgba(66, 66, 66, 0.537)",
-      black:"#000000"
+      black:"#000000",
+      bgLGreen: "#CCFBF1",
+      txtLGreen: "#0F766E",
+      bgLRed :"#FFD9D9",
+      txtLRed: "#E41300",
+      bgLYellow: "#FEF3C7",
+      txtLYellow: "#B45309",
+      bgLBlue: '#ceeaff',
+      txtLBlue: "#287DBE",
     },
     boxShadow: {
       allBox: '0px 0px 7px rgba(55, 54, 54, 0.637)',
