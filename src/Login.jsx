@@ -18,7 +18,7 @@ const Login = () => {
                     <img src={image} className='h-[70%] w-[70%]' />
                 </div>
                 <div className='h-full w-[50%] bg-loginBack grid place-items-center relative'>
-                    <h2 className='absolute rotate-[-90deg] left-[-120px] text-[100px] px-16 py-0 text-white shadow-[2px_2px_10px_-1px_rgba(0,0,0,0.33)] font-[600] rounded'>LOGIN</h2>
+                    <h2 className='absolute rotate-[-90deg] left-[-110px] text-[100px] px-16 py-0 text-white shadow-[2px_2px_10px_-1px_rgba(0,0,0,0.33)] font-[600] rounded'>LOGIN</h2>
                     <div className='bg-white w-[60%] h-[70%] rounded flex flex-col justify-center'>
                         <div className='flex justify-center mb-10'>
                             <LoginOptionBtn icon={<MdPersonAdd />} person={"Admin"} />
