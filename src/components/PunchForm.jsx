@@ -1,8 +1,8 @@
 import React from 'react'
-import Input from "./Input"
-import setting from "./assets/setting.png"
-import CheckINbtn from './CheckINbtn';
-import CheckOutBtn from './CheckOutBtn';
+import setting from "../assets/setting.png"
+import CheckINbtn from '../components/CheckINbtn';
+import CheckOutBtn from '../components/CheckOutBtn';
+import Input from './Input';
 
 const PunchForm = () => {
     return (

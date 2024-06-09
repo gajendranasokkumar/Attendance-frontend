@@ -1,11 +1,11 @@
 import React from 'react'
-import image from "./assets/login.png"
+import image from "../assets/login.png"
 import LoginOptionBtn from './LoginOptionBtn'
-import Input from "./Input"
+import Input from "../components/Input"
 import { MdPersonAdd } from "react-icons/md";
 import { BsPersonFillGear } from "react-icons/bs";
-import LoginButton from './LoginButton';
-import LoginCancelBtn from './LoginCancelBtn';
+import LoginButton from '../components/LoginButton';
+import LoginCancelBtn from '../components/LoginCancelBtn';
 
 
 

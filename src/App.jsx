@@ -1,9 +1,9 @@
-import Content from "./Content"
-import LeaveForm from "./LeaveForm"
-import Login from "./Login"
-import Navbar from "./Navbar"
-import PunchForm from "./PunchForm"
-import Sidebar from "./Sidebar"
+import Content from "./components/Content"
+import LeaveForm from "./components/LeaveForm"
+import Login from "./components/Login"
+import Navbar from "./components/Navbar"
+import PunchForm from "./components/PunchForm"
+import Sidebar from "./components/Sidebar"
 
 function App() {
 
