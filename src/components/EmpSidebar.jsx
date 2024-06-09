@@ -19,7 +19,7 @@ const EmpSidebar = () => {
 
     return (
         <>
-            <div className=' h-[92vh] w-[100%] bg-shadeWhite lg:pt-[30px]'>
+            <div className=' h-[92vh] min-w-[100%] bg-shadeWhite lg:pt-[30px] z-50'>
                 <div className='h-[88%] overflow-y-auto  overflow-x-hidden lg:mt-5 '>
                     <ExpandBox number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
                     <ExpandBox number={2} name={"Attendance"} icon={<MdCoPresent />} options={attendanceOptions} />

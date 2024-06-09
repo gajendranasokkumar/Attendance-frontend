@@ -25,6 +25,7 @@ const LeaveForm = () => {
                         <div className='w-[50%] mx-auto'>
                             <Radio option1={"Leave"} option2={"On Duty"} placeholder={'Leave Type'} />
                             <Radio option1={"Yes"} option2={"No"} placeholder={"Is it Half leave ?"} />
+                            <Radio option1={"Paid"} option2={"Unpaid"} placeholder={"Paid or Unpaid"} />
                         </div>
                         <div className='flex justify-around gap-2 w-[50%] mx-auto'>
                             <Date placeholder={"From Date"} />
