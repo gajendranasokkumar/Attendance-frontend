@@ -9,4 +9,4 @@
 - 06.06.2024 -> Created Login form completely 
 - 07.06.2024 -> Created punch form for device punch 
 - 08.06.2024 -> Created add employee form
-- 09.06.2024 -> Made Employee page with responsive
+- 09.06.2024 -> Made Employee page with responsive, leave list page 
