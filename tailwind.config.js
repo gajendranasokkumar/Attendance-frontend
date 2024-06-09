@@ -9,6 +9,14 @@ export default {
     extend: {
       animation: {
         'spin-slow': 'spin 8s linear infinite',
+      },
+      screens: {
+        'xs': '400px',  // Extra small devices
+        'sm': '640px',  // Small devices
+        'md': '768px',  // Medium devices
+        'lg': '1024px', // Large devices
+        'xl': '1280px', // Extra large devices
+        '2xl': '1536px' // 2x large devices
       }
     },
     colors:{

@@ -22,13 +22,17 @@ const LeaveForm = () => {
                             <Input type={"text"} placeholder={"Employee ID"} />
                             <Input type={"text"} placeholder={"Name"} />
                         </div>
-                        <Radio option1={"Leave"} option2={"On Duty"} placeholder={'Leave Type'} />
-                        <Radio option1={"Yes"} option2={"No"} placeholder={"Is it Half leave ?"} />
+                        <div className='w-[50%] mx-auto'>
+                            <Radio option1={"Leave"} option2={"On Duty"} placeholder={'Leave Type'} />
+                            <Radio option1={"Yes"} option2={"No"} placeholder={"Is it Half leave ?"} />
+                        </div>
                         <div className='flex justify-around gap-2 w-[50%] mx-auto'>
                             <Date placeholder={"From Date"} />
                             <Date placeholder={"To Date"} />
                         </div>
-                        <Textarea placeholder={"Reason"} />
+                        <div className='w-[50%] mx-auto'>
+                            <Textarea placeholder={"Reason"} />
+                        </div>
                         <div className='flex justify-end gap-2 w-[50%] mx-auto'>
                             <CancelButton />
                             <SubmitButton />

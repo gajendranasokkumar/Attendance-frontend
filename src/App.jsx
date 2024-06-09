@@ -1,22 +1,20 @@
-import Content from "./components/Content"
+import AddEmployeeForm from "./components/AddEmployeeForm"
+import AdminHome from "./components/AdminHome"
+import EmployeeHome from "./components/EmployeeHome"
 import LeaveForm from "./components/LeaveForm"
 import Login from "./components/Login"
-import Navbar from "./components/Navbar"
 import PunchForm from "./components/PunchForm"
-import Sidebar from "./components/Sidebar"
 
 function App() {
 
   return (
     <>
+      <EmployeeHome />
       <PunchForm />
       <Login />
-      <Navbar />
-      <div className="flex w-[100vw]">
-        <Sidebar />
-        <Content />
-      </div>
+      <AdminHome />
       <LeaveForm />
+      <AddEmployeeForm />
     </>
   )
 }
