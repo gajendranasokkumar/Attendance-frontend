@@ -11,6 +11,7 @@ import OopsPage from "./components/OopsPage"
 
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AttendanceList from "./components/AttendanceList"
 
 
 function App() {
@@ -26,12 +27,13 @@ function App() {
             <Route path="home" element={<EmpContent />} />
             <Route path="leaveform" element={<LeaveForm />} />
             <Route path="leavelist" element={<LeaveList />} />
+            <Route path="attendancelist" element={<AttendanceList />} />
           </Route>
           <Route path="/admin" element={<AdminHome />}>
-            <Route index element={<OopsPage />} />
-            <Route path="home" element={<Content />} />
+            <Route index element={<Content />} />
             <Route path="leavelist" element={<LeaveList />} />
             <Route path="leaveform" element={<LeaveForm />} />
+            <Route path="attendancelist" element={<AttendanceList />} />
             <Route path="addEmployee" element={<AddEmployeeForm />} />
           </Route>
         </Routes>

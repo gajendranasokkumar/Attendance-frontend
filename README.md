@@ -10,4 +10,4 @@
 - 07.06.2024 -> Created punch form for device punch 
 - 08.06.2024 -> Created add employee form
 - 09.06.2024 -> Made Employee page with responsive, leave list page 
-- 10.06.2024 -> Added routing for all the pages
+- 10.06.2024 -> Added routing for all the pages and attendance list page
