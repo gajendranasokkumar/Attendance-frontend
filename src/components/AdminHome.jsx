@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from './Sidebar'
-import Content from './Content'
 import Navbar from './Navbar'
+import { Outlet } from 'react-router-dom'
 
 const AdminHome = () => {
     return (
@@ -9,7 +9,7 @@ const AdminHome = () => {
             <Navbar />
             <div className="flex w-[100vw]">
                 <Sidebar />
-                <Content />
+                <Outlet />
             </div>
         </>
 

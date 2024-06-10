@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import EmpSidebar from './EmpSidebar'
 import EmpContent from './EmpContent'
 import LeaveList from './LeaveList'
-
+import { Outlet } from 'react-router-dom'
 const EmployeeHome = () => {
 
     const [isSidebarVisible, setSidebarVisible] = useState(false);
@@ -20,8 +20,9 @@ const EmployeeHome = () => {
                     <EmpSidebar />
                 </div>
                 <div className='w-[100%]'>
-                    {/* <EmpContent /> */}
-                    <LeaveList />
+                    {/* <EmpContent />
+                    <LeaveList /> */}
+                    <Outlet />
                 </div>
             </div>
         </>
