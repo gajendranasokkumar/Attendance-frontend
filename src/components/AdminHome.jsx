@@ -10,6 +10,7 @@ const AdminHome = () => {
             <div className="flex w-[100vw]">
                 <Sidebar />
                 <Outlet />
+                
             </div>
         </>
 

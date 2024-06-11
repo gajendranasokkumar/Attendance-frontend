@@ -6,16 +6,23 @@ import Date from './Date';
 import Textarea from './Textarea';
 import SubmitButton from './SubmitButton';
 import CancelButton from './CancelButton';
+import { useNavigate } from 'react-router-dom';
 
 
 const LeaveForm = () => {
+
+    const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
     return (
         <>
-            <div className='w-[100vw] h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 grid place-content-center top-0 absolute'>
+            <div className='w-[100vw] left-0 h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 grid place-content-center top-0 absolute z-50'>
                 <div className='w-[60vw] h-[90vh] bg-white rounded-2xl border-2 border-grey shadow-allBox overflow-y-auto'>
                     <div className='flex justify-between w-[100%] h-[80px] items-center bg-white top-0 z-10 relative'>
                         <div className='text-[25px] text-bgGreen font-bold pl-8'>Leave Form</div>
-                        <div className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer'><RxCross2 /></div>
+                        <div className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer' onClick={goBack}><RxCross2 /></div>
                     </div>
                     <div className='p-5 flex flex-col justify-center z-0'>
                         <div className='w-[50%] mx-auto'>

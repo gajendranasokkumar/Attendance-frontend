@@ -24,10 +24,10 @@ function App() {
           <Route index element={<Login />} />
           <Route path="/punch" element={<PunchForm />} />
           <Route path="/employee" element={<EmployeeHome />}>
-            <Route path="home" element={<EmpContent />} />
-            <Route path="leaveform" element={<LeaveForm />} />
-            <Route path="leavelist" element={<LeaveList />} />
-            <Route path="attendancelist" element={<AttendanceList />} />
+            <Route index element={<EmpContent />} />
+            <Route path="leaveForm" element={<LeaveForm />} />
+            <Route path="leaveList" element={<LeaveList />} />
+            <Route path="attendanceList" element={<AttendanceList />} />
           </Route>
           <Route path="/admin" element={<AdminHome />}>
             <Route index element={<Content />} />

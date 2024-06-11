@@ -16,16 +16,16 @@ import { MdOutlineWorkOff } from "react-icons/md";
 const Sidebar = () => {
 
     const dashboardOptions = [{icon: <RxDashboard />, title: 'Admin Dashboard'},{icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard'}];
-    const attendanceOptions = [ {icon: <TbListDetails />, title: 'Attendance Details'}, {icon: <MdHistory />, title: 'Attendance History'}];
-    const leaveOptions = [ {icon: <FiPlus />, title: 'New Leave'}, {icon: <MdOutlineWorkOff />, title: "Employee's Leave"}, {icon: <MdHistory />, title: "Past Leave"}];
+    const attendanceOptions = [ {icon: <TbListDetails />, title: 'Attendance Details', link: 'attendancelist'}, {icon: <MdHistory />, title: 'Attendance History'}];
+    const leaveOptions = [ {icon: <FiPlus />, title: 'New Leave', link: 'leaveform'}, {icon: <MdOutlineWorkOff />, title: "Employee's Leave", link: 'leavelist'}, {icon: <MdHistory />, title: "Past Leave"}];
 
     return (
         <>
-            <div className='h-[92vh] w-[18%] bg-shadeWhite pt-[30px]'>
+            <div className='h-[92vh] min-w-[15%] max-w-[15%] bg-shadeWhite pt-[30px] '>
                 <div className='h-[12%]'>
                     <NewButton />
                 </div>
-                <div className='h-[88%] overflow-y-auto'>
+                <div className='h-[88%] overflow-y-auto overflow-x-hidden lg:mt-5'>
                     <ExpandBox number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
                     <ExpandBox number={2} name={"Attendance"} icon={<MdCoPresent />} options={attendanceOptions} />
                     <ExpandBox number={3} name={"Leave"} icon={<MdDateRange />} options={leaveOptions} />

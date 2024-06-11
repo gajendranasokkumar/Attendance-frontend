@@ -48,6 +48,7 @@
 
 import React, { useState } from 'react';
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 
 const ExpandBox = ({ number, name, icon, options }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -74,10 +75,12 @@ const ExpandBox = ({ number, name, icon, options }) => {
                 <ul className='flex justify-center flex-col text-[15px] font-semibold'>
                     {
                         options.map((one, index) => (
-                            <li key={index} className='text-center h-10 flex items-center hover:bg-lightGrey text-deepLightBlack pl-5 border-t-2 border-t-white'>
-                                <span className='mr-2 text-lg'>{one.icon}</span>
-                                {one.title}
-                            </li>
+                            <Link to={one.link ? one.link : "*"}>
+                                <li key={index} className='text-center h-10 flex items-center hover:bg-lightGrey text-deepLightBlack pl-5 border-t-2 border-t-white'>
+                                    <span className='mr-2 text-lg'>{one.icon}</span>
+                                    {one.title}
+                                </li>
+                            </Link>
                         ))
                     }
                 </ul>
