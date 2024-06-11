@@ -1,7 +1,7 @@
 import React from 'react'
 import { TiTick } from "react-icons/ti";
 import { HiX } from "react-icons/hi";
-
+   
 
 const ActionBtns = () => {
   return (
