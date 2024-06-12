@@ -2,11 +2,13 @@ import React from 'react'
 import { TiTick } from "react-icons/ti";
 
 
-const LoginOptionBtn = ({ icon, person }) => {
+const LoginOptionBtn = ({ icon, person, state, setState }) => {
+
+    
     return (
         <>
             <label className='relative'>
-                <input type="radio" name="options" className='absolute opacity-0 w-0 h-0 peer' />
+                <input type="radio" name="options" className='absolute opacity-0 w-0 h-0 peer' onChange={() => setState({ ...state, user: person })}/>
                 <p className='absolute top-[-13px] right-6 text-2xl border-inputBorder border-2 bg-white rounded-full text-inputBorder peer-checked:border-bgGreen peer-checked:text-white peer-checked:bg-bgGreen'>
                     <TiTick />
                 </p>
