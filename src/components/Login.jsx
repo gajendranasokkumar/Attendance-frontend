@@ -25,7 +25,7 @@ const Login = () => {
         e.preventDefault();
         console.log("🚀 ~ handleSubmit ~ loginDetails:", loginDetails)
 
-        axios.put('http://localhost:3000/', loginDetails)
+        axios.post('http://localhost:3000/', loginDetails)
             .then((response) => {
                 console.log("🚀 ~ .then ~ response:", response)
                 navigate('/employee')

@@ -12,12 +12,15 @@ import OopsPage from "./components/OopsPage"
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AttendanceList from "./components/AttendanceList"
+import {Success, Failure} from "./components/Notification"
 
 
 function App() {
 
   return (
     <>
+    <Success message={'Success'} />
+    {/* <Failure /> */}
       <BrowserRouter>
         <Routes>
           <Route path="*" element={<OopsPage />} />
