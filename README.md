@@ -13,4 +13,4 @@
 - 10.06.2024 -> Added routing for all the pages and attendance list page
 - 11.06.2024 -> Created the server and database 
 - 12.06.2024 -> Added the login functionality
-- 13.06.2021 -> Added AUTHENTICATION for login 
+- 13.06.2024 -> Added AUTHENTICATION for login 

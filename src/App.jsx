@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-    <Success message={'Success'} />
+    {/* <Success message={'Success'} /> */}
     {/* <Failure /> */}
       <BrowserRouter>
         <Routes>
@@ -41,7 +41,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-
+      {/* <AddEmployeeForm /> */}
       {/* <AddEmployeeForm /> */}
     </>
   )
