@@ -8,6 +8,8 @@ import LoginButton from '../components/LoginButton';
 import LoginCancelBtn from '../components/LoginCancelBtn';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Failure, Success } from './Notification';
+import * as ReactDOM from 'react-dom/client';
 
 
 
@@ -20,20 +22,23 @@ const Login = () => {
     const navigate = useNavigate();
 
 
-    const handleSubmit = (e) => {
-
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("🚀 ~ handleSubmit ~ loginDetails:", loginDetails)
 
-        axios.post('http://localhost:3000/', loginDetails)
+        await axios.post('http://localhost:3000/', loginDetails)
             .then((response) => {
                 console.log("🚀 ~ .then ~ response:", response)
+                // root.render(<Success message={"Login Success"} />);
                 navigate('/employee')
             })
             .catch((error) => {
                 console.log("🚀 ~ handleSubmit ~ error.response:", error.response)
+                const root = ReactDOM.createRoot(document.getElementById('root'));
+                root.render(<Failure message={"Incorrect Password"} />);
+                setTimeout(()=>{location.reload()}, 700); 
             })
-                
+
     }
 
 

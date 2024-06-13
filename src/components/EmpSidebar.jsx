@@ -22,9 +22,9 @@ const EmpSidebar = () => {
         <>
             <div className=' h-[92vh] xs:min-w-[100%] bg-shadeWhite lg:pt-[30px] z-20'>
                 <div className='h-[88%] overflow-y-auto  overflow-x-hidden lg:mt-5 '>
-                    <ExpandBox number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
-                    <ExpandBox number={2} name={"Attendance"} icon={<MdCoPresent />} options={attendanceOptions} />
-                    <ExpandBox number={3} name={"Leave"} icon={<MdDateRange />} options={leaveOptions} />
+                    <ExpandBox key={1} number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
+                    <ExpandBox key={2} number={2} name={"Attendance"} icon={<MdCoPresent />} options={attendanceOptions} />
+                    <ExpandBox key={3} number={3} name={"Leave"} icon={<MdDateRange />} options={leaveOptions} />
                 </div>
             </div>
         </>
