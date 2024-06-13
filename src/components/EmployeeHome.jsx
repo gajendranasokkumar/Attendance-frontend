@@ -16,7 +16,7 @@ const EmployeeHome = () => {
         <>
             <Navbar toggleSidebar={toggleSidebar} isSidebarVisible={isSidebarVisible} />
             <div className="flex w-[100vw]">
-                <div className={`lg:inline-block ${isSidebarVisible ? 'absolute' : 'hidden'} w-[18%]`}>
+                <div className={`lg:inline-block ${isSidebarVisible ? 'absolute' : 'hidden'} xs:w-[50%] lg:w-[18%]`}>
                     <EmpSidebar />
                 </div>
                 <div className='w-[100%]'>
