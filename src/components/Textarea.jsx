@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Textarea = ({placeholder, name, state, setState}) => {
+const Textarea = ({placeholder, name, state='', setState=()=>{}}) => {
     return (
         <>
             <div className='relative h-[150px] flex justify-center group mb-8'>

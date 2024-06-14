@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Date = ({placeholder, name, state, setState}) => {
+const Date = ({placeholder, name, state='', setState=()=>{}}) => {
     return (
         <>
             <div className='relative h-[45px] flex justify-center group mb-8 w-[100%]'>
