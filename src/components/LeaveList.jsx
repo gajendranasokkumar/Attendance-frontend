@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SmallInput, SmallDate, SmallCheckBox } from './SmallInput'
 import ActionBtns from './ActionBtns'
+import axios from 'axios';
 
 const LeaveList = () => {
+    const [leaveList, setLeaveList] = useState([]);
+
+    useEffect(() => {
+        const fetchList = async () => {
+            await axios.get("http://localhost:3000/leavelist")
+                .then((respose) => {
+                    console.log("🚀 ~ .then ~ respose:", respose.data)
+                    setLeaveList(respose.data)
+                })
+                .catch((error) => {
+                    console.log("🚀 ~ useEffect ~ error:", error)
+                })
+        }
+
+        fetchList();
+
+    }, [])
+
+
+
     return (
         <>
             <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
@@ -18,7 +39,7 @@ const LeaveList = () => {
                         <button type='button' className='px-3 py-1 bg-bgLRed rounded-md font-semibold text-txtLRed border-2 border-x-txtLRed'>Reject</button>
                     </div>
                 </div>
-                <div className='h-[90%] w-[100%] mt-5 overflow-x-auto'>
+                <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
                     <table className='min-w-full table-auto border-2 border-bgGreen'>
                         <thead>
                             <tr>
@@ -38,22 +59,26 @@ const LeaveList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='max-w-[5px] p-0'><SmallCheckBox /></td>
-                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>Gajendran</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>29/08/2004</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>00/00/0000</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Leave</td>
-                                <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>Going to Native hgvuyiu hiuh iuuhiuh</td>
-                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>Pending</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Paid</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Yes</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>P215</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>09/06/2024</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>Usman</td>
-                                <td className='px-1 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns /></td>
-                            </tr>
-                            <tr>
+                            {
+                                leaveList.map((each) => (
+                                    <tr key={each._id}>
+                                        <td className='max-w-[5px] p-0'><SmallCheckBox /></td>
+                                        <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{each.name}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.fromdate}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.todate}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.leavetype}</td>
+                                        <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{each.reason}</td>
+                                        <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{each.status.toUpperCase()}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.paidleave}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.halfleave}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.id}</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>09/06/2024</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{each.reportingperson}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns formId={each._id} /></td>
+                                    </tr>
+                                ))
+                            }
+                            {/* <tr>
                                 <td className='max-w-[5px] p-0'><SmallCheckBox /></td>
                                 <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>Gajendran Asokkumar</td>
                                 <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>29/08/2004</td>
@@ -67,7 +92,7 @@ const LeaveList = () => {
                                 <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>09/06/2024</td>
                                 <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>Usman</td>
                                 <td className='px-1 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns /></td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
                 </div>

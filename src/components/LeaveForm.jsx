@@ -7,6 +7,9 @@ import Textarea from './Textarea';
 import SubmitButton from './SubmitButton';
 import CancelButton from './CancelButton';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
 
 
 const LeaveForm = () => {
@@ -15,10 +18,12 @@ const LeaveForm = () => {
         name: '',
         leavetype: '',
         halfleave: '',
-        paidlave: '',
+        paidleave: '',
         fromdate: '',
         todate: '',
-        reason: ''
+        reason: '',
+        status: "Pending",
+        reportingperson: 'Gaja'
     })
     const navigate = useNavigate();
 
@@ -27,9 +32,17 @@ const LeaveForm = () => {
     };
 
 
-    const applyLeave = (e) =>{
+    const applyLeave = async (e) =>{
         e.preventDefault();
         console.log(leaveDetails)
+        await axios.post("http://localhost:3000/leaveform", leaveDetails)
+        .then((respose)=>{
+            console.log("🚀 ~ .then ~ respose:", respose)
+            navigate(-1);
+        })
+        .catch((error)=>{
+            console.log("🚀 ~ applyLeave ~ error:", error)
+        })
     }
 
 
@@ -50,7 +63,7 @@ const LeaveForm = () => {
                             <div className='w-[50%] mx-auto'>
                                 <Radio option1={"Leave"} option2={"On Duty"} placeholder={'Leave Type'} name={'leavetype'} state={leaveDetails} setState={setLeaveDetails} />
                                 <Radio option1={"Yes"} option2={"No"} placeholder={"Is it Half leave ?"} name={'halfleave'} state={leaveDetails} setState={setLeaveDetails} />
-                                <Radio option1={"Paid"} option2={"Unpaid"} placeholder={"Paid or Unpaid"} name={'paidlave'} state={leaveDetails} setState={setLeaveDetails} />
+                                <Radio option1={"Paid"} option2={"Unpaid"} placeholder={"Paid or Unpaid"} name={'paidleave'} state={leaveDetails} setState={setLeaveDetails} />
                             </div>
                             <div className='flex justify-around gap-2 w-[50%] mx-auto'>
                                 <Date placeholder={"From Date"} name={'fromdate'} state={leaveDetails} setState={setLeaveDetails} />
