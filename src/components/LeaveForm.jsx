@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { RxCross2 } from "react-icons/rx";
 import Input from './Input';
 import Radio from './Radio';
@@ -10,12 +10,29 @@ import { useNavigate } from 'react-router-dom';
 
 
 const LeaveForm = () => {
-
+    const [leaveDetails, setLeaveDetails] = useState({
+        id: '',
+        name: '',
+        leavetype: '',
+        halfleave: '',
+        paidlave: '',
+        fromdate: '',
+        todate: '',
+        reason: ''
+    })
     const navigate = useNavigate();
 
     const goBack = () => {
         navigate(-1);
     };
+
+
+    const applyLeave = (e) =>{
+        e.preventDefault();
+        console.log(leaveDetails)
+    }
+
+
     return (
         <>
             <div className='w-[100vw] left-0 h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 grid place-content-center top-0 absolute z-50'>
@@ -25,26 +42,28 @@ const LeaveForm = () => {
                         <div className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer' onClick={goBack}><RxCross2 /></div>
                     </div>
                     <div className='p-5 flex flex-col justify-center z-0'>
-                        <div className='w-[50%] mx-auto'>
-                            <Input type={"text"} placeholder={"Employee ID"} />
-                            <Input type={"text"} placeholder={"Name"} />
-                        </div>
-                        <div className='w-[50%] mx-auto'>
-                            <Radio option1={"Leave"} option2={"On Duty"} placeholder={'Leave Type'} />
-                            <Radio option1={"Yes"} option2={"No"} placeholder={"Is it Half leave ?"} />
-                            <Radio option1={"Paid"} option2={"Unpaid"} placeholder={"Paid or Unpaid"} />
-                        </div>
-                        <div className='flex justify-around gap-2 w-[50%] mx-auto'>
-                            <Date placeholder={"From Date"} />
-                            <Date placeholder={"To Date"} />
-                        </div>
-                        <div className='w-[50%] mx-auto'>
-                            <Textarea placeholder={"Reason"} />
-                        </div>
-                        <div className='flex justify-end gap-2 w-[50%] mx-auto'>
-                            <CancelButton />
-                            <SubmitButton />
-                        </div>
+                        <form onSubmit={applyLeave}>
+                            <div className='w-[50%] mx-auto'>
+                                <Input type={"text"} placeholder={"Employee ID"} name={'id'} state={leaveDetails} setState={setLeaveDetails} />
+                                <Input type={"text"} placeholder={"Name"} name={'name'} state={leaveDetails} setState={setLeaveDetails} />
+                            </div>
+                            <div className='w-[50%] mx-auto'>
+                                <Radio option1={"Leave"} option2={"On Duty"} placeholder={'Leave Type'} name={'leavetype'} state={leaveDetails} setState={setLeaveDetails} />
+                                <Radio option1={"Yes"} option2={"No"} placeholder={"Is it Half leave ?"} name={'halfleave'} state={leaveDetails} setState={setLeaveDetails} />
+                                <Radio option1={"Paid"} option2={"Unpaid"} placeholder={"Paid or Unpaid"} name={'paidlave'} state={leaveDetails} setState={setLeaveDetails} />
+                            </div>
+                            <div className='flex justify-around gap-2 w-[50%] mx-auto'>
+                                <Date placeholder={"From Date"} name={'fromdate'} state={leaveDetails} setState={setLeaveDetails} />
+                                <Date placeholder={"To Date"} name={'todate'} state={leaveDetails} setState={setLeaveDetails} />
+                            </div>
+                            <div className='w-[50%] mx-auto'>
+                                <Textarea placeholder={"Reason"} name={'reason'} state={leaveDetails} setState={setLeaveDetails} />
+                            </div>
+                            <div className='flex justify-end gap-2 w-[50%] mx-auto'>
+                                <CancelButton />
+                                <SubmitButton />
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
