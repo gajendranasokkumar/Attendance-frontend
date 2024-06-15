@@ -2,15 +2,19 @@ import React from 'react'
 import { TiTick } from "react-icons/ti";
 import { HiX } from "react-icons/hi";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
    
 
 const ActionBtns = ({formId}) => {
 
+  const navigate = useNavigate();
+
   const updateStatus = async (currentStatus) =>{
-    console.log("🚀 ~ updateStatus ~ formId:", formId)
-    await axios.post("/updateleave",{formId, currentStatus})
+    console.log("🚀 ~ updateStatus ~ formId:", formId, currentStatus)
+    await axios.post("http://localhost:3000/updateleave",{formId, currentStatus})
     .then((res)=>{
       console.log("🚀 ~ .then ~ res:", res)
+      navigate(0);
     })
     .catch((err)=>{
       console.log("🚀 ~ updateStatus ~ err:", err)

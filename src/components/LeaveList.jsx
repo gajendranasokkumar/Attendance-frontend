@@ -68,13 +68,16 @@ const LeaveList = () => {
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.todate}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.leavetype}</td>
                                         <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{each.reason}</td>
-                                        <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{each.status.toUpperCase()}</td>
+                                        <td className={`px-1 min-w-[120px] max-w-[200px] whitespace-normal font-bold 
+                                            ${each.status.toUpperCase() === "PENDING" ? "text-txtLYellow" : ""}
+                                            ${each.status.toUpperCase() === "PERMITTED" ? "text-txtLGreen" : ""}
+                                            ${each.status.toUpperCase() === "DENIED" ? "text-txtLRed" : ""}`}>{each.status.toUpperCase()}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.paidleave}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.halfleave}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.id}</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>09/06/2024</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{each.reportingperson}</td>
-                                        <td className='px-1 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns formId={each._id} /></td>
+                                        <td className='px-1 py-2 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns formId={each._id} /></td>
                                     </tr>
                                 ))
                             }
