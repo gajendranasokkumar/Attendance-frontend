@@ -14,3 +14,5 @@
 - 11.06.2024 -> Created the server and database 
 - 12.06.2024 -> Added the login functionality
 - 13.06.2024 -> Added AUTHENTICATION for login 
+- 14.06.2024 -> Created the leave model in backend and added fetching of data
+- 15.06.2024 -> Added functionality for Action button
