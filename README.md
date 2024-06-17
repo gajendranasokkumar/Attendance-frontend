@@ -16,3 +16,5 @@
 - 13.06.2024 -> Added AUTHENTICATION for login 
 - 14.06.2024 -> Created the leave model in backend and added fetching of data
 - 15.06.2024 -> Added functionality for Action button
+- 16.06.2024 -> -------NIL-------(Sunday)
+- 17.06.2024 -> Added User Authentication with JWT

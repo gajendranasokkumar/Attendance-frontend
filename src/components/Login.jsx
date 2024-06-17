@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import image from "../assets/login.png"
 import LoginOptionBtn from './LoginOptionBtn'
 import Input from "../components/Input"
@@ -10,6 +10,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Failure, Success } from './Notification';
 import * as ReactDOM from 'react-dom/client';
+import { AuthContext } from '../context/AuthContext.jsx';
+
 
 
 
@@ -19,7 +21,9 @@ const Login = () => {
         id: '',
         password: ''
     })
+    const { setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
+
 
 
     const handleSubmit = async (e) => {
@@ -30,6 +34,9 @@ const Login = () => {
             .then((response) => {
                 console.log("🚀 ~ .then ~ response:", response)
                 // root.render(<Success message={"Login Success"} />);
+                const token = response.data.jwtToken;
+                localStorage.setItem('token', token); 
+                setAuth(true);
                 navigate('/employee')
             })
             .catch((error) => {

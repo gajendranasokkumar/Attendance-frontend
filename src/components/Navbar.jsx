@@ -22,7 +22,8 @@ const Navbar = ({ toggleSidebar, isSidebarVisible = false }) => {
                         <GoBellFill className='xs:h-[20px] xs:w-[20px] lg:h-[25px] lg:w-[25px] text-deepLightBlack' />
                         <span className='ping xs:text-sm'></span>
                     </div>
-                    <div className='bg-grey xs:h-[30px] xs:w-[30px] lg:h-[35px] lg:w-[35px] rounded-[100%] ml-6'></div>
+                    <div className='bg-grey xs:h-[30px] xs:w-[30px] lg:h-[35px] lg:w-[35px] rounded-[100%] ml-6 grid place-content-center'>G</div>
+                    {/* <div className='h-[300px] w-[250px] absolute right-5 top-16 border-2 border-grey rounded-xl bg-white'></div> */}
                 </div>
 
             </div>

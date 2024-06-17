@@ -3,6 +3,7 @@ import { TiTick } from "react-icons/ti";
 import { HiX } from "react-icons/hi";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import api from '../utils/api'
    
 
 const ActionBtns = ({formId}) => {
@@ -11,7 +12,7 @@ const ActionBtns = ({formId}) => {
 
   const updateStatus = async (currentStatus) =>{
     console.log("🚀 ~ updateStatus ~ formId:", formId, currentStatus)
-    await axios.post("http://localhost:3000/updateleave",{formId, currentStatus})
+    await api.post("/updateleave",{formId, currentStatus})
     .then((res)=>{
       console.log("🚀 ~ .then ~ res:", res)
       navigate(0);
