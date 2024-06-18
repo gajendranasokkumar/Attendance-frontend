@@ -36,7 +36,7 @@ const LeaveForm = () => {
     const applyLeave = async (e) =>{
         e.preventDefault();
         console.log(leaveDetails)
-        await api.post("http://localhost:3000/leaveform", leaveDetails)
+        await api.post("/leaveform", leaveDetails)
         .then((respose)=>{
             console.log("🚀 ~ .then ~ respose:", respose)
             navigate(-1);
