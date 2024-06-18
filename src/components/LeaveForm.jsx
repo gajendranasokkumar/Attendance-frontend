@@ -8,6 +8,7 @@ import SubmitButton from './SubmitButton';
 import CancelButton from './CancelButton';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import api from '../utils/api';
 
 
 
@@ -35,7 +36,7 @@ const LeaveForm = () => {
     const applyLeave = async (e) =>{
         e.preventDefault();
         console.log(leaveDetails)
-        await axios.post("http://localhost:3000/leaveform", leaveDetails)
+        await api.post("http://localhost:3000/leaveform", leaveDetails)
         .then((respose)=>{
             console.log("🚀 ~ .then ~ respose:", respose)
             navigate(-1);
