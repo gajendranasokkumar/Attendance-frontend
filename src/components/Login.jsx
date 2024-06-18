@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import image from "../assets/login.png"
 import LoginOptionBtn from './LoginOptionBtn'
 import Input from "../components/Input"
@@ -17,12 +17,12 @@ import { AuthContext } from '../context/AuthContext.jsx';
 
 const Login = () => {
     const [loginDetails, setLoginDetails] = useState({
-        user: '',
+        des: '',
         id: '',
         password: ''
     })
-    const { setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
+    const { setAuth, setUserData } = useContext(AuthContext);
 
 
 
@@ -35,17 +35,18 @@ const Login = () => {
                 console.log("🚀 ~ .then ~ response:", response)
                 // root.render(<Success message={"Login Success"} />);
                 const token = response.data.jwtToken;
-                localStorage.setItem('token', token); 
+                const userData = response.data.data;
+                localStorage.setItem('token', token);
                 setAuth(true);
+                setUserData(userData);
                 navigate('/employee')
             })
             .catch((error) => {
                 console.log("🚀 ~ handleSubmit ~ error.response:", error.response)
                 const root = ReactDOM.createRoot(document.getElementById('root'));
                 root.render(<Failure message={"Incorrect Password"} />);
-                setTimeout(()=>{location.reload()}, 700); 
+                setTimeout(() => { location.reload() }, 700);
             })
-
     }
 
 

@@ -16,6 +16,7 @@ import { Success, Failure } from "./components/Notification"
 import CurrentLeavePage from "./components/CurrentLeavePage"
 import { AuthProvider } from './context/AuthContext.jsx';
 import PrivateRoute from './router/PrivateRoute.jsx';
+import PastLeave from "./components/PastLeave.jsx"
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route path="/admin" element={<AdminHome />}>
               <Route index element={<Content />} />
               <Route path="leavelist" element={<LeaveList />} />
+              <Route path="pastleave" element={<PastLeave />} />
               <Route path="leaveform" element={<LeaveForm />} />
               <Route path="attendancelist" element={<AttendanceList />} />
               <Route path="addEmployee" element={<AddEmployeeForm />} />

@@ -13,7 +13,7 @@ const AttendanceList = () => {
                         <button type='button' className='px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue'>Search</button>
                     </div>
                 </div>
-                <div className='h-[90%] w-[100%] mt-5 overflow-x-auto'>
+                <div className='h-[86%] w-[100%] mt-5 overflow-x-auto'>
                     <table className='min-w-full table-auto border-2 border-bgGreen'>
                         <thead>
                             <tr>

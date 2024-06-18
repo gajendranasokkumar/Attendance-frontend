@@ -7,48 +7,38 @@ import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from "react-icons/vsc";
 
 
-const LeaveList = () => {
+const PastLeave = () => {
     const [leaveList, setLeaveList] = useState([]);
     const [searchList, setSearchList] = useState([]);
     const [searchQuery, setSearchQuery] = useState({
         fromdate: '',
         todate: '',
         content: ''
-    });
-    const [selectedIds, setSelectedIds] = useState([]);
-    const [selectAll, setSelectAll] = useState(false);
-
+    })
     const navigate = useNavigate();
+
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if (!token) navigate('/');
-
+        if (!token)
+            navigate('/');
         const fetchList = async () => {
             await api.get("/leavelist", { withCredentials: true })
                 .then((response) => {
-                    let result = response.data.filter(one => one.status.toUpperCase() === "PENDING");
-                    setLeaveList(result);
-                    setSearchList(result);
+                    console.log("🚀 ~ .then ~ respose:", response.data)
+                    let result = response.data.filter(one => one.status.toUpperCase() !== "PENDING")
+                    setLeaveList(result)
+                    setSearchList(result)
                 })
                 .catch((error) => {
-                    console.log("🚀 ~ useEffect ~ error:", error);
-                });
-        };
+                    console.log("🚀 ~ useEffect ~ error:", error)
+                })
+        }
 
         fetchList();
-    }, [navigate]);
 
-    const updateStatus = async (currentStatus) => {
-        try {
-            await Promise.all(selectedIds.map(formId =>
-                api.post("/updateleave", { formId, currentStatus })
-            ));
-            navigate(0);
-        } catch (err) {
-            console.log("🚀 ~ updateStatus ~ err:", err);
-        }
-    };
+    }, [])
+
 
     const showFilteredResult = () => {
         setSearchList(
@@ -66,7 +56,7 @@ const LeaveList = () => {
                 return matchesFromDate && matchesToDate && matchesContent;
             })
         );
-    };
+    }
 
     const clearFilter = () => {
         setSearchList(leaveList);
@@ -74,54 +64,31 @@ const LeaveList = () => {
             fromdate: '',
             todate: '',
             content: ''
-        });
-    };
+        })
+    }
 
-    const handleCheckboxChange = (id) => {
-        if (id === 'selectAll') {
-            const newSelectAll = !selectAll;
-            setSelectAll(newSelectAll);
-            if (newSelectAll) {
-                setSelectedIds(searchList.map(each => each._id));
-            } else {
-                setSelectedIds([]);
-            }
-        } else {
-            setSelectedIds(prevSelectedIds => {
-                if (prevSelectedIds.includes(id)) {
-                    return prevSelectedIds.filter(selectedId => selectedId !== id);
-                } else {
-                    return [...prevSelectedIds, id];
-                }
-            });
-        }
-    };
 
 
     return (
         <>
-            <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
+            <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-hidden pb-10'>
                 <div className='h-[10%] w-[100%] mt-8 border-l-4 border-l-bgGreen flex justify-center'>
                     <div className='w-[80%] px-5 flex items-center gap-3 h-full'>
-                        <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
+                    <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
                         <SmallDate placeholder={"To Date"} name={'todate'} state={searchQuery} setState={setSearchQuery} />
                         <SmallInput type={"text"} placeholder={"Search for anyone"} name={'content'} state={searchQuery} setState={setSearchQuery} />
                         <button type='button' className='px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue' onClick={showFilteredResult}>Search</button>
                         <button type='button' className='bg-shadeWhite px-1 py-1 rounded-md font-bold text-xl' onClick={clearFilter}><VscDebugRestart /></button>
                     </div>
                     <div className='w-[20%] grid place-content-center gap-3 grid-flow-col'>
-                        <button type='button' className='px-3 py-1 bg-bgLGreen rounded-md font-bold text-txtLGreen border-2 border-txtLGreen' onClick={() => updateStatus('PERMITTED')}>Approve</button>
-                        <button type='button' className='px-3 py-1 bg-bgLRed rounded-md font-semibold text-txtLRed border-2 border-x-txtLRed' onClick={() => updateStatus('DENIED')}>Reject</button>
+                        <button type='button' className='px-3 py-1 bg-bgLGreen rounded-md font-bold text-txtLGreen border-2 border-txtLGreen'>Approve</button>
+                        <button type='button' className='px-3 py-1 bg-bgLRed rounded-md font-semibold text-txtLRed border-2 border-x-txtLRed'>Reject</button>
                     </div>
                 </div>
                 <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
                     <table className='min-w-full table-auto border-2 border-bgGreen'>
                         <thead>
                             <tr>
-                                <th><SmallCheckBox
-                                    checked={selectAll}
-                                    onChange={() => handleCheckboxChange('selectAll')}
-                                /></th>
                                 <th>Name</th>
                                 <th>From Date</th>
                                 <th>To Date</th>
@@ -140,7 +107,6 @@ const LeaveList = () => {
                             {
                                 searchList.map((each) => (
                                     <tr key={each._id}>
-                                        <td className='max-w-[5px] p-0'><SmallCheckBox checked={selectedIds.includes(each._id)} onChange={() => handleCheckboxChange(each._id)} /></td>
                                         <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{each.name}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.fromdate}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.todate}</td>
@@ -159,12 +125,27 @@ const LeaveList = () => {
                                     </tr>
                                 ))
                             }
+                            {/* <tr>
+                                <td className='max-w-[5px] p-0'><SmallCheckBox /></td>
+                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>Gajendran Asokkumar</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>29/08/2004</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>00/00/0000</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Leave</td>
+                                <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>Going to Native pona na varave matn hgvuyiu hiuh iuuhiuh</td>
+                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>Pending</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Paid</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Yes</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>P215</td>
+                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>09/06/2024</td>
+                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>Usman</td>
+                                <td className='px-1 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns /></td>
+                            </tr> */}
                         </tbody>
                     </table>
                 </div>
             </div>
         </>
-    );
-};
+    )
+}
 
-export default LeaveList;
+export default PastLeave
