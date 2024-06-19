@@ -19,3 +19,4 @@
 - 16.06.2024 -> -------NIL-------(Sunday)
 - 17.06.2024 -> Added User Authentication with JWT
 - 18.06.2024 -> Added functionality to add new employee and added functionality to update status of multiple leave at a time
+- 19.06.2024 -> Added profile box and update leave structure
