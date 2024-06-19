@@ -39,7 +39,15 @@ const Login = () => {
                 localStorage.setItem('token', token);
                 setAuth(true);
                 setUserData(userData);
-                navigate('/employee')
+                if (response.data.person == 'Admin') {
+                    navigate('/admin')
+                }
+                else if(response.data.person == 'Employee'){
+                    navigate('/employee')
+                }
+                else{
+                    navigate('/opps')
+                }
             })
             .catch((error) => {
                 console.log("🚀 ~ handleSubmit ~ error.response:", error.response)

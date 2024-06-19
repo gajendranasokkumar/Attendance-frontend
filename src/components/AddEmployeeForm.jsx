@@ -13,6 +13,7 @@ const AddEmployeeForm = () => {
     const [employee, setEmployee] = useState({
         id: "",
         name: "",
+        person: "Employee",
         email: "",
         phonenumber: "",
         dob: "",

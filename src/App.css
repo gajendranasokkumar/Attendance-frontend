@@ -286,6 +286,36 @@ tr:nth-child(even) {
   background-color: #ededed;
 }
 
-tr:hover{
+tr:hover {
   background-color: #cacacaae;
+}
+
+.personDetailsTable {
+  border: none;
+}
+
+.personDetailsTable > tr {
+  border: none !important;
+}
+
+.parent{
+  display: flex;
+  width: 100%;
+  font-size: 18px;
+  border-bottom: 2px solid white;
+  padding-bottom: 2px;
+  font-weight: 500;
+  color: #4d4b4b;
+}
+
+.left{
+  width: 45%;
+}
+
+.right{
+  width: 65%;
+  word-break: keep-all;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

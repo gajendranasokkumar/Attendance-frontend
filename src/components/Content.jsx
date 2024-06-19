@@ -8,6 +8,7 @@ import { PiCakeBold } from "react-icons/pi";
 import { PiPersonSimpleRunBold } from "react-icons/pi";
 import { RiTimerFlashFill } from "react-icons/ri";
 import { MdOutlineDevicesOther } from "react-icons/md";
+import PersonDetails from './PersonDetails';
 
 
 
@@ -15,15 +16,18 @@ import { MdOutlineDevicesOther } from "react-icons/md";
 const Content = () => {
     return (
         <>
-            <div className='h-[92vh] w-[100%] bg-white rounded-tl-[50px] px-5'>
+            <div className='h-[92vh] w-[100%] bg-white rounded-tl-[50px] px-5 overflow-y-auto'>
                 <SearchBar placeholder={"Search Employee"} icon={<CiSearch className='h-[20px] w-[20px]' />} />
                 <div className='h-auto w-[100%] px-5 mt-8 flex gap-4 flex-wrap justify-center'>
                     <MainOptions value={45} boxName={"Strength"} background={"violetSvg"} icon={<HiMiniUserGroup />} />
-                    <MainOptions value={30} boxName={"At Work"} background={"orangeSvg"} icon={<BsPersonWorkspace />}  />
+                    <MainOptions value={30} boxName={"At Work"} background={"orangeSvg"} icon={<BsPersonWorkspace />} />
                     <MainOptions value={2} boxName={"Birthday"} background={"lightBlueSvg"} icon={<PiCakeBold />} />
                     <MainOptions value={5} boxName={"Late In"} background={"redSvg"} icon={<PiPersonSimpleRunBold />} />
                     <MainOptions value={10} boxName={"Early Out"} background={"greenSvg"} icon={<RiTimerFlashFill />} />
-                    <MainOptions value={5} boxName={"Device"} background={"pinkSvg"} icon={<MdOutlineDevicesOther />}  />
+                    <MainOptions value={5} boxName={"Device"} background={"pinkSvg"} icon={<MdOutlineDevicesOther />} />
+                </div>
+                <div className='w-full h-full flex gap-5 flex-wrap mt-10'>
+                    <PersonDetails />
                 </div>
             </div>
         </>

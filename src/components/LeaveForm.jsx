@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { RxCross2 } from "react-icons/rx";
 import Input from './Input';
 import Radio from './Radio';
@@ -9,14 +9,16 @@ import CancelButton from './CancelButton';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import api from '../utils/api';
+import { AuthContext } from '../context/AuthContext';
 
 
 
 
 const LeaveForm = () => {
+    const { userData } = useContext(AuthContext);
     const [leaveDetails, setLeaveDetails] = useState({
-        id: '',
-        name: '',
+        id: userData?.id,
+        name: userData?.name,
         approvaldate: '',
         leavetype: '',
         halfleave: '',
@@ -25,7 +27,7 @@ const LeaveForm = () => {
         todate: '',
         reason: '',
         status: "Pending",
-        reportingperson: 'Gaja'
+        reportingperson: userData?.reportingperson
     })
     const navigate = useNavigate();
 
@@ -59,8 +61,8 @@ const LeaveForm = () => {
                     <div className='p-5 flex flex-col justify-center z-0'>
                         <form onSubmit={applyLeave}>
                             <div className='w-[50%] mx-auto'>
-                                <Input type={"text"} placeholder={"Employee ID"} name={'id'} state={leaveDetails} setState={setLeaveDetails} />
-                                <Input type={"text"} placeholder={"Name"} name={'name'} state={leaveDetails} setState={setLeaveDetails} />
+                                <Input readonly={true} type={"text"} placeholder={"Employee ID"} name={'id'} state={leaveDetails} setState={setLeaveDetails} />
+                                <Input readonly={true} type={"text"} placeholder={"Name"} name={'name'} state={leaveDetails} setState={setLeaveDetails} />
                             </div>
                             <div className='w-[50%] mx-auto'>
                                 <Radio option1={"Leave"} option2={"On Duty"} placeholder={'Leave Type'} name={'leavetype'} state={leaveDetails} setState={setLeaveDetails} />

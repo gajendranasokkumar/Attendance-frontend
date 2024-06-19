@@ -2,6 +2,7 @@ import React from 'react'
 import SearchBar from './SearchBar'
 import { CiSearch } from "react-icons/ci";
 import EntryBox from './EntryBox';
+import PersonDetails from './PersonDetails';
 
 
 const EmpContent = () => {
@@ -11,7 +12,9 @@ const EmpContent = () => {
                 <SearchBar placeholder={"Search Employee"} icon={<CiSearch className='h-[20px] w-[20px]' />} />
                 <div className='h-[100%] w-[100%] px-5 mt-8 flex gap-4 flex-wrap justify-center'>
                     <EntryBox />
-                    {/* <div className='xs:w-[100%] lg:w-[45%] bg-bgGreen h-[50%]'></div> */}
+                    <div className='w-full h-full flex gap-5 flex-wrap mt-5'>
+                        <PersonDetails />
+                    </div>
                 </div>
             </div>
         </>

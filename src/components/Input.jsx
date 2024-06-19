@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({ type, placeholder, name, state = '', setState = ()=>{} }) => {
+const Input = ({ type, placeholder, name, state = '', setState = ()=>{}, readonly = false }) => {
 
     return (
         <>
@@ -10,6 +10,7 @@ const Input = ({ type, placeholder, name, state = '', setState = ()=>{} }) => {
                     type={type}
                     name={name}
                     value={state[name]}
+                    readOnly={readonly}
                     onChange={(e) => { setState({ ...state, [name]: e.target.value }) }}
                 />
             </div>

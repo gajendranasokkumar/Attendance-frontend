@@ -26,7 +26,15 @@ const EmpPastLeave = () => {
             await api.get("/leavelist", { withCredentials: true })
                 .then((response) => {
                     console.log("🚀 ~ .then ~ respose:", response.data)
-                    let result = response.data.filter(one => one.status.toUpperCase() !== "PENDING")
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    let result = response.data.filter(one => {
+                        const specificDate = new Date(one.todate);
+                        specificDate.setHours(0, 0, 0, 0);
+                        if (today > specificDate) {
+                            return one;
+                        }
+                    })
                     setLeaveList(result)
                     setSearchList(result)
                 })
@@ -74,7 +82,7 @@ const EmpPastLeave = () => {
             <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-hidden pb-10'>
                 <div className='h-[10%] w-[100%] mt-8 border-l-4 border-l-bgGreen flex'>
                     <div className='w-[80%] px-5 flex items-center gap-3 h-full'>
-                    <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
+                        <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
                         <SmallDate placeholder={"To Date"} name={'todate'} state={searchQuery} setState={setSearchQuery} />
                         <SmallInput type={"text"} placeholder={"Search for anyone"} name={'content'} state={searchQuery} setState={setSearchQuery} />
                         <button type='button' className='px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue' onClick={showFilteredResult}>Search</button>

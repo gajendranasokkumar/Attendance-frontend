@@ -12,7 +12,15 @@ const CurrentLeavePage = () => {
             await axios.get("http://localhost:3000/leavelist")
                 .then((response) => {
                     console.log("🚀 ~ .then ~ respose:", response.data)
-                    let result = response.data.filter(one => one.status.toUpperCase() == "PENDING")
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    let result = response.data.filter(one => {
+                        const specificDate = new Date(one.todate);
+                        specificDate.setHours(0, 0, 0, 0);
+                        if (today < specificDate){
+                            return one;
+                        }
+                    })
                     setLeaveList(result)
                 })
                 .catch((error) => {
@@ -44,7 +52,7 @@ const CurrentLeavePage = () => {
                             </tr>
                         </thead>
                         <tbody>
-                        {
+                            {
                                 leaveList.map((each) => (
                                     <tr key={each._id}>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.id}</td>

@@ -3,8 +3,15 @@ import React, { createContext, useState, useEffect, useRef } from 'react';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useState(false);
-    const [userData, setUserDataState] = useState(null);
+    const [auth, setAuth] = useState(() => {
+        const token = localStorage.getItem('token');
+        return token ? true : false;
+    });
+    const [userData, setUserDataState] = useState(() => {
+        const storedUserData = localStorage.getItem('userData');
+        return storedUserData ? JSON.parse(storedUserData) : null;
+    });
+    const [loading, setLoading] = useState(true);
     const userDataRef = useRef(null);
 
     useEffect(() => {
@@ -16,6 +23,7 @@ export const AuthProvider = ({ children }) => {
             setUserDataState(parsedUserData);
             userDataRef.current = parsedUserData;
         }
+        setLoading(false);
     }, []);
 
     useEffect(() => {
@@ -29,6 +37,10 @@ export const AuthProvider = ({ children }) => {
         setUserDataState(data);
         userDataRef.current = data;
     };
+
+    if (loading) {
+        return <div>Loading...</div>; 
+    }
 
     return (
         <AuthContext.Provider value={{ auth, setAuth, userData, setUserData, userDataRef }}>

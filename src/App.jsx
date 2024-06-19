@@ -32,14 +32,15 @@ function App() {
             <Route path="*" element={<OopsPage />} />
             <Route index element={<Login />} />
             <Route path="/punch" element={<PunchForm />} />
-            <Route path="/employee" element={<EmployeeHome />}>
+            <Route path="/employee" element={<PrivateRoute role={'Employee'}><EmployeeHome /></PrivateRoute>}>
               <Route index element={<EmpContent />} />
               <Route path="leaveForm" element={<LeaveForm />} />
               <Route path="leaveList" element={<EmpPastLeave />} />
               <Route path="leaveStatus" element={<CurrentLeavePage />} />
               <Route path="attendanceList" element={<AttendanceList />} />
             </Route>
-            <Route path="/admin" element={<AdminHome />}>
+            {/* <Route path="/admin" element={<AdminHome />}> */}
+            <Route path="/admin" element={<PrivateRoute role={'Admin'}><AdminHome /></PrivateRoute>}>
               <Route index element={<Content />} />
               <Route path="leavelist" element={<LeaveList />} />
               <Route path="pastleave" element={<PastLeave />} />
