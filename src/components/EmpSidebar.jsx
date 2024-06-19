@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ExpandBox from './ExpandBox'
 import { MdCoPresent } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";
@@ -9,18 +9,22 @@ import { MdHistory } from "react-icons/md";
 import { FiPlus } from "react-icons/fi";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 
 const EmpSidebar = () => {
-
-
-    const dashboardOptions = [{ icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard', link: '/employee'}];
+    const { userData } = useContext(AuthContext);
+    const dashboardOptions = [{ icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard', link: '/employee' }];
     const attendanceOptions = [{ icon: <TbListDetails />, title: 'Attendance Details', link: 'attendanceList' }, { icon: <MdHistory />, title: 'Attendance History' }];
     const leaveOptions = [{ icon: <FiPlus />, title: 'New Leave', link: 'leaveForm' }, { icon: <AiFillThunderbolt />, title: 'Current Leave Status', link: "leaveStatus" }, { icon: <MdHistory />, title: "Past Leave", link: 'leaveList' }];
 
     return (
         <>
             <div className=' h-[92vh] xs:min-w-[100%] bg-shadeWhite lg:pt-[30px] z-20'>
+                <div className='h-[50px] px-5 text-lg'>
+                    <p className='font-semibold text-inputBorder'>Emp ID: <span className='text-bgGreen'>{userData?.id}</span></p>
+                    <p className='font-semibold text-inputBorder'>Name: <span className='text-bgGreen'>{userData?.name}</span></p>
+                </div>
                 <div className='h-[88%] overflow-y-auto  overflow-x-hidden lg:mt-5 '>
                     <ExpandBox key={1} number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
                     <ExpandBox key={2} number={2} name={"Attendance"} icon={<MdCoPresent />} options={attendanceOptions} />

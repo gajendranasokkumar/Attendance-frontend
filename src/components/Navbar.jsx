@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import { GoBellFill } from "react-icons/go";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { HiX } from "react-icons/hi";
-import {AuthContext} from '../context/AuthContext'
+import { AuthContext } from '../context/AuthContext'
+import SmallProfileBox from './SmallProfileBox';
 
 
 const Navbar = ({ toggleSidebar, isSidebarVisible = false }) => {
@@ -25,10 +26,13 @@ const Navbar = ({ toggleSidebar, isSidebarVisible = false }) => {
                         <GoBellFill className='xs:h-[20px] xs:w-[20px] lg:h-[25px] lg:w-[25px] text-deepLightBlack' />
                         <span className='ping xs:text-sm'></span>
                     </div>
-                    <div className='bg-grey xs:h-[30px] xs:w-[30px] lg:h-[35px] lg:w-[35px] rounded-[100%] ml-6 grid place-content-center'>G</div>
-                    {/* <div className='h-[300px] w-[250px] absolute right-5 top-16 border-2 border-grey rounded-xl bg-white'>
+                    {/* <div className='bg-grey xs:h-[30px] xs:w-[30px] lg:h-[35px] lg:w-[35px] rounded-[100%] ml-6 grid place-content-center peer cursor-pointer'>G</div>
+                    <div className='invisible peer-hover:visible hover:visible'><S  mallProfileBox /></div> */}
+                    <div className='group'>
+                        <div className='bg-grey xs:h-[30px] xs:w-[30px] lg:h-[35px] lg:w-[35px] rounded-[100%] ml-6 grid place-content-center cursor-pointer'>G</div>
+                        <div className='invisible group-hover:visible hover:visible'><SmallProfileBox /></div>
+                    </div>
 
-                    </div> */}
                 </div>
 
             </div>

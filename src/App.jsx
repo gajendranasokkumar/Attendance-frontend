@@ -17,6 +17,7 @@ import CurrentLeavePage from "./components/CurrentLeavePage"
 import { AuthProvider } from './context/AuthContext.jsx';
 import PrivateRoute from './router/PrivateRoute.jsx';
 import PastLeave from "./components/PastLeave.jsx"
+import EmpPastLeave from "./components/EmpPastLeave.jsx"
 
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
             <Route path="/employee" element={<EmployeeHome />}>
               <Route index element={<EmpContent />} />
               <Route path="leaveForm" element={<LeaveForm />} />
-              <Route path="leaveList" element={<LeaveList />} />
+              <Route path="leaveList" element={<EmpPastLeave />} />
               <Route path="leaveStatus" element={<CurrentLeavePage />} />
               <Route path="attendanceList" element={<AttendanceList />} />
             </Route>

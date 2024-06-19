@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from "react-icons/vsc";
 
 
-const PastLeave = () => {
+const EmpPastLeave = () => {
     const [leaveList, setLeaveList] = useState([]);
     const [searchList, setSearchList] = useState([]);
     const [searchQuery, setSearchQuery] = useState({
@@ -100,7 +100,6 @@ const PastLeave = () => {
                                 <th>Emp Code</th>
                                 <th>Approval Date</th>
                                 <th>Reporting Person</th>
-                                {/* <th>Action</th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -119,9 +118,8 @@ const PastLeave = () => {
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.paidleave}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.halfleave}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.id}</td>
-                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>09/06/2024</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{each.approvaldate}</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{each.reportingperson}</td>
-                                        {/* <td className='px-1 py-2 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns formId={each._id} /></td> */}
                                     </tr>
                                 ))
                             }
@@ -148,4 +146,4 @@ const PastLeave = () => {
     )
 }
 
-export default PastLeave
+export default EmpPastLeave

@@ -51,6 +51,7 @@ export default {
       txtLYellow: "#B45309",
       bgLBlue: '#ceeaff',
       txtLBlue: "#287DBE",
+      optionsHover: "#ebebeb"
     },
     boxShadow: {
       allBox: '0px 0px 7px rgba(55, 54, 54, 0.637)',

@@ -17,6 +17,7 @@ const LeaveForm = () => {
     const [leaveDetails, setLeaveDetails] = useState({
         id: '',
         name: '',
+        approvaldate: '',
         leavetype: '',
         halfleave: '',
         paidleave: '',

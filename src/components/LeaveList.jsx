@@ -117,7 +117,7 @@ const LeaveList = () => {
                 <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
                     <table className='min-w-full table-auto border-2 border-bgGreen'>
                         <thead>
-                            <tr>
+                            <tr className='sticky top-0'>
                                 <th><SmallCheckBox
                                     checked={selectAll}
                                     onChange={() => handleCheckboxChange('selectAll')}
@@ -153,7 +153,7 @@ const LeaveList = () => {
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.paidleave}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.halfleave}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.id}</td>
-                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>09/06/2024</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{each.approvaldate}</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{each.reportingperson}</td>
                                         <td className='px-1 py-2 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns formId={each._id} /></td>
                                     </tr>
