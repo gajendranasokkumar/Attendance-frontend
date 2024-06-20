@@ -18,7 +18,7 @@ const PersonDetails = () => {
             </div>
             <div className='parent'>
                 <div className='left'>Email</div>
-                <div className='right'>: {userData?.email}</div>
+                <div className='right break-words'>: {userData?.email}</div>
             </div>
             <div className='parent'>
                 <div className='left'>DOB</div>
