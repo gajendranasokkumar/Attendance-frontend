@@ -9,6 +9,7 @@ import { PiPersonSimpleRunBold } from "react-icons/pi";
 import { RiTimerFlashFill } from "react-icons/ri";
 import { MdOutlineDevicesOther } from "react-icons/md";
 import PersonDetails from './PersonDetails';
+import EntryBox from './EntryBox';
 
 
 
@@ -27,6 +28,7 @@ const Content = () => {
                     <MainOptions value={5} boxName={"Device"} background={"pinkSvg"} icon={<MdOutlineDevicesOther />} />
                 </div>
                 <div className='w-full h-full flex gap-5 flex-wrap mt-10'>
+                    <EntryBox />
                     <PersonDetails />
                 </div>
             </div>

@@ -58,7 +58,7 @@ const EntryBox = () => {
     }, []);
 
     return (
-        <div className='xs:w-[100%] lg:w-[45%] border-l-4 border-l-grey bg-shadeWhite h-[50%] rounded shadow-goodShadow flex flex-col justify-center items-center px-5'>
+        <div className='xs:w-[100%] lg:w-[45%] border-l-4 border-l-txtLBlue bg-shadeWhite h-[50%] rounded shadow-goodShadow flex flex-col justify-center items-center px-5'>
             <div className='w-[80%] h-[60px] flex rounded-lg'>
                 <div className='w-[50%] h-full rounded-s-lg bg-txtLBlue text-white grid place-content-center text-2xl'>
                     <p>{dateTime.date}</p>
