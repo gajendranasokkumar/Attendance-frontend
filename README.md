@@ -21,3 +21,4 @@
 - 18.06.2024 -> Added functionality to add new employee and added functionality to update status of multiple leave at a time
 - 19.06.2024 -> Added profile box and update leave structure
 - 20.06.2024 -> Added Checkin and Checkout functionality
+- 21.06.2024 -> Added location accessing functionality 
