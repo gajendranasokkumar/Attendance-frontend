@@ -32,7 +32,7 @@ const AttendanceList = () => {
         <>
             <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
                 <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans'>Today's Attendance  ( {todayAttendance?.date} )</h1>
-                <div className='h-[100%] w-[100%] mt-5 overflow-x-auto'>
+                <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
                     <table className='min-w-full table-auto border-2 border-bgGreen'>
                         <thead>
                             <tr>
@@ -51,20 +51,26 @@ const AttendanceList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.id}</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.name}</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.date}</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.punchid}</td>
-                                <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{todayAttendance.company}</td>
-                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.branch}</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>{todayAttendance.ischeckedin ? "YES" : "NO"}</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkintime}</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>{todayAttendance.ischeckedout ? "YES" : "NO"}</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkouttime}</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.location}</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.multibranchattendance}</td>
-                            </tr>
+                            {
+                                (todayAttendance) ?
+                                    <>
+                                        <tr>
+                                            <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.id}</td>
+                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.name}</td>
+                                            <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.date}</td>
+                                            <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.punchid}</td>
+                                            <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{todayAttendance.company}</td>
+                                            <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.branch}</td>
+                                            <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>{todayAttendance.ischeckedin ? "YES" : "NO"}</td>
+                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkintime}</td>
+                                            <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>{todayAttendance.ischeckedout ? "YES" : "NO"}</td>
+                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkouttime}</td>
+                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.location}</td>
+                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.multibranchattendance}</td>
+                                        </tr>
+                                    </>
+                                    : <></>
+                            }
                         </tbody>
                     </table>
                 </div>
