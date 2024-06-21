@@ -166,19 +166,42 @@ const EntryBox = () => {
         const formattedDate = `${day}-${month}-${year}`;
 
         try {
+            const getLocation = () => {
+                return new Promise((resolve, reject) => {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            (position) => {
+                                const location = `${position.coords.latitude} ${position.coords.longitude}`;
+                                resolve(location);
+                            },
+                            (error) => {
+                                reject(error);
+                            }
+                        );
+                    } else {
+                        reject(new Error("Geolocation is not supported by this browser."));
+                    }
+                });
+            };
+
+            const location = await getLocation();
+            // console.log(location)
+
             const response = await api.post("/checkin", {
                 ...checkINDetails,
                 checkintime: timeString,
                 date: formattedDate,
                 ischeckedin: true,
+                location: location
             });
+
             console.log("🚀 ~ .then ~ response:", response);
             setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: true });
-            setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime })
+            setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime });
         } catch (error) {
             console.log("🚀 ~ EntryBox ~ error:", error);
         }
-    }
+    };
 
     const enterCheckout = async (e) => {
         e.preventDefault();
