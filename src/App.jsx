@@ -18,6 +18,7 @@ import { AuthProvider } from './context/AuthContext.jsx';
 import PrivateRoute from './router/PrivateRoute.jsx';
 import PastLeave from "./components/PastLeave.jsx"
 import EmpPastLeave from "./components/EmpPastLeave.jsx"
+import AttendanceHistory from "./components/AttendanceHistory.jsx"
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               <Route path="leaveList" element={<EmpPastLeave />} />
               <Route path="leaveStatus" element={<CurrentLeavePage />} />
               <Route path="attendanceList" element={<AttendanceList />} />
+              <Route path="attendanceHistory" element={<AttendanceHistory />} />
             </Route>
             {/* <Route path="/admin" element={<AdminHome />}> */}
             <Route path="/admin" element={<PrivateRoute role={'Admin'}><AdminHome /></PrivateRoute>}>

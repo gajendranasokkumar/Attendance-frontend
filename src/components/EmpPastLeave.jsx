@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SmallInput, SmallDate, SmallCheckBox } from './SmallInput'
 import ActionBtns from './ActionBtns'
 import axios from 'axios';
 import api from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from "react-icons/vsc";
+import { AuthContext } from '../context/AuthContext';
 
 
 const EmpPastLeave = () => {
@@ -16,6 +17,7 @@ const EmpPastLeave = () => {
         content: ''
     })
     const navigate = useNavigate();
+    const { userData } = useContext(AuthContext);
 
 
     useEffect(() => {
@@ -112,7 +114,7 @@ const EmpPastLeave = () => {
                         </thead>
                         <tbody>
                             {
-                                searchList.map((each) => (
+                                searchList.filter((one)=>one.id == userData?.id).map((each) => (
                                     <tr key={each._id}>
                                         <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{each.name}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.fromdate}</td>

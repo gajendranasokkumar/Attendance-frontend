@@ -15,7 +15,7 @@ import { AuthContext } from '../context/AuthContext';
 const EmpSidebar = () => {
     const { userData } = useContext(AuthContext);
     const dashboardOptions = [{ icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard', link: '/employee' }];
-    const attendanceOptions = [{ icon: <TbListDetails />, title: 'Attendance Details', link: 'attendanceList' }, { icon: <MdHistory />, title: 'Attendance History' }];
+    const attendanceOptions = [{ icon: <TbListDetails />, title: 'Attendance Details', link: 'attendanceList' }, { icon: <MdHistory />, title: 'Attendance History', link: 'attendanceHistory' }];
     const leaveOptions = [{ icon: <FiPlus />, title: 'New Leave', link: 'leaveForm' }, { icon: <AiFillThunderbolt />, title: 'Current Leave Status', link: "leaveStatus" }, { icon: <MdHistory />, title: "Past Leave", link: 'leaveList' }];
 
     return (

@@ -1,67 +1,69 @@
-import React from 'react'
-import { SmallInput, SmallDate, SmallCheckBox } from './SmallInput'
-import ActionBtns from './ActionBtns'
+import React, { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../context/AuthContext';
+import api from '../utils/api';
 
 const AttendanceList = () => {
+
+    const [todayAttendance, setTodayAttendance] = useState({});
+    const { userData } = useContext(AuthContext);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const now = new Date();
+                const day = String(now.getDate()).padStart(2, '0');
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const year = now.getFullYear();
+                const formattedDate = `${day}-${month}-${year}`;
+                setTodayAttendance({ ...todayAttendance, date: formattedDate });
+
+                console.log("🚀 ~ fetchData ~ formattedDate:", formattedDate)
+                const response = await api.post("/getCheckInDetails", { id: userData?.id, date: formattedDate });
+                console.log("🚀 ~ .then ~ Today's Attendance:", response);
+                setTodayAttendance(response.data)
+            } catch (error) {
+                console.log("🚀 ~ EntryBox ~ error:", error);
+            }
+        }
+
+        fetchData();
+    }, [userData])
     return (
         <>
             <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
-                <div className='h-[10%] w-[100%] mt-8 border-l-4 border-l-bgGreen flex justify-center'>
-                    <div className='w-[100%] px-5 flex items-center gap-3 h-full'>
-                        <SmallDate placeholder={"Date"} />
-                        <SmallInput type={"text"} placeholder={"Status"} />
-                        <button type='button' className='px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue'>Search</button>
-                    </div>
-                </div>
-                <div className='h-[86%] w-[100%] mt-5 overflow-x-auto'>
+                <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans'>Today's Attendance  ( {todayAttendance?.date} )</h1>
+                <div className='h-[100%] w-[100%] mt-5 overflow-x-auto'>
                     <table className='min-w-full table-auto border-2 border-bgGreen'>
                         <thead>
                             <tr>
-                                <th><SmallCheckBox /></th>
+                                <th>ID</th>
                                 <th>Name</th>
-                                <th>From Date</th>
-                                <th>To Date</th>
-                                <th>Leave Type</th>
-                                <th>Reason</th>
-                                <th>Leave Status</th>
-                                <th>Leave Paid</th>
-                                <th>Is Half Leave</th>
-                                <th>Emp Code</th>
-                                <th>Approval Date</th>
-                                <th>Reporting Person</th>
-                                <th>Action</th>
+                                <th>Date</th>
+                                <th>Punch ID</th>
+                                <th>Company</th>
+                                <th>Branch</th>
+                                <th>Is Check In</th>
+                                <th>Check In Time</th>
+                                <th>Is Check Out</th>
+                                <th>Check Out Time</th>
+                                <th>Location</th>
+                                <th>Multi Branch Attendance</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td className='max-w-[5px] p-0'><SmallCheckBox /></td>
-                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>Gajendran</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>29/08/2004</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>00/00/0000</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Leave</td>
-                                <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>Going to Native hgvuyiu hiuh iuuhiuh</td>
-                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>Pending</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Paid</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Yes</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>P215</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>09/06/2024</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>Usman</td>
-                                <td className='px-1 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns /></td>
-                            </tr>
-                            <tr>
-                                <td className='max-w-[5px] p-0'><SmallCheckBox /></td>
-                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>Gajendran Asokkumar</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>29/08/2004</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>00/00/0000</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Leave</td>
-                                <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>Going to Native pona na varave matn hgvuyiu hiuh iuuhiuh</td>
-                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>Pending</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Paid</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>Yes</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>P215</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>09/06/2024</td>
-                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>Usman</td>
-                                <td className='px-1 min-w-[100px] max-w-[100px] whitespace-normal'><ActionBtns /></td>
+                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.id}</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.name}</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.date}</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.punchid}</td>
+                                <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{todayAttendance.company}</td>
+                                <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.branch}</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.ischeckedin}</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.checkintime}</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.ischeckedout}</td>
+                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkouttime}</td>
+                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.location}</td>
+                                <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.multibranchattendance}</td>
                             </tr>
                         </tbody>
                     </table>
