@@ -58,9 +58,9 @@ const AttendanceList = () => {
                                 <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.punchid}</td>
                                 <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{todayAttendance.company}</td>
                                 <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.branch}</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.ischeckedin}</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>{todayAttendance.ischeckedin ? "YES" : "NO"}</td>
                                 <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.checkintime}</td>
-                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.ischeckedout}</td>
+                                <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>{todayAttendance.ischeckedout ? "YES" : "NO"}</td>
                                 <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkouttime}</td>
                                 <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.location}</td>
                                 <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.multibranchattendance}</td>
