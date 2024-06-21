@@ -55,12 +55,12 @@ const AttendanceHistory = () => {
                                     <tr key={one._id}>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{one.date}</td>
                                         <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{one.id}</td>
-                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{one.name}</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.name}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{one.punchid}</td>
                                         <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{one.company}</td>
                                         <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{one.branch}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{one.ischeckedin ? "YES" : "NO"}</td>
-                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{one.checkintime}</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.checkintime}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{one.ischeckedout ? "YES" : "NO"}</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.checkouttime}</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.location}</td>

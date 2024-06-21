@@ -48,6 +48,7 @@ function App() {
               <Route path="pastleave" element={<PastLeave />} />
               <Route path="leaveform" element={<LeaveForm />} />
               <Route path="attendancelist" element={<AttendanceList />} />
+              <Route path="attendancehistory" element={<AttendanceHistory />} />
               <Route path="addEmployee" element={<AddEmployeeForm />} />
             </Route>
           </Routes>
