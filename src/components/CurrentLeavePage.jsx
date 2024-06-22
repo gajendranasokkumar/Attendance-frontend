@@ -17,7 +17,7 @@ const CurrentLeavePage = () => {
                     let result = response.data.filter(one => {
                         const specificDate = new Date(one.todate);
                         specificDate.setHours(0, 0, 0, 0);
-                        if (today < specificDate){
+                        if (today <= specificDate){
                             return one;
                         }
                     })
