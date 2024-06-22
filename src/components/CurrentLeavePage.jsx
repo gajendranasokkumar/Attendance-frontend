@@ -49,6 +49,7 @@ const CurrentLeavePage = () => {
                                 <th>Leave Status</th>
                                 <th>Leave Paid</th>
                                 <th>Is Half Leave</th>
+                                <th>Approval Date</th>
                                 <th>Reporting Person</th>
                             </tr>
                         </thead>
@@ -68,6 +69,7 @@ const CurrentLeavePage = () => {
                                             ${each.status.toUpperCase() === "DENIED" ? "text-txtLRed" : ""}`}>{each.status.toUpperCase()}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.paidleave}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.halfleave}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.approvaldate}</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{each.reportingperson}</td>
                                     </tr>
                                 ))
