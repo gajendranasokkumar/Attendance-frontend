@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SmallInput, SmallDate, SmallCheckBox } from './SmallInput'
 import ActionBtns from './ActionBtns'
 import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 const CurrentLeavePage = () => {
 
     const [leaveList, setLeaveList] = useState([]);
+    const { userData } = useContext(AuthContext);
+
 
     useEffect(() => {
         const fetchList = async () => {
@@ -17,7 +20,7 @@ const CurrentLeavePage = () => {
                     let result = response.data.filter(one => {
                         const specificDate = new Date(one.todate);
                         specificDate.setHours(0, 0, 0, 0);
-                        if (today <= specificDate){
+                        if (today <= specificDate && one.id == userData?.id){
                             return one;
                         }
                     })
