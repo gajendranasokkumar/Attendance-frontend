@@ -11,7 +11,7 @@ const SmallProfileBox = () => {
 
     return (
         <>
-            <div className='h-[300px] w-[250px] absolute right-5 top-12 border-1 border-grey rounded-lg bg-white flex flex-col items-center p-5 shadow-allBox'>
+            <div className='z-50 h-[300px] w-[250px] absolute right-5 top-12 border-1 border-grey rounded-lg bg-white flex flex-col items-center p-5 shadow-allBox'>
                 <div className='flex w-full h-[60px] mb-10'>
                     <div className='w-[60px] bg-grey rounded-full grid place-content-center text-2xl'>
                         G
