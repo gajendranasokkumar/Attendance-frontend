@@ -35,6 +35,9 @@ const AddEmployeeForm = () => {
         shift: "",
         punchtype: "",
         geolocation: "",
+        leavetaken: "",
+        leavepermitted: "",
+        hoursofwork: ""
     });
     const navigate = useNavigate();
 
@@ -46,13 +49,13 @@ const AddEmployeeForm = () => {
         e.preventDefault();
         console.log("🚀 ~ submitForm ~ employee:", employee)
         await api.post("/addemployee", employee)
-        .then((respose)=>{
-            console.log("🚀 ~ .then ~ respose:", respose)
-            navigate(-1);
-        })
-        .catch((error)=>{
-            console.log("🚀 ~ applyleave ~ error:", error)
-        })
+            .then((respose) => {
+                console.log("🚀 ~ .then ~ respose:", respose)
+                navigate(-1);
+            })
+            .catch((error) => {
+                console.log("🚀 ~ applyleave ~ error:", error)
+            })
     }
 
     return (
@@ -72,19 +75,19 @@ const AddEmployeeForm = () => {
                                     <Input type={"text"} placeholder={"Employee ID"} name={'id'} state={employee} setState={setEmployee} />
                                     <Input type={"text"} placeholder={"Name"} name={'name'} state={employee} setState={setEmployee} />
                                     <Input type={"email"} placeholder={"Email"} name={'email'} state={employee} setState={setEmployee} />
-                                    <Input type={"number"} placeholder={"Phone Number"} name={'phonenumber'} state={employee} setState={setEmployee}/>
+                                    <Input type={"number"} placeholder={"Phone Number"} name={'phonenumber'} state={employee} setState={setEmployee} />
                                 </div>
 
                                 <div className='flex gap-2 w-[50%]'>
-                                    <Date placeholder={"Date Of Birth"} name={'dob'} state={employee} setState={setEmployee}/>
+                                    <Date placeholder={"Date Of Birth"} name={'dob'} state={employee} setState={setEmployee} />
                                 </div>
                             </div>
                             <div className='p-5 flex flex-col  z-0 w-[50%]'>
                                 <div className='w-[100%] mx-auto'>
-                                    <Textarea placeholder={"Address"} name={'address'} state={employee} setState={setEmployee}/>
+                                    <Textarea placeholder={"Address"} name={'address'} state={employee} setState={setEmployee} />
                                 </div>
                                 <div className='w-[100%]'>
-                                    <Radio option1={"Male"} option2={"Female"} placeholder={'Gender'} name={'gender'} state={employee} setState={setEmployee}/>
+                                    <Radio option1={"Male"} option2={"Female"} placeholder={'Gender'} name={'gender'} state={employee} setState={setEmployee} />
                                     <Radio option1={"Single"} option2={"Married"} placeholder={"Marital Status"} name={'maritalstatus'} state={employee} setState={setEmployee} />
                                 </div>
                             </div>
@@ -97,6 +100,8 @@ const AddEmployeeForm = () => {
                                 <div className='w-[100%] mx-auto'>
                                     <Input type={"text"} placeholder={"HR Policy"} name={'hrpolicy'} state={employee} setState={setEmployee} />
                                     <Input type={"text"} placeholder={"Punch ID"} name={'punchid'} state={employee} setState={setEmployee} />
+                                    <Input type={"number"} placeholder={"Allowed Leave Count"} name={'leavepermitted'} state={employee} setState={setEmployee} />
+                                    <Input type={"number"} placeholder={"Working Hours"} name={'hoursofwork'} state={employee} setState={setEmployee} />
                                 </div>
                             </div>
                             <div className='p-5 flex flex-col z-0 w-[50%]'>
@@ -112,11 +117,11 @@ const AddEmployeeForm = () => {
                         <div className='flex w-[100%] mt-5'>
                             <div className='p-5 flex flex-col  z-0 w-[50%]'>
                                 <div className='w-[100%] mx-auto'>
-                                    <Input type={"text"} placeholder={"Company"} name={'company'} state={employee} setState={setEmployee}/>
-                                    <Input type={"text"} placeholder={"Branch"} name={'branch'} state={employee} setState={setEmployee}/>
-                                    <Input type={"text"} placeholder={"Designation"} name={'designation'} state={employee} setState={setEmployee}/>
+                                    <Input type={"text"} placeholder={"Company"} name={'company'} state={employee} setState={setEmployee} />
+                                    <Input type={"text"} placeholder={"Branch"} name={'branch'} state={employee} setState={setEmployee} />
+                                    <Input type={"text"} placeholder={"Designation"} name={'designation'} state={employee} setState={setEmployee} />
                                     <Input type={"number"} placeholder={"Mobile Number"} name={'mobilenumber'} state={employee} setState={setEmployee} />
-                                    <Input type={"text"} placeholder={"Punch Type"} name={'punchtype'} state={employee} setState={setEmployee}/>
+                                    <Input type={"text"} placeholder={"Punch Type"} name={'punchtype'} state={employee} setState={setEmployee} />
                                 </div>
                             </div>
                             <div className='p-5 flex flex-col  z-0 w-[50%]'>
@@ -125,7 +130,7 @@ const AddEmployeeForm = () => {
                                     <Input type={"text"} placeholder={"Department"} name={'department'} state={employee} setState={setEmployee} />
                                     <Input type={"text"} placeholder={"Role"} name={'role'} state={employee} setState={setEmployee} />
                                     <Input type={"number"} placeholder={"Multiple Branch Attendance"} name={'multibranchattendance'} state={employee} setState={setEmployee} />
-                                    <Input type={"text"} placeholder={"Shift Group"} name={'shiftgroup'} state={employee} setState={setEmployee}/>
+                                    <Input type={"text"} placeholder={"Shift Group"} name={'shiftgroup'} state={employee} setState={setEmployee} />
                                 </div>
                                 <div className='w-[100%]'>
                                     <Radio option1={"Enable"} option2={"Disable"} placeholder={"Geo Location"} name={'geolacation'} state={employee} setState={setEmployee} />
@@ -136,7 +141,7 @@ const AddEmployeeForm = () => {
 
                         <div className='flex justify-end gap-2 w-[100%] mx-auto mb-7 pr-6'>
                             <CancelButton />
-                            <SubmitButton name={"Create"} click={submitForm}/>
+                            <SubmitButton name={"Create"} click={submitForm} />
                         </div>
                     </form>
                 </div>

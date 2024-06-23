@@ -27,7 +27,9 @@ const LeaveForm = () => {
         todate: '',
         reason: '',
         status: "Pending",
-        reportingperson: userData?.reportingperson
+        reportingperson: userData?.reportingperson,
+        leavepermitted: userData?.leavepermitted,
+        leavetaken: ''
     })
     const navigate = useNavigate();
 
@@ -36,17 +38,17 @@ const LeaveForm = () => {
     };
 
 
-    const applyLeave = async (e) =>{
+    const applyLeave = async (e) => {
         e.preventDefault();
         console.log(leaveDetails)
         await api.post("/leaveform", leaveDetails)
-        .then((respose)=>{
-            console.log("🚀 ~ .then ~ respose:", respose)
-            navigate(-1);
-        })
-        .catch((error)=>{
-            console.log("🚀 ~ applyLeave ~ error:", error)
-        })
+            .then((respose) => {
+                console.log("🚀 ~ .then ~ respose:", respose)
+                navigate(-1);
+            })
+            .catch((error) => {
+                console.log("🚀 ~ applyLeave ~ error:", error)
+            })
     }
 
 
@@ -57,6 +59,10 @@ const LeaveForm = () => {
                     <div className='flex justify-between w-[100%] h-[80px] items-center bg-white top-0 z-10 relative'>
                         <div className='text-[25px] text-bgGreen font-bold pl-8'>Leave Form</div>
                         <div className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer' onClick={goBack}><RxCross2 /></div>
+                    </div>
+                    <div className='flex justify-center gap-5 mt-5 mb-5'>
+                        <div className='text-lg text-txtLYellow font-semibold'>Total leave permitted for this month : <span className='bg-grey text-black px-2 py-1 rounded-lg'>{leaveDetails.leavepermitted}</span></div>
+                        <div className='text-lg text-txtLYellow font-semibold'>Leave taken : <span className='bg-grey text-black px-2 py-1 rounded-lg'>{leaveDetails.leavepermitted}</span></div>
                     </div>
                     <div className='p-5 flex flex-col justify-center z-0'>
                         <form onSubmit={applyLeave}>

@@ -128,7 +128,7 @@ const EntryBox = () => {
                 const [hours, minutes, seconds] = checkInOutTime.checkintime.split(':').map(Number);
                 checkInDateTime.setHours(hours, minutes, seconds);
 
-                const endTime = new Date(checkInDateTime.getTime() + 8 * 60 * 60 * 1000);
+                const endTime = new Date(checkInDateTime.getTime() + userData?.hoursofwork * 60 * 60 * 1000);
                 const remainingTimeMs = endTime - now;
 
                 const isNegative = remainingTimeMs < 0;

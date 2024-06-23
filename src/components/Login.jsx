@@ -42,10 +42,10 @@ const Login = () => {
                 if (response.data.person == 'Admin') {
                     navigate('/admin')
                 }
-                else if(response.data.person == 'Employee'){
+                else if (response.data.person == 'Employee') {
                     navigate('/employee')
                 }
-                else{
+                else {
                     navigate('/opps')
                 }
             })
@@ -83,6 +83,7 @@ const Login = () => {
                                 <LoginButton handleSubmit={handleSubmit} />
                             </div>
                         </form>
+                        <p className='ml-14 mt-5 text-txtLBlue underline cursor-pointer'>Forgot Password?</p>
                     </div>
                 </div>
             </div>
