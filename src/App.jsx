@@ -19,6 +19,7 @@ import PrivateRoute from './router/PrivateRoute.jsx';
 import PastLeave from "./components/PastLeave.jsx"
 import EmpPastLeave from "./components/EmpPastLeave.jsx"
 import AttendanceHistory from "./components/AttendanceHistory.jsx"
+import ForgotPasswordPage from "./components/ForgotPasswordPage.jsx"
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="*" element={<OopsPage />} />
             <Route index element={<Login />} />
             <Route path="/punch" element={<PunchForm />} />
+            <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
             <Route path="/employee" element={<PrivateRoute role={'Employee'}><EmployeeHome /></PrivateRoute>}>
               <Route index element={<EmpContent />} />
               <Route path="leaveForm" element={<LeaveForm />} />

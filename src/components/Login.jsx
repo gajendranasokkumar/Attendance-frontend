@@ -7,7 +7,7 @@ import { BsPersonFillGear } from "react-icons/bs";
 import LoginButton from '../components/LoginButton';
 import LoginCancelBtn from '../components/LoginCancelBtn';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Failure, Success } from './Notification';
 import * as ReactDOM from 'react-dom/client';
 import { AuthContext } from '../context/AuthContext.jsx';
@@ -83,7 +83,7 @@ const Login = () => {
                                 <LoginButton handleSubmit={handleSubmit} />
                             </div>
                         </form>
-                        <p className='ml-14 mt-5 text-txtLBlue underline cursor-pointer'>Forgot Password?</p>
+                        <Link to={"/forgotpassword"}><p className='ml-14 mt-5 text-txtLBlue underline cursor-pointer'>Forgot Password?</p></Link>
                     </div>
                 </div>
             </div>

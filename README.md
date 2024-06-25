@@ -23,3 +23,5 @@
 - 20.06.2024 -> Added Checkin and Checkout functionality
 - 21.06.2024 -> Added location accessing functionality and added attendance history display
 - 22.06.2024 -> Added punch form functionality
+- 23.06.2024 -> Made minor changes in the code (Sunday)
+- 24.06.2024 -> Added password Changing functionality

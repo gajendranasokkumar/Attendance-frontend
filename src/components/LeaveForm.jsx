@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { RxCross2 } from "react-icons/rx";
 import Input from './Input';
 import Radio from './Radio';
@@ -31,7 +31,23 @@ const LeaveForm = () => {
         leavepermitted: userData?.leavepermitted,
         leavetaken: ''
     })
+
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        const getLeaveCount = async() => {
+            await api.post("/currentleavecount", {id: leaveDetails.id})
+                .then((response) => {
+                    console.log(response)
+                    setLeaveDetails({...leaveDetails, leavetaken: response.data.count})
+                })
+                .catch((error) => {
+                    console.log("🚀 ~ applyLeave ~ error:", error)
+                })
+        }
+
+        getLeaveCount();
+    },[])
 
     const goBack = () => {
         navigate(-1);
@@ -62,7 +78,7 @@ const LeaveForm = () => {
                     </div>
                     <div className='flex justify-center gap-5 mt-5 mb-5'>
                         <div className='text-lg text-txtLYellow font-semibold'>Total leave permitted for this month : <span className='bg-grey text-black px-2 py-1 rounded-lg'>{leaveDetails.leavepermitted}</span></div>
-                        <div className='text-lg text-txtLYellow font-semibold'>Leave taken : <span className='bg-grey text-black px-2 py-1 rounded-lg'>{leaveDetails.leavepermitted}</span></div>
+                        <div className='text-lg text-txtLYellow font-semibold'>Leave taken : <span className='bg-grey text-black px-2 py-1 rounded-lg'>{leaveDetails.leavetaken}</span></div>
                     </div>
                     <div className='p-5 flex flex-col justify-center z-0'>
                         <form onSubmit={applyLeave}>
@@ -83,7 +99,7 @@ const LeaveForm = () => {
                                 <Textarea placeholder={"Reason"} name={'reason'} state={leaveDetails} setState={setLeaveDetails} />
                             </div>
                             <div className='flex justify-end gap-2 w-[50%] mx-auto'>
-                                <CancelButton />
+                                <CancelButton onClick={goBack} />
                                 <SubmitButton />
                             </div>
                         </form>
