@@ -20,6 +20,9 @@ import PastLeave from "./components/PastLeave.jsx"
 import EmpPastLeave from "./components/EmpPastLeave.jsx"
 import AttendanceHistory from "./components/AttendanceHistory.jsx"
 import ForgotPasswordPage from "./components/ForgotPasswordPage.jsx"
+import RequestAttendanceForm from "./components/RequestAttendanceForm.jsx"
+import RequestProfileEdit from "./components/RequestProfileEdit.jsx"
+import Dashboard from "./components/Dashboard.jsx"
 
 
 function App() {
@@ -42,10 +45,13 @@ function App() {
               <Route path="leaveStatus" element={<CurrentLeavePage />} />
               <Route path="attendanceList" element={<AttendanceList />} />
               <Route path="attendanceHistory" element={<AttendanceHistory />} />
+              <Route path="requestattendance" element={<RequestAttendanceForm />} />
+              <Route path="requestprofileedit" element={<RequestProfileEdit />} />
             </Route>
             {/* <Route path="/admin" element={<AdminHome />}> */}
             <Route path="/admin" element={<PrivateRoute role={'Admin'}><AdminHome /></PrivateRoute>}>
               <Route index element={<Content />} />
+              <Route path="dashboard" element={<Dashboard />} />
               <Route path="leavelist" element={<LeaveList />} />
               <Route path="pastleave" element={<PastLeave />} />
               <Route path="leaveform" element={<LeaveForm />} />

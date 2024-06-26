@@ -16,7 +16,8 @@ const ForgotPasswordPage = () => {
 
     const [details, setDetails] = useState({
         id: "",
-        code: ""
+        code: "",
+        passwordcheck: false
     });
 
     const [password, setPassword] = useState({
@@ -45,16 +46,20 @@ const ForgotPasswordPage = () => {
 
     const updatePassword = async (e) => {
         e.preventDefault();
-        console.log("🚀 ~ updatePassword ~ password:", password)
-
-        await api.post("/updatepassword", {id: details?.id, password: password.password})
-            .then((response) => {
-                console.log(response)
-                navigate(-1)    
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+        setDetails({ ...details, passwordcheck: false })
+        if (password.password === password.confirmpassword) {
+            await api.post("/updatepassword", { id: details?.id, password: password.password })
+                .then((response) => {
+                    console.log(response)
+                    navigate(-1)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+        else {
+            setDetails({ ...details, passwordcheck: true })
+        }
     }
     return (
         <>
@@ -94,6 +99,13 @@ const ForgotPasswordPage = () => {
                                         <Input readonly={false} type={"password"} placeholder={"Enter Password"} name={'password'} state={password} setState={setPassword} />
                                         <Input readonly={false} type={"password"} placeholder={"Confirm Password"} name={'confirmpassword'} state={password} setState={setPassword} />
                                     </div>
+                                    {
+                                        details.passwordcheck ?
+                                            <div className='w-[50%] mt-[-10px] mb-3 mx-auto'>
+                                                <p className='text-txtLRed'>* Check the password</p>
+                                            </div>
+                                            : <></>
+                                    }
                                     <div className='flex justify-end gap-2 w-[50%] mx-auto'>
                                         <CancelButton onClick={goBack} />
                                         <SubmitButton />

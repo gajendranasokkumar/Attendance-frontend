@@ -28,8 +28,8 @@ const Content = () => {
                     <MainOptions value={5} boxName={"Device"} background={"pinkSvg"} icon={<MdOutlineDevicesOther />} />
                 </div>
                 <div className='w-full h-full flex gap-5 flex-wrap mt-10'>
-                    <EntryBox />
-                    <PersonDetails />
+                    {/* <EntryBox />
+                    <PersonDetails /> */}
                 </div>
             </div>
         </>

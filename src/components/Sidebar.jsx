@@ -19,7 +19,7 @@ import { IoPeopleCircleOutline } from "react-icons/io5";
 const Sidebar = () => {
 
     const employeeOptions = [{icon: <IoPeopleCircleOutline />, title: 'Employees List', link: 'employeelist'}]
-    const dashboardOptions = [{icon: <RxDashboard />, title: 'Admin Dashboard', link: '/admin'},{icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard'}];
+    const dashboardOptions = [{icon: <RxDashboard />, title: 'Admin Dashboard', link: '/admin'},{icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard', link: '/admin/dashboard'}];
     const attendanceOptions = [ {icon: <TbListDetails />, title: 'Attendance Details', link: 'attendancelist'}, {icon: <MdHistory />, title: 'Attendance History', link: 'attendancehistory'}];
     const leaveOptions = [ {icon: <FiPlus />, title: 'New Leave', link: 'leaveform'}, {icon: <MdOutlineWorkOff />, title: "Employee's Leave", link: 'leavelist'}, {icon: <MdHistory />, title: "Past Leave", link: 'pastleave'}];
 
@@ -30,8 +30,8 @@ const Sidebar = () => {
                     <NewButton />
                 </div>
                 <div className='h-[88%] overflow-y-auto overflow-x-hidden lg:mt-5'>
-                    <ExpandBox number={1} name={"Employees"} icon={<FaPeopleGroup />} options={employeeOptions} />
-                    <ExpandBox number={2} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
+                    <ExpandBox number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
+                    <ExpandBox number={2} name={"Employees"} icon={<FaPeopleGroup />} options={employeeOptions} />
                     <ExpandBox number={3} name={"Attendance"} icon={<MdCoPresent />} options={attendanceOptions} />
                     <ExpandBox number={4} name={"Leave"} icon={<MdDateRange />} options={leaveOptions} />
                 </div>

@@ -10,12 +10,14 @@ import { FiPlus } from "react-icons/fi";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { VscGitPullRequestNewChanges } from "react-icons/vsc";
+
 
 
 const EmpSidebar = () => {
     const { userData } = useContext(AuthContext);
     const dashboardOptions = [{ icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard', link: '/employee' }];
-    const attendanceOptions = [{ icon: <TbListDetails />, title: 'Attendance Details', link: 'attendanceList' }, { icon: <MdHistory />, title: 'Attendance History', link: 'attendanceHistory' }];
+    const attendanceOptions = [{ icon: <TbListDetails />, title: 'Today\'s Attendance', link: 'attendanceList' }, { icon: <MdHistory />, title: 'Attendance History', link: 'attendanceHistory' }, {icon: <VscGitPullRequestNewChanges />, title: 'Request Attendance', link: 'requestattendance'}];
     const leaveOptions = [{ icon: <FiPlus />, title: 'New Leave', link: 'leaveForm' }, { icon: <AiFillThunderbolt />, title: 'Current Leave Status', link: "leaveStatus" }, { icon: <MdHistory />, title: "Past Leave", link: 'leaveList' }];
 
     return (

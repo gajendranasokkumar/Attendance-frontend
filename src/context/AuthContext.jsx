@@ -38,12 +38,19 @@ export const AuthProvider = ({ children }) => {
         userDataRef.current = data;
     };
 
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userData');
+        setAuth(false);
+        setUserDataState(null);
+    };
+
     if (loading) {
         return <div>Loading...</div>; 
     }
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth, userData, setUserData, userDataRef }}>
+        <AuthContext.Provider value={{ auth, setAuth, userData, setUserData, userDataRef, logout }}>
             {children}
         </AuthContext.Provider>
     );
