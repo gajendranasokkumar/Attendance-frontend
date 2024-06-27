@@ -70,7 +70,7 @@
 | Date | Task |
 |------|------|
 | 22.06.2024 | 👊 Added punch form functionality |
-| 23.06.2024 | 🔧 Made minor changes in the code (Sunday) |
+| 23.06.2024 | 🔧 Made minor changes in the code of backend and UI (Sunday) |
 | 24.06.2024 | 🔑 Added password changing functionality |
 | 25.06.2024 | 🚪 Added logout functionality and made changes in Admin UI |
 | 26.06.2024 | 📋 Created attendance requesting form and profile edit requesting form |
