@@ -12,6 +12,8 @@ import { FiPlus } from "react-icons/fi";
 import { MdOutlineWorkOff } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { IoPeopleCircleOutline } from "react-icons/io5";
+import { MdManageHistory } from "react-icons/md";
+
 
 
 
@@ -20,7 +22,7 @@ const Sidebar = () => {
 
     const employeeOptions = [{icon: <IoPeopleCircleOutline />, title: 'Employees List', link: 'employeelist'}]
     const dashboardOptions = [{icon: <RxDashboard />, title: 'Admin Dashboard', link: '/admin'},{icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard', link: '/admin/dashboard'}];
-    const attendanceOptions = [ {icon: <TbListDetails />, title: 'Attendance Details', link: 'attendancelist'}, {icon: <MdHistory />, title: 'Attendance History', link: 'attendancehistory'}];
+    const attendanceOptions = [ {icon: <TbListDetails />, title: 'Attendance Details', link: 'attendancelist'}, {icon: <MdHistory />, title: 'Attendance History', link: 'attendancehistory'}, {icon: <MdManageHistory />, title: 'Manage Request', link: 'manageattendancerequest'}];
     const leaveOptions = [ {icon: <FiPlus />, title: 'New Leave', link: 'leaveform'}, {icon: <MdOutlineWorkOff />, title: "Employee's Leave", link: 'leavelist'}, {icon: <MdHistory />, title: "Past Leave", link: 'pastleave'}];
 
     return (

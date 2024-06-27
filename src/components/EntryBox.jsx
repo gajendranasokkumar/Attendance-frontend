@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import api from '../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 const EntryBox = () => {
     const [dateTime, setDateTime] = useState({
@@ -39,6 +40,8 @@ const EntryBox = () => {
         checkintime: '',
         checkouttime: ''
     });
+
+    const navigate = useNavigate();
 
     const { userData } = useContext(AuthContext);
 
@@ -160,46 +163,51 @@ const EntryBox = () => {
         const seconds = String(now.getSeconds()).padStart(2, '0');
         const timeString = `${hours}:${minutes}:${seconds}`;
 
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const year = now.getFullYear();
-        const formattedDate = `${day}-${month}-${year}`;
+        if (userData?.entrytime < timeString) {
+            navigate("/employee/requestattendance")
+        }
+        else {
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+            const formattedDate = `${day}-${month}-${year}`;
 
-        try {
-            const getLocation = () => {
-                return new Promise((resolve, reject) => {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(
-                            (position) => {
-                                const location = `${position.coords.latitude} ${position.coords.longitude}`;
-                                resolve(location);
-                            },
-                            (error) => {
-                                reject(error);
-                            }
-                        );
-                    } else {
-                        reject(new Error("Geolocation is not supported by this browser."));
-                    }
+            try {
+                const getLocation = () => {
+                    return new Promise((resolve, reject) => {
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(
+                                (position) => {
+                                    const location = `${position.coords.latitude} ${position.coords.longitude}`;
+                                    resolve(location);
+                                },
+                                (error) => {
+                                    reject(error);
+                                }
+                            );
+                        } else {
+                            reject(new Error("Geolocation is not supported by this browser."));
+                        }
+                    });
+                };
+
+                const location = await getLocation();
+                // console.log(location)
+
+                const response = await api.post("/checkin", {
+                    ...checkINDetails,
+                    checkintime: timeString,
+                    date: formattedDate,
+                    ischeckedin: true,
+                    location: location
                 });
-            };
 
-            const location = await getLocation();
-            // console.log(location)
-
-            const response = await api.post("/checkin", {
-                ...checkINDetails,
-                checkintime: timeString,
-                date: formattedDate,
-                ischeckedin: true,
-                location: location
-            });
-
-            console.log("🚀 ~ .then ~ response:", response);
-            setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: true });
-            setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime });
-        } catch (error) {
-            console.log("🚀 ~ EntryBox ~ error:", error);
+                console.log("🚀 ~ .then ~ response:", response);
+                setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: true });
+                setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime });
+            } catch (error) {
+                console.log("🚀 ~ EntryBox ~ error:", error);
+            }
         }
     };
 

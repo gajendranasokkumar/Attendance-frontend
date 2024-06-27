@@ -7,18 +7,18 @@ import Textarea from './Textarea';
 import SubmitButton from './SubmitButton';
 import CancelButton from './CancelButton';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import api from '../utils/api';
 import { AuthContext } from '../context/AuthContext';
 
 const RequestAttendanceForm = () => {
     const { userData } = useContext(AuthContext);
-    
+
     const today = new Date().toISOString().split('T')[0];
 
     const [requestDetails, setRequestDetails] = useState({
         id: userData?.id,
         name: userData?.name,
+        reportingperson: userData?.reportingperson,
         date: today,
         time: '',
         reason: '',
@@ -42,20 +42,32 @@ const RequestAttendanceForm = () => {
         getLeaveCount();
     }, [requestDetails.id]);
 
+    useEffect(() => {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const timeString = `${hours}:${minutes}:${seconds}`;
+
+        if (userData?.entrytime < timeString) {
+            setRequestDetails({...requestDetails, time: timeString})
+        }
+    }, [userData])
+
+
     const goBack = () => {
         navigate(-1);
     };
 
-    const applyLeave = async (e) => {
+    const requestAttendanceFun = async (e) => {
         e.preventDefault();
-        console.log(requestDetails);
-        await api.post("/leaveform", requestDetails)
+        await api.post("/requestattendance", requestDetails)
             .then((response) => {
-                console.log("🚀 ~ .then ~ response:", response);
+                console.log("🚀 ~ .then ~ response:", response.data);
                 navigate(-1);
             })
             .catch((error) => {
-                console.log("🚀 ~ applyLeave ~ error:", error);
+                console.log("🚀 ~ requestattendance ~ error:", error);
             });
     };
 
@@ -68,7 +80,7 @@ const RequestAttendanceForm = () => {
                         <div className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer' onClick={goBack}><RxCross2 /></div>
                     </div>
                     <div className='p-5 flex flex-col justify-center z-0'>
-                        <form onSubmit={applyLeave}>
+                        <form onSubmit={requestAttendanceFun}>
                             <div className='w-[50%] mx-auto'>
                                 <Input readonly={true} type={"text"} placeholder={"Employee ID"} name={'id'} state={requestDetails} setState={setRequestDetails} />
                                 <Input readonly={true} type={"text"} placeholder={"Name"} name={'name'} state={requestDetails} setState={setRequestDetails} />

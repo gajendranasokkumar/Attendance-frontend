@@ -61,7 +61,7 @@
 | 15.06.2024 | ▶️ Added functionality for Action button |
 | 16.06.2024 | 🚫 -------NIL------- (Sunday) |
 | 17.06.2024 | 🔒 Added User Authentication with JWT |
-| 18.06.2024 | ➕ Added functionality to add new employee and update multiple leave statuses |
+| 18.06.2024 | ➕ Added functionality to add new employee <br /> and update multiple leave statuses |
 | 19.06.2024 | 👤 Added profile box and updated leave structure |
 | 20.06.2024 | ✅ Added Checkin and Checkout functionality |
 | 21.06.2024 | 📍 Added location accessing functionality and attendance history display |
@@ -74,4 +74,4 @@
 | 24.06.2024 | 🔑 Added password changing functionality |
 | 25.06.2024 | 🚪 Added logout functionality and made changes in Admin UI |
 | 26.06.2024 | 📋 Created attendance requesting form and profile edit requesting form |
-| 27.06.2024 | 🔐 Added Forgot Password functionality with OTP in main completely |
+| 27.06.2024 | 🔐 Added Forgot Password functionality with OTP in main completely <br /> and added attendance display |

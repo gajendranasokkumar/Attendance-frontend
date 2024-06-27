@@ -23,6 +23,7 @@ import ForgotPasswordPage from "./components/ForgotPasswordPage.jsx"
 import RequestAttendanceForm from "./components/RequestAttendanceForm.jsx"
 import RequestProfileEdit from "./components/RequestProfileEdit.jsx"
 import Dashboard from "./components/Dashboard.jsx"
+import ManageAttendanceRequest from "./components/ManageAttendanceRequest.jsx"
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
               <Route path="attendancelist" element={<AttendanceList />} />
               <Route path="attendancehistory" element={<AttendanceHistory />} />
               <Route path="addEmployee" element={<AddEmployeeForm />} />
+              <Route path="manageattendancerequest" element={<ManageAttendanceRequest />} />
             </Route>
           </Routes>
         </BrowserRouter>
