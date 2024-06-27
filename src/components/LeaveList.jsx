@@ -30,6 +30,7 @@ const LeaveList = () => {
                     let result = response.data.filter(one => one.status.toUpperCase() === "PENDING");
                     setLeaveList(result);
                     setSearchList(result);
+                    console.log(result)
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error);
@@ -127,6 +128,8 @@ const LeaveList = () => {
                                 <th>To Date</th>
                                 <th>Leave Type</th>
                                 <th>Reason</th>
+                                <th>Leave Permitted</th>
+                                <th>Leave Taken Already</th>
                                 <th>Leave Status</th>
                                 <th>Leave Paid</th>
                                 <th>Is Half Leave</th>
@@ -146,6 +149,8 @@ const LeaveList = () => {
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.todate}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.leavetype}</td>
                                         <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{each.reason}</td>
+                                        <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal font-semibold'>{each.leavepermitted || "0"} Days</td>
+                                        <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal font-semibold'>{each.leavetaken || "0"} Days</td>
                                         <td className={`px-1 min-w-[120px] max-w-[200px] whitespace-normal font-bold 
                                             ${each.status.toUpperCase() === "PENDING" ? "text-txtLYellow" : ""}
                                             ${each.status.toUpperCase() === "PERMITTED" ? "text-txtLGreen" : ""}
