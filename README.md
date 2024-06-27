@@ -25,3 +25,6 @@
 - 22.06.2024 -> Added punch form functionality
 - 23.06.2024 -> Made minor changes in the code (Sunday)
 - 24.06.2024 -> Added password Changing functionality
+- 25.06.2024 -> Added the logout functionality and made some changes in Admin UI
+- 26.06.2024 -> Created the attendance requesting form and profile edit requesting form
+- 27.06.2024 -> Added the Forgot Password functionality with the OTP in main completely

@@ -8,6 +8,7 @@ import SubmitButton from './SubmitButton';
 import CancelButton from './CancelButton';
 import { useNavigate } from 'react-router-dom';
 import api from '../utils/api';
+import OTPInput from './OTPInput';
 
 
 
@@ -25,6 +26,9 @@ const ForgotPasswordPage = () => {
         password: "",
         confirmpassword: ""
     })
+
+    const [otp, setOtp] = useState(['', '', '', '', '', '']);
+    const [message, setMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -44,6 +48,33 @@ const ForgotPasswordPage = () => {
             })
     }
 
+    const handleVerify = async (e) => {
+        e.preventDefault();
+        const otpString = otp.join('');
+
+        try {
+            const response = await api.post('/verifyotp', {
+                id: details.id,
+                otp: otpString
+            });
+
+            if (response.data.code === 200 && response.data.message === 'OTP verified successfully') {
+                setMessage('OTP verified successfully!');
+            } else {
+                setMessage('Invalid OTP');
+            }
+        } catch (error) {
+            if (error.response) {
+                setMessage(error.response.data.message || 'OTP verification failed');
+            } else if (error.request) {
+                setMessage('No response from server. Please try again.');
+            } else {
+                setMessage('An error occurred. Please try again.');
+            }
+            console.error('Error:', error);
+        }
+    };
+
     const updatePassword = async (e) => {
         e.preventDefault();
         setDetails({ ...details, passwordcheck: false })
@@ -61,6 +92,7 @@ const ForgotPasswordPage = () => {
             setDetails({ ...details, passwordcheck: true })
         }
     }
+
     return (
         <>
             <div className='w-[100vw] left-0 h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 grid place-content-center top-0 absolute z-50'>
@@ -92,7 +124,26 @@ const ForgotPasswordPage = () => {
                             }
                         </form>
                         {
-                            (details.code == 200) ?
+                            (details.code === 200 && message !== 'OTP verified successfully!') ?
+                                <div className='w-[50%] mx-auto'>
+                                    <form onSubmit={handleVerify}>
+                                        <Input readonly={true} type={"text"} placeholder={"Employee ID"} name={'id'} state={details} setState={setDetails} />
+                                        <OTPInput otp={otp} setOtp={setOtp} />
+                                        {
+                                            message === 'Invalid OTP' &&
+                                            <div className='w-[100%] mb-3 mx-auto'>
+                                                <p className='text-txtLRed text-right mt-2'>* Wrong OTP!</p>
+                                            </div>
+                                        }
+                                        <div className='flex justify-end gap-2 w-[100%] mx-auto mt-5'>
+                                            <SubmitButton />
+                                        </div>
+                                    </form>
+                                </div>
+                                : <></>
+                        }
+                        {
+                            (message == "OTP verified successfully!") ?
                                 <form onSubmit={updatePassword}>
                                     <div className='w-[50%] mx-auto'>
                                         <Input readonly={true} type={"text"} placeholder={"Employee ID"} name={'id'} state={details} setState={setDetails} />

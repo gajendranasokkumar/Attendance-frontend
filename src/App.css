@@ -319,3 +319,27 @@ tr:hover {
   flex-direction: column;
   justify-content: center;
 }
+
+/* App.css */
+
+.otp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.otp-input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  margin: 0 5px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none; /* Remove default focus outline */
+}
+
+.otp-input:focus {
+  border-color: #006769; /* Change border color on focus */
+}

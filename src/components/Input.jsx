@@ -1,6 +1,12 @@
 import React from 'react'
 
-const Input = ({ type, placeholder, name, state = '', setState = ()=>{}, readonly = false }) => {
+const Input = ({ type, placeholder, name, state = '', setState = () => { }, readonly = false }) => {
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+        }
+    };
 
     return (
         <>
@@ -12,6 +18,7 @@ const Input = ({ type, placeholder, name, state = '', setState = ()=>{}, readonl
                     value={state[name]}
                     readOnly={readonly}
                     onChange={(e) => { setState({ ...state, [name]: e.target.value }) }}
+                    onKeyDown={handleKeyDown}
                 />
             </div>
         </>
