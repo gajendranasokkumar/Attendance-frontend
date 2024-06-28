@@ -31,7 +31,7 @@
 
 # 🗓️ Attendance Project Timeline
 
-## 📅 June 2024
+## 📅 Started 01 June 2024
 
 ### Week 1
 | Date | Task |
