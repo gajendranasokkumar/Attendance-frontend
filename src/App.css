@@ -343,3 +343,37 @@ tr:hover {
 .otp-input:focus {
   border-color: #006769; /* Change border color on focus */
 }
+
+
+.oneDiv{
+  text-align: right;
+  height: 100vh;
+  padding: 50px;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.one{
+  background-color: #587CE2;
+}
+.two{
+  background-color: lightslategray
+}
+.three{
+  background-color: lightgoldenrodyellow
+}
+.four{
+  background-color: lightcyan
+}
+.five{
+  background-color: lightblue
+}
+.six{
+  background-color: lightcoral
+}
+.seven{
+  background-color: lightseagreen
+}
+.eight{
+  background-color: rgb(255, 182, 193)
+}

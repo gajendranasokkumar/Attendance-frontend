@@ -24,6 +24,7 @@ import RequestAttendanceForm from "./components/RequestAttendanceForm.jsx"
 import RequestProfileEdit from "./components/RequestProfileEdit.jsx"
 import Dashboard from "./components/Dashboard.jsx"
 import ManageAttendanceRequest from "./components/ManageAttendanceRequest.jsx"
+import NewComp from "./components/NewComp.jsx"
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="*" element={<OopsPage />} />
             <Route index element={<Login />} />
             <Route path="/punch" element={<PunchForm />} />
+            <Route path="/new" element={<NewComp />} />
             <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
             <Route path="/employee" element={<PrivateRoute role={'Employee'}><EmployeeHome /></PrivateRoute>}>
               <Route index element={<EmpContent />} />

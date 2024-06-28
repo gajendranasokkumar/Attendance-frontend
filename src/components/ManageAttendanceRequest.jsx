@@ -6,6 +6,7 @@ import api from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from "react-icons/vsc";
 import ActionBtnsForAttendance from './ActionBtnsForAttendance';
+import { parseISO } from 'date-fns';
 
 
 const ManageAttendanceRequest = () => {
@@ -55,20 +56,28 @@ const ManageAttendanceRequest = () => {
     const showFilteredResult = () => {
         setSearchList(
             requestList.filter((one) => {
-                const matchesFromDate = !searchQuery.fromdate || new Date(one.fromdate) >= new Date(searchQuery.fromdate);
-                const matchesToDate = !searchQuery.todate || new Date(one.todate) <= new Date(searchQuery.todate);
+                const today = new Date(searchQuery.date).toISOString().split('T')[0];
+                const reversedDate = today.split('-').reverse().join('-');
+                const searchDate = reversedDate;
+                const formDate = one.date;
+                console.log(formDate, searchDate);
+
+                const matchesDate = !searchDate || formDate == searchDate;
+
+                const matchesTime = !searchQuery.time || one.time >= searchQuery.time;
+
                 const matchesContent = !searchQuery.content ||
                     one.name.toLowerCase().includes(searchQuery.content.toLowerCase()) ||
-                    one.leavetype.toLowerCase().includes(searchQuery.content.toLowerCase()) ||
                     one.reason.toLowerCase().includes(searchQuery.content.toLowerCase()) ||
                     one.status.toLowerCase().includes(searchQuery.content.toLowerCase()) ||
                     one.id.toLowerCase().includes(searchQuery.content.toLowerCase()) ||
                     one.reportingperson.toLowerCase().includes(searchQuery.content.toLowerCase());
 
-                return matchesFromDate && matchesToDate && matchesContent;
+                return matchesDate && matchesTime && matchesContent;
             })
         );
     };
+
 
     const clearFilter = () => {
         setSearchList(requestList);
@@ -127,7 +136,7 @@ const ManageAttendanceRequest = () => {
                                 <th>Emp Code</th>
                                 <th>Name</th>
                                 <th>Date</th>
-                                <th>Time</th>
+                                <th>Check In Time</th>
                                 <th>Reason</th>
                                 <th>Status</th>
                                 <th>Reporting Person</th>

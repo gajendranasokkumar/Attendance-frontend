@@ -18,6 +18,7 @@ const EntryBox = () => {
         punchid: "",
         company: "",
         branch: "",
+        status: "approved",
         designation: "",
         multibranchattendance: "",
         shiftgroup: "",
@@ -284,7 +285,7 @@ const EntryBox = () => {
                             :
                             <>
                                 <p>Remaining Time</p>
-                                <p>{dateTime.remainingTime}</p>
+                                <p>{dateTime.remainingTime == "NaN : NaN : NaN" ? "00 : 00 : 00" : dateTime.remainingTime}</p>
                             </>
                     }
                 </div>

@@ -14,6 +14,8 @@ const RequestAttendanceForm = () => {
     const { userData } = useContext(AuthContext);
 
     const today = new Date().toISOString().split('T')[0];
+    const reversedDate = today.split('-').reverse().join('-');
+    console.log(reversedDate)
 
     const [requestDetails, setRequestDetails] = useState({
         id: userData?.id,
@@ -23,6 +25,21 @@ const RequestAttendanceForm = () => {
         time: '',
         reason: '',
         status: "Pending",
+        person: userData?.person,
+        punchid: userData?.punchid,
+        company: userData?.company,
+        branch: userData?.branch,
+        designation: userData?.designation,
+        multibranchattendance: userData?.multibranchattendance,
+        shiftgroup: userData?.shiftgroup,
+        shift: userData?.shift,
+        punchtype: userData?.punchtype,
+        geolocation: userData?.geolocation,
+        checkintime: "",
+        checkouttime: "",
+        location: "",
+        ischeckedin: true,
+        ischeckedout: false
     });
 
     const navigate = useNavigate();
@@ -48,9 +65,9 @@ const RequestAttendanceForm = () => {
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
         const timeString = `${hours}:${minutes}:${seconds}`;
-
+        console.log(timeString)
         if (userData?.entrytime < timeString) {
-            setRequestDetails({...requestDetails, time: timeString})
+            setRequestDetails({ ...requestDetails, time: timeString })
         }
     }, [userData])
 
@@ -61,7 +78,38 @@ const RequestAttendanceForm = () => {
 
     const requestAttendanceFun = async (e) => {
         e.preventDefault();
-        await api.post("/requestattendance", requestDetails)
+        let location = ""
+        try {
+            const getLocation = () => {
+                return new Promise((resolve, reject) => {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            (position) => {
+                                const location = `${position.coords.latitude} ${position.coords.longitude}`;
+                                resolve(location);
+                            },
+                            (error) => {
+                                reject(error);
+                            }
+                        );
+                    } else {
+                        reject(new Error("Geolocation is not supported by this browser."));
+                    }
+                });
+            };
+
+            location = await getLocation();
+            // console.log(location)
+
+            setRequestDetails({ ...requestDetails, location: location });
+
+
+        } catch (error) {
+            console.log("🚀 ~ EntryBox ~ error:", error);
+        }
+
+
+        await api.post("/requestattendance", { ...requestDetails, location: location, date: reversedDate })
             .then((response) => {
                 console.log("🚀 ~ .then ~ response:", response.data);
                 navigate(-1);

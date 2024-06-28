@@ -42,6 +42,7 @@ const AttendanceList = () => {
                                 <th>Punch ID</th>
                                 <th>Company</th>
                                 <th>Branch</th>
+                                <th>Status</th>
                                 <th>Is Check In</th>
                                 <th>Check In Time</th>
                                 <th>Is Check Out</th>
@@ -52,25 +53,36 @@ const AttendanceList = () => {
                         </thead>
                         <tbody>
                             {
-                                (todayAttendance) ?
-                                    <>
-                                        <tr>
-                                            <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.id}</td>
-                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.name}</td>
-                                            <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.date}</td>
-                                            <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.punchid}</td>
-                                            <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{todayAttendance.company}</td>
-                                            <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.branch}</td>
-                                            <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>{todayAttendance.ischeckedin ? "YES" : "NO"}</td>
-                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkintime}</td>
-                                            <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>{todayAttendance.ischeckedout ? "YES" : "NO"}</td>
-                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkouttime}</td>
-                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.location}</td>
-                                            <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.multibranchattendance}</td>
-                                        </tr>
-                                    </>
-                                    : <></>
+                                (todayAttendance && todayAttendance.status) ? (
+                                    <tr>
+                                        <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.id}</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.name}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.date}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{todayAttendance.punchid}</td>
+                                        <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{todayAttendance.company}</td>
+                                        <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{todayAttendance.branch}</td>
+                                        <td className={`px-1 min-w-[120px] max-w-[200px] whitespace-normal font-bold 
+                                            ${todayAttendance.status.toUpperCase() === "PENDING" ? "text-txtLYellow bg-bgLYellow" : ""}
+                                            ${todayAttendance.status.toUpperCase() === "PERMITTED" ? "text-txtLGreen bg-bgLGreen" : ""}
+                                            ${todayAttendance.status.toUpperCase() === "DENIED" ? "text-txtLRed bg-bgLRed" : ""}`}>
+                                            {todayAttendance.status.toUpperCase()}
+                                        </td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>
+                                            {todayAttendance.ischeckedin ? "YES" : "NO"}
+                                        </td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkintime}</td>
+                                        <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal font-bold'>
+                                            {todayAttendance.ischeckedout ? "YES" : "NO"}
+                                        </td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.checkouttime}</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.location}</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{todayAttendance.multibranchattendance}</td>
+                                    </tr>
+                                ) : (
+                                    <></>
+                                )
                             }
+
                         </tbody>
                     </table>
                 </div>

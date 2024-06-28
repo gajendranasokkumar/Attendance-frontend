@@ -75,3 +75,4 @@
 | 25.06.2024 | 🚪 Added logout functionality and made changes in Admin UI |
 | 26.06.2024 | 📋 Created attendance requesting form and profile edit requesting form |
 | 27.06.2024 | 🔐 Added Forgot Password functionality with OTP in main completely <br /> and added attendance display |
+| 28.06.2024 | 📅 Added the approval functionality of the attendance request
