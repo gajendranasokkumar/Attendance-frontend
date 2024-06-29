@@ -18,7 +18,7 @@ const EntryBox = () => {
         punchid: "",
         company: "",
         branch: "",
-        status: "approved",
+        status: "permitted",
         designation: "",
         multibranchattendance: "",
         shiftgroup: "",
@@ -30,7 +30,8 @@ const EntryBox = () => {
         location: "",
         date: "",
         ischeckedin: false,
-        ischeckedout: false
+        ischeckedout: false,
+        remainingtime: "",
     });
 
     const [isCheckedInOrOut, setIsCheckedInOrOut] = useState({
@@ -200,11 +201,13 @@ const EntryBox = () => {
                     checkintime: timeString,
                     date: formattedDate,
                     ischeckedin: true,
-                    location: location
+                    ischeckedout: false,
+                    location: location,
+                    remainingtime: dateTime.remainingTime,
                 });
 
                 console.log("🚀 ~ .then ~ response:", response);
-                setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: true });
+                setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: true, ischeckedout: false });
                 setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime });
             } catch (error) {
                 console.log("🚀 ~ EntryBox ~ error:", error);
@@ -232,9 +235,11 @@ const EntryBox = () => {
                 date: formattedDate,
                 checkouttime: timeString,
                 ischeckedout: true,
+                ischeckedin: false,
+                remainingtime: dateTime.remainingTime,
             });
             console.log("🚀 ~ .then ~ response:", response);
-            setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedout: true });
+            setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedout: true, ischeckedin: false });
             setCheckInOutTime({ ...checkInOutTime, checkouttime: response.data.checkouttime })
         } catch (error) {
             console.log("🚀 ~ EntryBox ~ error:", error);
