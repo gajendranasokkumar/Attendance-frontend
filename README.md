@@ -84,3 +84,17 @@
 | Date | Task |
 |------|------|
 | 29.06.2024 | 🖌️ Updated the alternative checkin and checkout functionality and <br /> had a meeting to make some changes in the UI |
+
+
+
+
+## 📊 Progress Overview
+
+ - [x] User Authentication & Authorization
+ - [x] Employee Management
+ - [x] Leave Management
+ - [ ] Manager Section
+ - [x] Attendance Tracking
+ - [ ] Responsive Design
+ - [ ] Final Testing
+ - [ ] Deployment
