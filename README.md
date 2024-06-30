@@ -27,7 +27,10 @@
 - 24.06.2024 -> Added password Changing functionality
 - 25.06.2024 -> Added the logout functionality and made some changes in Admin UI
 - 26.06.2024 -> Created the attendance requesting form and profile edit requesting form
-- 27.06.2024 -> Added the Forgot Password functionality with the OTP in main completely -->
+- 27.06.2024 -> Added Forgot Password functionality with OTP in mail completely and added attendance display
+- 28.06.2024 -> Added the approval functionality of the attendance request
+- 29.06.2024 -> Updated the alternative checkin and checkout functionality and had a meeting to make some changes in the UI
+- -->
 
 # 🗓️ Attendance Project Timeline
 
