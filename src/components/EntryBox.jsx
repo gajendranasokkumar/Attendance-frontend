@@ -31,7 +31,7 @@ const EntryBox = () => {
         date: "",
         ischeckedin: false,
         ischeckedout: false,
-        remainingtime: "",
+        totalWorkedTime: "",
     });
 
     const [isCheckedInOrOut, setIsCheckedInOrOut] = useState({
@@ -40,7 +40,8 @@ const EntryBox = () => {
     });
     const [checkInOutTime, setCheckInOutTime] = useState({
         checkintime: '',
-        checkouttime: ''
+        checkouttime: '',
+        totalWorkedTime: ''
     });
 
     const navigate = useNavigate();
@@ -59,7 +60,7 @@ const EntryBox = () => {
                 console.log("🚀 ~ fetchData ~ formattedDate:", formattedDate)
                 const response = await api.post("/getCheckInDetails", { id: userData?.id, date: formattedDate });
                 setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: response.data.ischeckedin, ischeckedout: response.data.ischeckedout })
-                setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime, checkouttime: response.data.checkouttime })
+                setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime[response.data.checkintime.length - 1], checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1], totalWorkedTime: response.data.totalWorkedTime })
                 console.log("🚀 ~ .then ~ First Fetch:", response);
             } catch (error) {
                 console.log("🚀 ~ EntryBox ~ error:", error);
@@ -129,6 +130,9 @@ const EntryBox = () => {
         if (isCheckedInOrOut.ischeckedin && !isCheckedInOrOut.ischeckedout) {
             function updateRemainingTime() {
                 const now = new Date();
+                const [hours1, minutes1, seconds1] = checkInOutTime.totalWorkedTime.split(':').map(Number);
+                now.setHours(hours1, minutes1, seconds1);
+
                 const checkInDateTime = new Date();
                 const [hours, minutes, seconds] = checkInOutTime.checkintime.split(':').map(Number);
                 checkInDateTime.setHours(hours, minutes, seconds);
@@ -165,7 +169,8 @@ const EntryBox = () => {
         const seconds = String(now.getSeconds()).padStart(2, '0');
         const timeString = `${hours}:${minutes}:${seconds}`;
 
-        if (userData?.entrytime < timeString) {
+
+        if (userData?.entrytime < timeString && isCheckedInOrOut.ischeckedin != true && isCheckedInOrOut.ischeckedout != true) {
             navigate("/employee/requestattendance")
         }
         else {
@@ -203,12 +208,13 @@ const EntryBox = () => {
                     ischeckedin: true,
                     ischeckedout: false,
                     location: location,
-                    remainingtime: dateTime.remainingTime,
+                    totalWorkedTime: checkInOutTime.totalWorkedTime
+                    // remainingtime: dateTime.remainingTime,
                 });
 
                 console.log("🚀 ~ .then ~ response:", response);
                 setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: true, ischeckedout: false });
-                setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime });
+                setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime[response.data.checkintime.length - 1] });
             } catch (error) {
                 console.log("🚀 ~ EntryBox ~ error:", error);
             }
@@ -229,6 +235,7 @@ const EntryBox = () => {
         const year = now.getFullYear();
         const formattedDate = `${day}-${month}-${year}`;
 
+
         try {
             const response = await api.post("/checkout", {
                 id: checkINDetails?.id,
@@ -236,14 +243,22 @@ const EntryBox = () => {
                 checkouttime: timeString,
                 ischeckedout: true,
                 ischeckedin: false,
-                remainingtime: dateTime.remainingTime,
+                // remainingtime: dateTime.remainingTime,
             });
             console.log("🚀 ~ .then ~ response:", response);
             setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedout: true, ischeckedin: false });
-            setCheckInOutTime({ ...checkInOutTime, checkouttime: response.data.checkouttime })
+            setCheckInOutTime({ ...checkInOutTime, checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1] })
         } catch (error) {
             console.log("🚀 ~ EntryBox ~ error:", error);
         }
+    }
+
+
+    function secondsToTimeString(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainingSeconds = seconds % 60;
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     }
 
     return (
@@ -275,12 +290,24 @@ const EntryBox = () => {
                     Check OUT
                 </button>
             </div>
-            <div className='flex gap-16 mt-5 font-semibold text-grey'>
+            <div className='flex gap-8 mt-5 font-semibold text-grey'>
                 <div>
                     <p>Check IN Time</p>
                     <p>{checkInOutTime.checkintime || "00 : 00 : 00"}</p>
                 </div>
-                <div className='text-end'>
+                <div>
+                    <p>Worked Time</p>
+                    <p>{checkInOutTime.totalWorkedTime != 0 ? secondsToTimeString(checkInOutTime.totalWorkedTime) : "00 : 00 : 00"}</p>
+                </div>
+                <div>
+                    <p>Check OUT Time</p>
+                    <p>{checkInOutTime.checkouttime || "00 : 00 : 00"}</p>
+                </div>
+                <div>                        
+                    <p>Remaining Time</p>
+                    <p>{dateTime.remainingTime == "NaN : NaN : NaN" ? "00 : 00 : 00" : dateTime.remainingTime}</p>
+                </div>
+                {/* <div className='text-end'>
                     {
                         isCheckedInOrOut.ischeckedout ?
                             <>
@@ -293,7 +320,7 @@ const EntryBox = () => {
                                 <p>{dateTime.remainingTime == "NaN : NaN : NaN" ? "00 : 00 : 00" : dateTime.remainingTime}</p>
                             </>
                     }
-                </div>
+                </div> */}
             </div>
         </div>
     );
