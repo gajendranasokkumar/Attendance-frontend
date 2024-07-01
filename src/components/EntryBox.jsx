@@ -32,6 +32,7 @@ const EntryBox = () => {
         ischeckedin: false,
         ischeckedout: false,
         totalWorkedTime: "",
+        hoursofwork: ""
     });
 
     const [isCheckedInOrOut, setIsCheckedInOrOut] = useState({
@@ -88,6 +89,7 @@ const EntryBox = () => {
                 shift: userData.shift,
                 punchtype: userData.punchtype,
                 geolocation: userData.geolocation,
+                hoursofwork: userData.hoursofwork
             }));
         }
     }, [userData]);
