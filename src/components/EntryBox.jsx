@@ -38,6 +38,7 @@ const EntryBox = () => {
         ischeckedin: false,
         ischeckedout: false,
     });
+
     const [checkInOutTime, setCheckInOutTime] = useState({
         checkintime: '',
         checkouttime: '',
@@ -123,7 +124,9 @@ const EntryBox = () => {
         updateClock();
         const intervalId = setInterval(updateClock, 1000);
 
-        return () => clearInterval(intervalId);
+        return () => {
+            clearInterval(intervalId)
+        };
     }, []);
 
     useEffect(() => {
@@ -247,7 +250,7 @@ const EntryBox = () => {
             });
             console.log("🚀 ~ .then ~ response:", response);
             setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedout: true, ischeckedin: false });
-            setCheckInOutTime({ ...checkInOutTime, checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1] })
+            setCheckInOutTime({ ...checkInOutTime, checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1], totalWorkedTime: response.data.totalWorkedTime })
         } catch (error) {
             console.log("🚀 ~ EntryBox ~ error:", error);
         }
@@ -297,16 +300,16 @@ const EntryBox = () => {
                 </div>
                 <div>
                     <p>Worked Time</p>
-                    <p>{checkInOutTime.totalWorkedTime != 0 ? secondsToTimeString(checkInOutTime.totalWorkedTime) : "00 : 00 : 00"}</p>
+                    <p>{checkInOutTime.totalWorkedTime || "00 : 00 : 00"}</p>
                 </div>
                 <div>
                     <p>Check OUT Time</p>
                     <p>{checkInOutTime.checkouttime || "00 : 00 : 00"}</p>
                 </div>
-                <div>                        
+                {/* <div>                        
                     <p>Remaining Time</p>
                     <p>{dateTime.remainingTime == "NaN : NaN : NaN" ? "00 : 00 : 00" : dateTime.remainingTime}</p>
-                </div>
+                </div> */}
                 {/* <div className='text-end'>
                     {
                         isCheckedInOrOut.ischeckedout ?

@@ -85,6 +85,7 @@
 |------|------|
 | 29.06.2024 | 🖌️ Updated the alternative checkin and checkout functionality and <br /> had a meeting to make some changes in the UI |
 | 30.06.2024 | ⚒️ Added the calculation and storing of totalworkedtime |
+| 01.07.2024 | ⏱️ Updated the physical checkin and checkout to monitor the totalworkedtime |
 
 
 
