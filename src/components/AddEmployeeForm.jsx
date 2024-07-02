@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { RxCross2 } from "react-icons/rx";
 import Input from './Input';
 import Radio from './Radio';
@@ -9,7 +9,9 @@ import CancelButton from './CancelButton';
 import { useNavigate } from 'react-router-dom';
 import api from '../utils/api'
 
-const AddEmployeeForm = () => {
+const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "create" }) => {
+
+
     const [employee, setEmployee] = useState({
         id: "",
         name: "",
@@ -41,6 +43,12 @@ const AddEmployeeForm = () => {
     });
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (receivedEmployee != null) {
+            setEmployee(receivedEmployee)
+        }
+    }, [receivedEmployee]);
+
     const goBack = () => {
         navigate(-1);
     };
@@ -58,6 +66,14 @@ const AddEmployeeForm = () => {
             })
     }
 
+
+    const handleSubmit = (e) => {
+        if (mode == 'create')
+            submitForm(e)
+        else if (mode == 'update')
+            onSubmit(e, employee);
+    }
+
     return (
         <>
             <div className='w-[100vw] h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 grid place-content-center top-0 absolute z-50 animate-moveUp'>
@@ -66,13 +82,13 @@ const AddEmployeeForm = () => {
                         <div className='text-[25px]  text-bgGreen font-bold pl-8'>ADD NEW EMPLOYEE</div>
                         <button className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer' onClick={goBack}><RxCross2 /></button>
                     </div>
-                    <form >
+                    <form onSubmit={handleSubmit}>
                         <p className='pl-6 text-bgGreen font-bold text-xl text-nowrap'>Personal Details</p>
                         <hr className='mx-6 border-dashed border-2 border-bgGreen' />
                         <div className='flex w-[100%] mt-5'>
                             <div className='p-5 flex flex-col justify-center z-0 w-[50%]'>
                                 <div className='w-[100%] mx-auto'>
-                                    <Input type={"text"} placeholder={"Employee ID"} name={'id'} state={employee} setState={setEmployee} />
+                                    <Input type={"text"} placeholder={"Employee ID"} name={'id'} state={employee} setState={setEmployee} readonly={mode == 'update'} />
                                     <Input type={"text"} placeholder={"Name"} name={'name'} state={employee} setState={setEmployee} />
                                     <Input type={"email"} placeholder={"Email"} name={'email'} state={employee} setState={setEmployee} />
                                     <Input type={"number"} placeholder={"Phone Number"} name={'phonenumber'} state={employee} setState={setEmployee} />
@@ -141,7 +157,7 @@ const AddEmployeeForm = () => {
 
                         <div className='flex justify-end gap-2 w-[100%] mx-auto mb-7 pr-6'>
                             <CancelButton />
-                            <SubmitButton name={"Create"} click={submitForm} />
+                            <SubmitButton name={mode.toUpperCase()} />
                         </div>
                     </form>
                 </div>

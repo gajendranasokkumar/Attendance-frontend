@@ -96,10 +96,10 @@ const AttendanceList = () => {
                             <div className='left'>Status</div>
                             {/* <div className='right'>: {todayAttendance?.status}</div> */}
                             <div className={`right font-bold
-                                            ${todayAttendance.status?.toUpperCase() === "PENDING" ? "text-txtLYellow" : ""}
-                                            ${todayAttendance.status?.toUpperCase() === "PERMITTED" ? "text-txtLGreen" : ""}
-                                            ${todayAttendance.status?.toUpperCase() === "DENIED" ? "text-txtLRed" : ""}`}>
-                                : {todayAttendance.status?.toUpperCase()}
+                                            ${todayAttendance?.status?.toUpperCase() === "PENDING" ? "text-txtLYellow" : ""}
+                                            ${todayAttendance?.status?.toUpperCase() === "PERMITTED" ? "text-txtLGreen" : ""}
+                                            ${todayAttendance?.status?.toUpperCase() === "DENIED" ? "text-txtLRed" : ""}`}>
+                                : {todayAttendance?.status?.toUpperCase()}
                             </div>
                         </div>
                         <div className='parent'>

@@ -131,39 +131,39 @@ const EntryBox = () => {
         };
     }, []);
 
-    useEffect(() => {
-        if (isCheckedInOrOut.ischeckedin && !isCheckedInOrOut.ischeckedout) {
-            function updateRemainingTime() {
-                const now = new Date();
-                const [hours1, minutes1, seconds1] = checkInOutTime.totalWorkedTime.split(':').map(Number);
-                now.setHours(hours1, minutes1, seconds1);
+    // useEffect(() => {
+    //     if (isCheckedInOrOut.ischeckedin && !isCheckedInOrOut.ischeckedout) {
+    //         function updateRemainingTime() {
+    //             const now = new Date();
+    //             const [hours1, minutes1, seconds1] = checkInOutTime.totalWorkedTime.split(':').map(Number);
+    //             now.setHours(hours1, minutes1, seconds1);
 
-                const checkInDateTime = new Date();
-                const [hours, minutes, seconds] = checkInOutTime.checkintime.split(':').map(Number);
-                checkInDateTime.setHours(hours, minutes, seconds);
+    //             const checkInDateTime = new Date();
+    //             const [hours, minutes, seconds] = checkInOutTime.checkintime.split(':').map(Number);
+    //             checkInDateTime.setHours(hours, minutes, seconds);
 
-                const endTime = new Date(checkInDateTime.getTime() + userData?.hoursofwork * 60 * 60 * 1000);
-                const remainingTimeMs = endTime - now;
+    //             const endTime = new Date(checkInDateTime.getTime() + userData?.hoursofwork * 60 * 60 * 1000);
+    //             const remainingTimeMs = endTime - now;
 
-                const isNegative = remainingTimeMs < 0;
-                const absRemainingTimeMs = Math.abs(remainingTimeMs);
+    //             const isNegative = remainingTimeMs < 0;
+    //             const absRemainingTimeMs = Math.abs(remainingTimeMs);
 
-                const remainingHours = Math.floor(absRemainingTimeMs / (1000 * 60 * 60));
-                const remainingMinutes = Math.floor((absRemainingTimeMs % (1000 * 60 * 60)) / (1000 * 60));
-                const remainingSeconds = Math.floor((absRemainingTimeMs % (1000 * 60)) / 1000);
+    //             const remainingHours = Math.floor(absRemainingTimeMs / (1000 * 60 * 60));
+    //             const remainingMinutes = Math.floor((absRemainingTimeMs % (1000 * 60 * 60)) / (1000 * 60));
+    //             const remainingSeconds = Math.floor((absRemainingTimeMs % (1000 * 60)) / 1000);
 
-                const remainingTimeString = `${isNegative ? '-' : ''}${String(remainingHours).padStart(2, '0')} : ${String(remainingMinutes).padStart(2, '0')} : ${String(remainingSeconds).padStart(2, '0')}`;
+    //             const remainingTimeString = `${isNegative ? '-' : ''}${String(remainingHours).padStart(2, '0')} : ${String(remainingMinutes).padStart(2, '0')} : ${String(remainingSeconds).padStart(2, '0')}`;
 
-                setDateTime(prevDateTime => ({
-                    ...prevDateTime,
-                    remainingTime: remainingTimeString
-                }));
-            }
+    //             setDateTime(prevDateTime => ({
+    //                 ...prevDateTime,
+    //                 remainingTime: remainingTimeString
+    //             }));
+    //         }
 
-            const intervalId = setInterval(updateRemainingTime, 1000);
-            return () => clearInterval(intervalId);
-        }
-    }, [isCheckedInOrOut, checkInOutTime]);
+    //         const intervalId = setInterval(updateRemainingTime, 1000);
+    //         return () => clearInterval(intervalId);
+    //     }
+    // }, [isCheckedInOrOut, checkInOutTime]);
 
     const enterCheckIn = async (e) => {
         e.preventDefault();
@@ -176,7 +176,7 @@ const EntryBox = () => {
 
 
         if (userData?.entrytime < timeString && isCheckedInOrOut.ischeckedin != true && isCheckedInOrOut.ischeckedout != true) {
-            navigate("/employee/requestattendance")
+            userData?.person == "employee" ? navigate("/employee/requestattendance") : navigate("/admin/requestattendance")
         }
         else {
             const day = String(now.getDate()).padStart(2, '0');

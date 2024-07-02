@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/AuthContext';
 import api from '../utils/api';
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
+
 
 const AttendanceHistory = () => {
-
     const [allAttendance, setAllAttendance] = useState([]);
     const { userData } = useContext(AuthContext);
+    const [openDropdowns, setOpenDropdowns] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,6 +30,44 @@ const AttendanceHistory = () => {
 
         fetchData();
     }, [userData])
+
+    const toggleDropdown = (id, type) => {
+        setOpenDropdowns(prev => ({
+            ...prev,
+            [id]: {
+                ...prev[id],
+                [type]: !prev[id]?.[type]
+            }
+        }));
+    };
+
+    const renderTimeDropdown = (times, id, type) => {
+        if (!times || times.length === 0 || times == "") return "N/A";
+        
+        const isOpen = openDropdowns[id]?.[type];
+        const latestTime = times[times.length - 1];
+
+        return (
+            <div className="relative">
+                <button 
+                    onClick={() => toggleDropdown(id, type)}
+                    className="bg-gray-200 px-2 py-1 rounded w-full flex justify-center items-center"
+                >
+                    {latestTime} <span className='ml-3 text-lg'>{!isOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}</span>
+                </button>
+                {isOpen && (
+                    <ul className="absolute z-10 border border-gray-300 mt-1 rounded shadow-lg p-2 shadow-allBox bg-bgLGreen w-full">
+                        {[...times].reverse().map((time, index) => (
+                            <li key={index} className="px-2 py-1 text-lg font-semibold hover:bg-lightGrey w-full">
+                                {time}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        );
+    };
+
     return (
         <>
             <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
@@ -60,9 +101,13 @@ const AttendanceHistory = () => {
                                         <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>{one.company}</td>
                                         <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{one.branch}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{one.ischeckedin ? "YES" : "NO"}</td>
-                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.checkintime}</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>
+                                            {renderTimeDropdown(one.checkintime, one._id, 'checkin')}
+                                        </td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{one.ischeckedout ? "YES" : "NO"}</td>
-                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.checkouttime}</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>
+                                            {renderTimeDropdown(one.checkouttime, one._id, 'checkout')}
+                                        </td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.location}</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.multibranchattendance}</td>
                                     </tr>

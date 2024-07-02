@@ -20,7 +20,7 @@ const Navbar = ({ toggleSidebar, isSidebarVisible = false }) => {
                         <HiMiniBars3 className='text-bgGreen font-[600] mr-4 text-[25px] xs:block lg:hidden' />
                     )}
                 </button>
-                <div className='xs:text-[25px] xs:font-[500] lg:text-[20px] w-[100%] text-bgGreen lg:font-[700] '>PresentMarker</div>
+                <div className='xs:text-[25px] xs:font-[500] lg:text-[20px] w-[100%] text-bgGreen lg:font-[700] step-1'>PresentMarker</div>
                 <div className='xs:w-[25%] lg:w-[20%] h-[100%] flex justify-end items-center'>
                     <div className='flex '>
                         <GoBellFill className='xs:h-[20px] xs:w-[20px] lg:h-[25px] lg:w-[25px] text-deepLightBlack' />
