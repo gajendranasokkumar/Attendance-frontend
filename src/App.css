@@ -1,4 +1,5 @@
 body {
+  overflow-x: hidden;
   background-color: #e4e6eb;
 }
 
@@ -376,4 +377,47 @@ tr:hover {
 }
 .eight{
   background-color: rgb(255, 182, 193)
+}
+
+
+/* App.css */
+
+.joyride-tooltip {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+.joyride-tooltip__heading {
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  color: #444;
+}
+
+.joyride-tooltip__body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+.joyride-tooltip__footer {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: #666;
+}
+
+.joyride-tooltip__button {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 4px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.joyride-tooltip__button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
 }

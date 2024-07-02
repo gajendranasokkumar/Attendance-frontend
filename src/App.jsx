@@ -95,7 +95,7 @@ import PunchForm from "./components/PunchForm";
 import EmpContent from "./components/EmpContent";
 import LeaveList from "./components/LeaveList";
 import Content from './components/Content';
-import OopsPage from "./components/OopsPage";
+import OopsPage from "./components/NotFoundPage.jsx";
 import AttendanceList from "./components/AttendanceList";
 import { Success, Failure } from "./components/Notification";
 import CurrentLeavePage from "./components/CurrentLeavePage";
@@ -111,53 +111,80 @@ import Dashboard from "./components/Dashboard.jsx";
 import ManageAttendanceRequest from "./components/ManageAttendanceRequest.jsx";
 import NewComp from "./components/NewComp.jsx";
 import EmployeeList from "./components/EmployeeList.jsx";
+import NotFoundPage from './components/NotFoundPage.jsx';
 
 const Tour = () => {
-    const [runTour, setRunTour] = useState(false);
-    const location = useLocation();
+  const [runTour, setRunTour] = useState(false);
+  const location = useLocation();
 
-    const steps = [
-        {
-            target: '.step-1',
-            content: 'Welcome to our app! This is the first step.',
-        },
-        {
-            target: '.step-2',
-            content: 'Here you can view your dashboard.',
-        },
-        // Add more steps as needed
-    ];
+  const steps = [
+    {
+      target: '.intro',
+      content: 'Hey there Welcome to our app !! Let us to take you a small tour',
+    },
+    {
+      target: '.step-1',
+      content: 'Make sure you have changed your password here once you logged in!!',
+    },
+    {
+      target: '.checkinbox',
+      content: 'Here you can control your checkin and checkout and you can monitor total hours of working.',
+    },
+    {
+      target: '.personaldetails',
+      content: 'Here you can see your personal details and you can request to your admin if you have to make some changes!! CHECK PROFILE SECTION ',
+    },
+    {
+      target: '.step-2',
+      content: 'Here you can view your dashboard and your personal details.',
+    },
+    {
+      target: '.step-3',
+      content: 'Your Attendance will be maintained automatically and you can se here also you can see the history.',
+    },
+    {
+      target: '.step-4',
+      content: 'All your leave requests were maintained here and you can apply or verify the status here...',
+    },
+    {
+      target: '.step-5',
+      content: 'Here you can view your dashboard and your personal details.',
+    },
+    {
+      target: '.step-6',
+      content: 'Here you can view your dashboard and your personal details.',
+    },
+  ];
 
-    const handleJoyrideCallback = (data) => {
-        const { status } = data;
-        if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
-            setRunTour(false);
-            localStorage.setItem('tourShown', 'true');
-        }
-    };
+  const handleJoyrideCallback = (data) => {
+    const { status } = data;
+    if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
+      setRunTour(false);
+      localStorage.setItem('tourShown', 'true');
+    }
+  };
 
-    useEffect(() => {
-        const tourShown = localStorage.getItem('tourShown');
-        if (!tourShown) {
-            setRunTour(true);
-        }
-    }, []);
+  useEffect(() => {
+    const tourShown = localStorage.getItem('tourShown');
+    if (!tourShown) {
+      setRunTour(true);
+    }
+  }, []);
 
-    useEffect(() => {
-        if (!runTour) return;
-        // Restart the tour when the location changes
-        setRunTour(true);
-    }, [location]);
+  useEffect(() => {
+    if (!runTour) return;
+    setRunTour(true);
+  }, [location]);
 
-    return (
-        <Joyride
-            steps={steps}
-            run={runTour}
-            continuous={true}
-            showSkipButton={true}
-            callback={handleJoyrideCallback}
-        />
-    );
+  return (
+    <Joyride
+      steps={steps}
+      run={runTour}
+      continuous={true}
+      showSkipButton={true}
+      callback={handleJoyrideCallback}
+    />
+  );
 };
 
 function App() {
@@ -167,7 +194,7 @@ function App() {
         <BrowserRouter>
           <Tour />
           <Routes>
-            <Route path="*" element={<OopsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
             <Route index element={<Login />} />
             <Route path="/punch" element={<PunchForm />} />
             {/* <Route path="/new" element={<NewComp />} /> */}
@@ -181,6 +208,7 @@ function App() {
               <Route path="attendanceHistory" element={<AttendanceHistory />} />
               <Route path="requestattendance" element={<RequestAttendanceForm />} />
               <Route path="requestprofileedit" element={<RequestProfileEdit />} />
+              <Route path="forgotpassword" element={<ForgotPasswordPage />} />
             </Route>
             {/* <Route path="/admin" element={<AdminHome />}> */}
             <Route path="/admin" element={<PrivateRoute role={'Admin'}><AdminHome /></PrivateRoute>}>

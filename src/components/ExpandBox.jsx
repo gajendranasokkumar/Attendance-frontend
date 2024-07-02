@@ -58,7 +58,7 @@ const ExpandBox = ({ number, name, icon, options }) => {
     };
 
     return (
-        <div className='hover:cursor-pointer border-t-2 border-t-white text-deepLightBlack hover:bg-bgGreen relative'>
+        <div className={`hover:cursor-pointer border-t-2 border-t-white text-deepLightBlack hover:bg-bgGreen relative step-${number+1}`}>
             <button
                 id={`toggleButton${number}`}
                 className={`w-full hover:bg-bgGreen h-10 flex items-center px-3 hover:text-white text-lg ${isExpanded ? 'dropDownButton' : ''}`}
@@ -76,7 +76,7 @@ const ExpandBox = ({ number, name, icon, options }) => {
                     {
                         options.map((one, index) => (
                             <Link key={index} to={one.link ? one.link : "*"}>
-                                <li className='text-center h-10 flex items-center hover:bg-lightGrey text-deepLightBlack pl-5 border-t-2 border-t-white'>
+                                <li className='text-center h-10 flex items-center hover:bg-lightGrey text-deepLightBlack pl-5 border-t-2 border-t-white summa'>
                                     <span className='mr-2 text-lg'>{one.icon}</span>
                                     {one.title}
                                 </li>
