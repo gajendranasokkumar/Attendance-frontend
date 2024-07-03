@@ -196,6 +196,7 @@ function App() {
           <Routes>
             <Route path="*" element={<NotFoundPage />} />
             <Route index element={<Login />} />
+            <Route path="/addnew" element={<AddEmployeeForm />} />
             <Route path="/punch" element={<PunchForm />} />
             {/* <Route path="/new" element={<NewComp />} /> */}
             <Route path="/forgotpassword" element={<ForgotPasswordPage />} />

@@ -63,6 +63,10 @@ const AttendanceList = () => {
                             <div className='right'>: {todayAttendance?.status}</div>
                         </div> */}
                         <div className='parent'>
+                            <div className='left'>Entry time</div>
+                            <div className='right'>: {userData?.entrytime}</div>
+                        </div>
+                        <div className='parent'>
                             <div className='left'>Hours of Work</div>
                             <div className='right'>: {todayAttendance?.hoursofwork}</div>
                         </div>
