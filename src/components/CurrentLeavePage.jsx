@@ -3,6 +3,7 @@ import { SmallInput, SmallDate, SmallCheckBox } from './SmallInput'
 import ActionBtns from './ActionBtns'
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
+import api from '../utils/api';
 
 const CurrentLeavePage = () => {
 
@@ -12,7 +13,7 @@ const CurrentLeavePage = () => {
 
     useEffect(() => {
         const fetchList = async () => {
-            await axios.get("http://localhost:3000/leavelist")
+            await api.get("/leavelist")
                 .then((response) => {
                     console.log("🚀 ~ .then ~ respose:", response.data)
                     const today = new Date();

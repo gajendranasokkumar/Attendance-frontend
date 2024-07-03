@@ -11,6 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Failure, Success } from './Notification';
 import * as ReactDOM from 'react-dom/client';
 import { AuthContext } from '../context/AuthContext.jsx';
+import api from '../utils/api.js';
 
 
 
@@ -30,7 +31,7 @@ const Login = () => {
         e.preventDefault();
         console.log("🚀 ~ handleSubmit ~ loginDetails:", loginDetails)
 
-        await axios.post('http://localhost:3000/', loginDetails)
+        await api.post('/', loginDetails)
             .then((response) => {
                 console.log("🚀 ~ .then ~ response:", response)
                 // root.render(<Success message={"Login Success"} />);
