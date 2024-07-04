@@ -23,7 +23,7 @@ const PastLeave = () => {
         if (!token)
             navigate('/');
         const fetchList = async () => {
-            await api.get("/leavelist", { withCredentials: true })
+            await api.get("/leavelist")
                 .then((response) => {
                     console.log("🚀 ~ .then ~ respose:", response.data)
                     let result = response.data.filter(one => one.status.toUpperCase() !== "PENDING")
