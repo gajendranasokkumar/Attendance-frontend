@@ -1,7 +1,7 @@
 <!-- 
 # ATTENDANCE PROJECT STARTED AT JUNE 1
 
-- 01.06.2024 -> Had a meeting with client 
+- 01.06.2024 -> Created the basic layout 
 - 02.06.2024 -> Created a Navigation Bar
 - 03.06.2024 -> Created side panel and the dropdown in panel
 - 04.06.2024 -> Options button in main page with various background and icons 
@@ -39,7 +39,7 @@
 ### Week 1
 | Date | Task |
 |------|------|
-| 01.06.2024 | 🤝 Had a meeting with client |
+| 01.06.2024 | 🤝 Created the basic layout |
 | 02.06.2024 | 🧭 Created a Navigation Bar |
 | 03.06.2024 | 📑 Created side panel and dropdown in panel |
 | 04.06.2024 | 🎨 Options button in main page with various backgrounds and icons |
@@ -87,6 +87,9 @@
 | 30.06.2024 | ⚒️ Added the calculation and storing of totalworkedtime |
 | 01.07.2024 | ⏱️ Updated the physical checkin and checkout to monitor the totalworkedtime |
 | 02.07.2024 | 🖊️ Added the feature to edit and delete the Employees <br /> and started working on creating the tour and added 404 page |
+| 03.07.2024 | ▲  Deployed in the vercel https://attendance-frontend-iota.vercel.app/ (frontend) and https://attendance-backend-xi.vercel.app/ (backend) |
+| 04.07.2024 | 👉 Updated the checkin and checkout based on the punch type of the employee |
+
 
 
 

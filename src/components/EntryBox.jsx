@@ -64,6 +64,12 @@ const EntryBox = () => {
                 setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: response.data.ischeckedin, ischeckedout: response.data.ischeckedout })
                 setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime[response.data.checkintime.length - 1], checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1], totalWorkedTime: response.data.totalWorkedTime })
                 console.log("🚀 ~ .then ~ First Fetch:", response);
+                if (userData?.punchtype != 'web') {
+                    setIsCheckedInOrOut({
+                        ischeckedin: true,
+                        ischeckedout: true
+                    })
+                }
             } catch (error) {
                 console.log("🚀 ~ EntryBox ~ error:", error);
             }
@@ -91,6 +97,7 @@ const EntryBox = () => {
                 geolocation: userData.geolocation,
                 hoursofwork: userData.hoursofwork
             }));
+
         }
     }, [userData]);
 
@@ -176,7 +183,7 @@ const EntryBox = () => {
 
 
         if (userData?.entrytime < timeString && isCheckedInOrOut.ischeckedin != true && isCheckedInOrOut.ischeckedout != true) {
-            userData?.person == "employee" ? navigate("/employee/requestattendance") : navigate("/admin/requestattendance")
+            userData?.person != "employee" ? navigate("/employee/requestattendance") : navigate("/admin/requestattendance")
         }
         else {
             const day = String(now.getDate()).padStart(2, '0');

@@ -13,7 +13,6 @@ const Tour = () => {
             target: '.step-2',
             content: 'Here you can view your dashboard.',
         },
-        // Add more steps as needed
     ];
 
     const handleJoyrideCallback = (data) => {
