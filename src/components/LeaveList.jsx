@@ -25,7 +25,7 @@ const LeaveList = () => {
         if (!token) navigate('/');
 
         const fetchList = async () => {
-            await api.get("/leavelist", { withCredentials: true })
+            await api.get("/leavelist")
                 .then((response) => {
                     let result = response.data.filter(one => one.status.toUpperCase() === "PENDING");
                     setLeaveList(result);
