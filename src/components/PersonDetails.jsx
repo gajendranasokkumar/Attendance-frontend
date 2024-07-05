@@ -33,6 +33,10 @@ const PersonDetails = () => {
                 <div className='right'>: {userData?.punchid}</div>
             </div>
             <div className='parent'>
+                <div className='left'>Punch Type</div>
+                <div className='right'>: {userData?.punchtype}</div>
+            </div>
+            <div className='parent'>
                 <div className='left'>Role</div>
                 <div className='right'>: {userData?.role}</div>
             </div>

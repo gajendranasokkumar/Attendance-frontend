@@ -8,6 +8,7 @@ import SubmitButton from './SubmitButton';
 import CancelButton from './CancelButton';
 import { useNavigate } from 'react-router-dom';
 import api from '../utils/api'
+import Select from './Select';
 
 const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "create" }) => {
 
@@ -137,7 +138,8 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
                                     <Input type={"text"} placeholder={"Branch"} name={'branch'} state={employee} setState={setEmployee} />
                                     <Input type={"text"} placeholder={"Designation"} name={'designation'} state={employee} setState={setEmployee} />
                                     <Input type={"number"} placeholder={"Mobile Number"} name={'mobilenumber'} state={employee} setState={setEmployee} />
-                                    <Input type={"text"} placeholder={"Punch Type"} name={'punchtype'} state={employee} setState={setEmployee} />
+                                    {/* <Input type={"text"} placeholder={"Punch Type"} name={'punchtype'} state={employee} setState={setEmployee} /> */}
+                                    <Select options={["web", "physical"]} placeholder={"Punch Type"} name={'punchtype'} state={employee} setState={setEmployee} />
                                 </div>
                             </div>
                             <div className='p-5 flex flex-col  z-0 w-[50%]'>
