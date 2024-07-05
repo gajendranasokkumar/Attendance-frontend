@@ -118,12 +118,12 @@ const Login = () => {
         password: ''
     });
     const navigate = useNavigate();
-    const { setAuth, setUserData, showLoader } = useContext(AuthContext);
+    const { setAuth, setUserData, showLoader, setLoading } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("🚀 ~ handleSubmit ~ loginDetails:", loginDetails);
-
+        setLoading(true)
         await api.post('/', loginDetails)
             .then((response) => {
                 console.log("🚀 ~ .then ~ response:", response);
