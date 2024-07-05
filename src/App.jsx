@@ -112,6 +112,7 @@ import ManageAttendanceRequest from "./components/ManageAttendanceRequest.jsx";
 import NewComp from "./components/NewComp.jsx";
 import EmployeeList from "./components/EmployeeList.jsx";
 import NotFoundPage from './components/NotFoundPage.jsx';
+import Loader from './components/Loader.jsx';
 
 const Tour = () => {
   const [runTour, setRunTour] = useState(false);
@@ -193,6 +194,7 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Tour />
+          {/* <Loader />   */}
           <Routes>
             <Route path="*" element={<NotFoundPage />} />
             <Route index element={<Login />} />

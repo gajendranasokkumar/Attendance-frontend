@@ -48,11 +48,12 @@ const EntryBox = () => {
 
     const navigate = useNavigate();
 
-    const { userData } = useContext(AuthContext);
+    const { userData, setLoading, showLoader } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true)
                 const now = new Date();
                 const day = String(now.getDate()).padStart(2, '0');
                 const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -63,6 +64,7 @@ const EntryBox = () => {
                 const response = await api.post("/getCheckInDetails", { id: userData?.id, date: formattedDate });
                 setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: response.data.ischeckedin, ischeckedout: response.data.ischeckedout })
                 setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime[response.data.checkintime.length - 1], checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1], totalWorkedTime: response.data.totalWorkedTime })
+                setLoading(false)
                 console.log("🚀 ~ .then ~ First Fetch:", response);
                 if (userData?.punchtype != 'web') {
                     setIsCheckedInOrOut({

@@ -5,11 +5,12 @@ import api from '../utils/api';
 const AttendanceList = () => {
 
     const [todayAttendance, setTodayAttendance] = useState({});
-    const { userData } = useContext(AuthContext);
+    const { userData, setLoading, showLoader } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true)
                 const now = new Date();
                 const day = String(now.getDate()).padStart(2, '0');
                 const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -20,6 +21,7 @@ const AttendanceList = () => {
                 console.log("🚀 ~ fetchData ~ formattedDate:", formattedDate)
                 const response = await api.post("/getCheckInDetails", { id: userData?.id, date: formattedDate });
                 console.log("🚀 ~ .then ~ Today's Attendance:", response);
+                showLoader(500)
                 setTodayAttendance(response.data)
             } catch (error) {
                 console.log("🚀 ~ EntryBox ~ error:", error);

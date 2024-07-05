@@ -17,13 +17,14 @@ const EmpPastLeave = () => {
         content: ''
     })
     const navigate = useNavigate();
-    const { userData } = useContext(AuthContext);
+    const { userData, setLoading, showLoader } = useContext(AuthContext);
 
 
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token)
             navigate('/');
+        setLoading(true)
         const fetchList = async () => {
             await api.get("/leavelist")
                 .then((response) => {
@@ -39,6 +40,7 @@ const EmpPastLeave = () => {
                     })
                     setLeaveList(result)
                     setSearchList(result)
+                    showLoader(500)
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error)

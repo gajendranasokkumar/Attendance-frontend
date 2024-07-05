@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SmallInput, SmallDate, SmallCheckBox } from './SmallInput'
 import ActionBtns from './ActionBtns'
 import axios from 'axios';
 import api from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from "react-icons/vsc";
+import { AuthContext } from '../context/AuthContext';
 
 
 const LeaveList = () => {
@@ -18,6 +19,8 @@ const LeaveList = () => {
     const [selectedIds, setSelectedIds] = useState([]);
     const [selectAll, setSelectAll] = useState(false);
 
+    const { setLoading, showLoader } = useContext(AuthContext)
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,11 +28,13 @@ const LeaveList = () => {
         if (!token) navigate('/');
 
         const fetchList = async () => {
+            setLoading(true)
             await api.get("/leavelist")
                 .then((response) => {
                     let result = response.data.filter(one => one.status.toUpperCase() === "PENDING");
                     setLeaveList(result);
                     setSearchList(result);
+                    setLoading(false)
                     console.log(result)
                 })
                 .catch((error) => {
@@ -42,9 +47,11 @@ const LeaveList = () => {
 
     const updateStatus = async (currentStatus) => {
         try {
+            setLoading(true)
             await Promise.all(selectedIds.map(formId =>
                 api.post("/updateleave", { formId, currentStatus })
             ));
+            setLoading(false)
             navigate(0);
         } catch (err) {
             console.log("🚀 ~ updateStatus ~ err:", err);

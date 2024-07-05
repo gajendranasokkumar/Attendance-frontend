@@ -8,11 +8,12 @@ import api from '../utils/api';
 const CurrentLeavePage = () => {
 
     const [leaveList, setLeaveList] = useState([]);
-    const { userData } = useContext(AuthContext);
+    const { userData, setLoading, showLoader } = useContext(AuthContext);
 
 
     useEffect(() => {
         const fetchList = async () => {
+            setLoading(true)
             await api.get("/leavelist")
                 .then((response) => {
                     console.log("🚀 ~ .then ~ respose:", response.data)
@@ -26,6 +27,7 @@ const CurrentLeavePage = () => {
                         }
                     })
                     setLeaveList(result)
+                    showLoader(500)
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error)

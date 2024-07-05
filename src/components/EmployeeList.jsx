@@ -10,14 +10,18 @@ const EmployeeList = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [editingEmployee, setEditingEmployee] = useState(null);
 
+    const { setLoading, showLoader } = useContext(AuthContext)
+
     useEffect(() => {
         fetchEmployees();
     }, []);
 
     const fetchEmployees = async () => {
         try {
+            setLoading(true)
             const response = await api.get('/getAllEmployees');
             setEmployees(response.data);
+            showLoader(1000)
         } catch (error) {
             console.error('Error fetching employees:', error);
         }
@@ -39,22 +43,26 @@ const EmployeeList = () => {
 
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this employee?')) {
-          try {
-            const response = await api.delete(`/deleteEmployee/${id}`);
-            console.log('Delete response:', response);
-            fetchEmployees();
-          } catch (error) {
-            console.error('Error deleting employee:', error.response ? error.response.data : error.message);
-          }
+            try {
+                setLoading(true)
+                const response = await api.delete(`/deleteEmployee/${id}`);
+                console.log('Delete response:', response);
+                showLoader(1000)
+                fetchEmployees();
+            } catch (error) {
+                console.error('Error deleting employee:', error.response ? error.response.data : error.message);
+            }
         }
-      };
+    };
 
     const handleUpdateEmployee = async (e, updatedEmployee) => {
         e.preventDefault()
         try {
+            setLoading(true)
             console.log("comming")
             await api.post('/updateEmployee', updatedEmployee);
             setEditingEmployee(null);
+            showLoader(500)
             fetchEmployees();
         } catch (error) {
             console.error('Error updating employee:', error);
@@ -95,13 +103,13 @@ const EmployeeList = () => {
                                 <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{employee.reportingperson}</td>
                                 <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{employee.department}</td>
                                 <td className='px-1 min-w-[200px] max-w-[200px] whitespace-normal'>
-                                    <button 
+                                    <button
                                         className="px-2 py-1 bg-lightGreen text-white rounded mr-2"
                                         onClick={() => handleEdit(employee)}
                                     >
                                         Edit
                                     </button>
-                                    <button 
+                                    <button
                                         className="px-2 py-1 bg-txtLRed text-white rounded ml-2"
                                         onClick={() => {
                                             console.log(employee._id)
@@ -118,8 +126,8 @@ const EmployeeList = () => {
             </div>
 
             {editingEmployee && (
-                <AddEmployeeForm 
-                    receivedEmployee={editingEmployee} 
+                <AddEmployeeForm
+                    receivedEmployee={editingEmployee}
                     onSubmit={handleUpdateEmployee}
                     mode={"update"}
                 />

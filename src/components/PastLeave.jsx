@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SmallInput, SmallDate, SmallCheckBox } from './SmallInput'
 import ActionBtns from './ActionBtns'
 import axios from 'axios';
 import api from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from "react-icons/vsc";
+import { AuthContext } from '../context/AuthContext';
 
 
 const PastLeave = () => {
@@ -15,7 +16,10 @@ const PastLeave = () => {
         todate: '',
         content: ''
     })
+
     const navigate = useNavigate();
+
+    const { setLoading, showLoader } = useContext(AuthContext) 
 
 
     useEffect(() => {
@@ -23,12 +27,14 @@ const PastLeave = () => {
         if (!token)
             navigate('/');
         const fetchList = async () => {
+            setLoading(true)
             await api.get("/leavelist")
                 .then((response) => {
                     console.log("🚀 ~ .then ~ respose:", response.data)
                     let result = response.data.filter(one => one.status.toUpperCase() !== "PENDING")
                     setLeaveList(result)
                     setSearchList(result)
+                    setLoading(false)
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error)

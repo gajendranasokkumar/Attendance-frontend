@@ -9,6 +9,7 @@ import CancelButton from './CancelButton';
 import { useNavigate } from 'react-router-dom';
 import api from '../utils/api'
 import Select from './Select';
+import { AuthContext } from '../context/AuthContext';
 
 const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "create" }) => {
 
@@ -42,7 +43,10 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
         leavepermitted: "",
         hoursofwork: ""
     });
+
     const navigate = useNavigate();
+
+    const { setLoading } = useContext(AuthContext);
 
     useEffect(() => {
         if (receivedEmployee != null) {
@@ -56,10 +60,12 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
 
     const submitForm = async (e) => {
         e.preventDefault();
+        setLoading(true);
         console.log("🚀 ~ submitForm ~ employee:", employee)
         await api.post("/addemployee", employee)
             .then((respose) => {
                 console.log("🚀 ~ .then ~ respose:", respose)
+                setLoading(false)
                 navigate(-1);
             })
             .catch((error) => {

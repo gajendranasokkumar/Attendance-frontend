@@ -11,7 +11,7 @@ import api from '../utils/api';
 import { AuthContext } from '../context/AuthContext';
 
 const RequestAttendanceForm = () => {
-    const { userData } = useContext(AuthContext);
+    const { userData, setLoading } = useContext(AuthContext);
 
     const today = new Date().toISOString().split('T')[0];
     const reversedDate = today.split('-').reverse().join('-');
@@ -46,10 +46,12 @@ const RequestAttendanceForm = () => {
 
     useEffect(() => {
         const getLeaveCount = async () => {
+            setLoading(true)
             await api.post("/currentleavecount", { id: requestDetails.id })
                 .then((response) => {
                     console.log(response);
                     setRequestDetails(prevDetails => ({ ...prevDetails, leavetaken: response.data.count }));
+                    setLoading(false)
                 })
                 .catch((error) => {
                     console.log("🚀 ~ applyLeave ~ error:", error);
@@ -108,10 +110,11 @@ const RequestAttendanceForm = () => {
             console.log("🚀 ~ EntryBox ~ error:", error);
         }
 
-
+        setLoading(true)
         await api.post("/requestattendance", { ...requestDetails, location: location, date: reversedDate })
             .then((response) => {
                 console.log("🚀 ~ .then ~ response:", response.data);
+                setLoading(false)
                 navigate(-1);
             })
             .catch((error) => {

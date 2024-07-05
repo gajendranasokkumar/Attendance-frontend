@@ -9,11 +9,14 @@ import CancelButton from './CancelButton';
 import { useNavigate } from 'react-router-dom';
 import api from '../utils/api';
 import OTPInput from './OTPInput';
+import { AuthContext } from '../context/AuthContext';
 
 
 
 
 const ForgotPasswordPage = () => {
+
+    const { setLoading, showLoader } = useContext(AuthContext);
 
     const [details, setDetails] = useState({
         id: "",
@@ -38,10 +41,12 @@ const ForgotPasswordPage = () => {
 
     const checkuser = async (e) => {
         e.preventDefault();
+        setLoading(true)
         await api.post("/checkuser", { id: details.id })
             .then((response) => {
                 setDetails({ ...details, code: response.data.code })
                 console.log(response)
+                showLoader(500)
             })
             .catch((error) => {
                 console.log(error);
@@ -53,6 +58,7 @@ const ForgotPasswordPage = () => {
         const otpString = otp.join('');
 
         try {
+            setLoading(true)
             const response = await api.post('/verifyotp', {
                 id: details.id,
                 otp: otpString
@@ -60,6 +66,7 @@ const ForgotPasswordPage = () => {
 
             if (response.data.code === 200 && response.data.message === 'OTP verified successfully') {
                 setMessage('OTP verified successfully!');
+                showLoader(800)
             } else {
                 setMessage('Invalid OTP');
             }
@@ -79,9 +86,11 @@ const ForgotPasswordPage = () => {
         e.preventDefault();
         setDetails({ ...details, passwordcheck: false })
         if (password.password === password.confirmpassword) {
+            setLoading(true)
             await api.post("/updatepassword", { id: details?.id, password: password.password })
                 .then((response) => {
                     console.log(response)
+                    showLoader(800)
                     navigate(-1)
                 })
                 .catch((error) => {

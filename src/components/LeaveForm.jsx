@@ -15,7 +15,7 @@ import { AuthContext } from '../context/AuthContext';
 
 
 const LeaveForm = () => {
-    const { userData } = useContext(AuthContext);
+    const { userData, setLoading } = useContext(AuthContext);
     const [leaveDetails, setLeaveDetails] = useState({
         id: userData?.id,
         name: userData?.name,
@@ -36,10 +36,12 @@ const LeaveForm = () => {
 
     useEffect(()=>{
         const getLeaveCount = async() => {
+            setLoading(true)
             await api.post("/currentleavecount", {id: leaveDetails.id})
                 .then((response) => {
                     console.log(response)
                     setLeaveDetails({...leaveDetails, leavetaken: response.data.count})
+                    setLoading(false)
                 })
                 .catch((error) => {
                     console.log("🚀 ~ applyLeave ~ error:", error)
@@ -56,10 +58,12 @@ const LeaveForm = () => {
 
     const applyLeave = async (e) => {
         e.preventDefault();
+        setLoading(true)
         console.log(leaveDetails)
         await api.post("/leaveform", leaveDetails)
             .then((respose) => {
                 console.log("🚀 ~ .then ~ respose:", respose)
+                setLoading(false)
                 navigate(-1);
             })
             .catch((error) => {

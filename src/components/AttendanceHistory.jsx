@@ -7,12 +7,13 @@ import { IoIosArrowUp } from "react-icons/io";
 
 const AttendanceHistory = () => {
     const [allAttendance, setAllAttendance] = useState([]);
-    const { userData } = useContext(AuthContext);
+    const { userData, showLoader, setLoading } = useContext(AuthContext);
     const [openDropdowns, setOpenDropdowns] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true)
                 const now = new Date();
                 const day = String(now.getDate()).padStart(2, '0');
                 const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -23,6 +24,7 @@ const AttendanceHistory = () => {
                 const response = await api.post("/getAttendanceHistory", { id: userData?.id });
                 console.log("🚀 ~ .then ~ All Day Attendance:", response);
                 setAllAttendance(response.data.reverse())
+                showLoader(500)
             } catch (error) {
                 console.log("🚀 ~ EntryBox ~ error:", error);
             }
