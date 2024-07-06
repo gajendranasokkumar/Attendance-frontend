@@ -33,7 +33,7 @@ const EmployeeList = () => {
 
     const filteredEmployees = employees.filter(employee =>
         Object.values(employee).some(value =>
-            value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+            value?.toString().toLowerCase().includes(searchTerm.toLowerCase())
         )
     );
 

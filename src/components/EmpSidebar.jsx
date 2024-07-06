@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import ExpandBox from './ExpandBox'
-import { MdCoPresent } from "react-icons/md";
+import { MdCoPresent, MdManageHistory } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
@@ -13,6 +13,8 @@ import { AuthContext } from '../context/AuthContext';
 import { VscGitPullRequestNewChanges } from "react-icons/vsc";
 import { IoPeopleCircleOutline } from 'react-icons/io5';
 import { FaPeopleGroup } from 'react-icons/fa6';
+import { MdManageAccounts } from "react-icons/md";
+
 
 
 
@@ -20,9 +22,15 @@ const EmpSidebar = () => {
     const { userData, isManager } = useContext(AuthContext);
 
     const dashboardOptions = [{ icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard', link: '/employee' }];
-    const employeeOptions = [{icon: <IoPeopleCircleOutline />, title: 'Employees List', link: 'employeelist'}]
+    const employeeOptions = [{icon: <IoPeopleCircleOutline />, title: 'Team List', link: 'employeelist'}]
     const attendanceOptions = [{ icon: <TbListDetails />, title: 'Today\'s Attendance', link: 'attendanceList' }, { icon: <MdHistory />, title: 'Attendance History', link: 'attendanceHistory' }, {icon: <VscGitPullRequestNewChanges />, title: 'Request Attendance', link: 'requestattendance'}];
     const leaveOptions = [{ icon: <FiPlus />, title: 'New Leave', link: 'leaveForm' }, { icon: <AiFillThunderbolt />, title: 'Current Leave Status', link: "leaveStatus" }, { icon: <MdHistory />, title: "Past Leave", link: 'leaveList' }];
+
+    if(isManager)
+    {
+        attendanceOptions.push({icon: <MdManageHistory />, title: 'Team\'s Attendance', link: 'teamattendance'});
+        leaveOptions.push({ icon: <MdManageAccounts />, title: 'Manage Team\'s Leave', link: 'teamleave' })
+    }
 
     return (
         <>
@@ -35,7 +43,7 @@ const EmpSidebar = () => {
                     <ExpandBox key={1} number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
                     {
                         isManager ? 
-                        <ExpandBox key={2} number={2} name={"Employees"} icon={<FaPeopleGroup />} options={employeeOptions} />
+                        <ExpandBox key={2} number={2} name={"Team"} icon={<FaPeopleGroup />} options={employeeOptions} />
                         :
                         <></>
                     }

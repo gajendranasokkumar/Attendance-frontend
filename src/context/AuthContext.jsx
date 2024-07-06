@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }) => {
     const [isManager, setIsManager] = useState(false);
 
     useEffect(()=>{
-        if(userData?.ismanager)
+        if(userData?.ismanager && userData?.ismanager.toLowerCase() == "yes")
             setIsManager(true)
     }, [userData])
 

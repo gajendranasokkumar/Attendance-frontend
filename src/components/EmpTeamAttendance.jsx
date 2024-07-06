@@ -10,7 +10,7 @@ import { parseISO } from 'date-fns';
 import { AuthContext } from '../context/AuthContext';
 
 
-const ManageAttendanceRequest = () => {
+const EmpTeamAttendance = () => {
     const [requestList, setRequestList] = useState([]);
     const [searchList, setSearchList] = useState([]);
     const [searchQuery, setSearchQuery] = useState({
@@ -23,7 +23,7 @@ const ManageAttendanceRequest = () => {
 
     const navigate = useNavigate();
 
-    const { setLoading, showLoader } = useContext(AuthContext)
+    const { userData, setLoading, showLoader } = useContext(AuthContext)
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -33,7 +33,10 @@ const ManageAttendanceRequest = () => {
             setLoading(true)
             await api.get("/getrequestforms")
                 .then((response) => {
-                    let result = response.data.filter(one => one.status.toUpperCase() === "PENDING");
+                    let result = response.data.filter(one => {
+                        if(one.status.toUpperCase() === "PENDING" && userData?.employeelist.includes(one.id))
+                            return one;
+                    });
                     setRequestList(result);
                     setSearchList(result);
                     setLoading(false)
@@ -63,11 +66,6 @@ const ManageAttendanceRequest = () => {
     const showFilteredResult = () => {
         setSearchList(
             requestList.filter((one) => {
-                // const today = new Date(searchQuery.date).toISOString().split('T')[0];
-                // const reversedDate = today.split('-').reverse().join('-');
-                // const searchDate = reversedDate;
-                // const formDate = one.date;
-
                 let formDate;
                 let searchDate;
                 if(searchQuery.date)
@@ -77,7 +75,7 @@ const ManageAttendanceRequest = () => {
                     searchDate = reversedDate;
                     formDate = one.date;
                 }
-                console.log(formDate, searchDate);
+                // console.log(formDate, searchDate);
 
                 const matchesDate = !searchDate || formDate == searchDate;
 
@@ -187,4 +185,4 @@ const ManageAttendanceRequest = () => {
     );
 };
 
-export default ManageAttendanceRequest;
+export default EmpTeamAttendance;
