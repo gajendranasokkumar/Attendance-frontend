@@ -53,28 +53,43 @@ const EntryBox = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setLoading(true)
+                setLoading(true);
                 const now = new Date();
                 const day = String(now.getDate()).padStart(2, '0');
                 const month = String(now.getMonth() + 1).padStart(2, '0');
                 const year = now.getFullYear();
                 const formattedDate = `${day}-${month}-${year}`;
-
-                console.log("🚀 ~ fetchData ~ formattedDate:", formattedDate)
+            
+                console.log("🚀 ~ fetchData ~ formattedDate:", formattedDate);
                 const response = await api.post("/getCheckInDetails", { id: userData?.id, date: formattedDate });
-                setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: response.data.ischeckedin, ischeckedout: response.data.ischeckedout })
-                setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime[response.data.checkintime.length - 1], checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1], totalWorkedTime: response.data.totalWorkedTime })
-                setLoading(false)
-                console.log("🚀 ~ .then ~ First Fetch:", response);
-                if (userData?.punchtype != 'web') {
-                    setIsCheckedInOrOut({
-                        ischeckedin: true,
-                        ischeckedout: true
-                    })
+            
+                if (response && response.data) {
+                    setIsCheckedInOrOut({ 
+                        ...isCheckedInOrOut, 
+                        ischeckedin: response.data.ischeckedin, 
+                        ischeckedout: response.data.ischeckedout 
+                    });
+                    setCheckInOutTime({ 
+                        ...checkInOutTime, 
+                        checkintime: response.data.checkintime[response.data.checkintime.length - 1], 
+                        checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1], 
+                        totalWorkedTime: response.data.totalWorkedTime 
+                    });
+                    console.log("🚀 ~ .then ~ First Fetch:", response);
+                    if (userData?.punchtype != 'web' && response.data) {
+                        setIsCheckedInOrOut({
+                            ischeckedin: true,
+                            ischeckedout: true
+                        });
+                    }
                 }
+            
+                setLoading(false);
             } catch (error) {
                 console.log("🚀 ~ EntryBox ~ error:", error);
+                setLoading(false); // Ensure loading is stopped in case of an error
             }
+            
         }
 
         fetchData();

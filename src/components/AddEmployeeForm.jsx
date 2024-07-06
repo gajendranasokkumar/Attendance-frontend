@@ -41,8 +41,11 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
         geolocation: "",
         leavetaken: "",
         leavepermitted: "",
-        hoursofwork: ""
+        hoursofwork: "",
+        ismanager: ""
     });
+
+    const [managerList, setManagerList] = useState([]);
 
     const navigate = useNavigate();
 
@@ -53,6 +56,22 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
             setEmployee(receivedEmployee)
         }
     }, [receivedEmployee]);
+
+    useEffect(() => {
+        const fetManagerList = async () => {
+            await api.get("/fetchmanager")
+                .then((response) => {
+                    const managerArray = response.data.map(one => one.id);  
+                    // console.log("Manager List", managerArray);
+                    setManagerList(["nil", ...managerArray])
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+
+        fetManagerList();
+    }, [])
 
     const goBack = () => {
         navigate(-1);
@@ -83,10 +102,10 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
 
     return (
         <>
-            <div className='w-[100vw] h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 grid place-content-center top-0 absolute z-50 animate-moveUp'>
+            <div className='w-[100vw] h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 grid place-content-center top-0 absolute left-0  animate-moveUp'>
                 <div className='w-[60vw] h-[90vh] bg-white rounded-2xl border-2 border-grey shadow-allBox overflow-y-auto'>
                     <div className='flex justify-between bg-shadeWhite w-[100%] h-[80px] items-center top-0 z-10 relative mb-5'>
-                        <div className='text-[25px]  text-bgGreen font-bold pl-8'>ADD NEW EMPLOYEE</div>
+                        <div className='text-[25px]  text-bgGreen font-bold pl-8'>{mode == 'create' ? "ADD NEW EMPLOYEE" : "UPDATE EMPLOYEE"}</div>
                         <button className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer' onClick={goBack}><RxCross2 /></button>
                     </div>
                     <form onSubmit={handleSubmit}>
@@ -118,19 +137,21 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
 
                         <p className='pl-6 text-bgGreen font-bold text-xl text-nowrap'>Rules Details</p>
                         <hr className='mx-6 border-dashed border-2 border-bgGreen' />
-                        <div className='flex w-[100%] mt-5'>
+                        <div className='flex w-[100%] mt-5 items-start'>
                             <div className='p-5 flex flex-col justify-center z-0 w-[50%]'>
                                 <div className='w-[100%] mx-auto'>
                                     <Input type={"text"} placeholder={"HR Policy"} name={'hrpolicy'} state={employee} setState={setEmployee} />
                                     <Input type={"text"} placeholder={"Punch ID"} name={'punchid'} state={employee} setState={setEmployee} />
                                     <Input type={"number"} placeholder={"Allowed Leave Count"} name={'leavepermitted'} state={employee} setState={setEmployee} />
-                                    <Input type={"number"} placeholder={"Working Hours"} name={'hoursofwork'} state={employee} setState={setEmployee} />
+                                    <div className='flex gap-2 w-[50%]'>
+                                        <Date placeholder={"Date Of Joining"} name={'dateofjoining'} state={employee} setState={setEmployee} />
+                                    </div>
                                 </div>
                             </div>
                             <div className='p-5 flex flex-col z-0 w-[50%]'>
-                                <div className='flex gap-2 w-[50%]'>
-                                    <Date placeholder={"Date Of Joining"} name={'dateofjoining'} state={employee} setState={setEmployee} />
-                                </div>
+                                <Input type={"number"} placeholder={"Working Hours"} name={'hoursofwork'} state={employee} setState={setEmployee} />
+                                <Input type={"time"} placeholder={"Entry Time"} name={'entrtime'} state={employee} setState={setEmployee} />
+                                <Radio option1={"Yes"} option2={"No"} placeholder={"is Manager ?"} name={'ismanager'} state={employee} setState={setEmployee} />
                             </div>
                         </div>
 
@@ -150,7 +171,8 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
                             </div>
                             <div className='p-5 flex flex-col  z-0 w-[50%]'>
                                 <div className='w-[100%] mx-auto'>
-                                    <Input type={"text"} placeholder={"Reporting Person"} name={'reportingperson'} state={employee} setState={setEmployee} />
+                                    <Select options={managerList} placeholder={"Reporting Person"} name={'reportingperson'} state={employee} setState={setEmployee} />
+                                    {/* <Input type={"text"} placeholder={"Reporting Person"} name={'reportingperson'} state={employee} setState={setEmployee} /> */}
                                     <Input type={"text"} placeholder={"Department"} name={'department'} state={employee} setState={setEmployee} />
                                     <Input type={"text"} placeholder={"Role"} name={'role'} state={employee} setState={setEmployee} />
                                     <Input type={"number"} placeholder={"Multiple Branch Attendance"} name={'multibranchattendance'} state={employee} setState={setEmployee} />

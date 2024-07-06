@@ -1,13 +1,49 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Employee Attendance</title>
-  </head>
-  <body>
-    <div id="root" class="overflow-x-hidden"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Attendance</title>
+</head>
+
+<body>
+  <div id="root" class="overflow-x-hidden"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    (function () {
+      let devtools = false;
+      const threshold = 160;
+
+      const resizeEvent = () => {
+        if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+          if (!devtools) {
+            devtools = true;
+            // Actions when developer tools are detected
+            alert('Developer tools are open. Please close them.');
+          }
+        } else {
+          devtools = false;
+        }
+      };
+
+      window.addEventListener('resize', resizeEvent);
+    })();
+  </script>
+  <script>
+    document.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+    });
+  </script>
+  <script>
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I') || (event.ctrlKey && event.shiftKey && event.key === 'J')) {
+        event.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+
 </html>

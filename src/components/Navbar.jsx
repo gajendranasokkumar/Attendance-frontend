@@ -29,7 +29,7 @@ const Navbar = ({ toggleSidebar, isSidebarVisible = false }) => {
                     {/* <div className='bg-grey xs:h-[30px] xs:w-[30px] lg:h-[35px] lg:w-[35px] rounded-[100%] ml-6 grid place-content-center peer cursor-pointer'>G</div>
                     <div className='invisible peer-hover:visible hover:visible'><S  mallProfileBox /></div> */}
                     <div className='group'>
-                        <div className='bg-grey xs:h-[30px] xs:w-[30px] lg:h-[35px] lg:w-[35px] rounded-[100%] ml-6 grid place-content-center cursor-pointer step-1'>G</div>
+                        <div className='bg-grey xs:h-[30px] xs:w-[30px] lg:h-[35px] lg:w-[35px] rounded-[100%] ml-6 grid place-content-center cursor-pointer step-1'>{userData?.name.charAt(0).toUpperCase()}</div>
                         <div className='invisible group-hover:visible hover:visible '><SmallProfileBox /></div>
                     </div>
 

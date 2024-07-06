@@ -5,12 +5,12 @@ import AddEmployeeForm from './AddEmployeeForm';
 import SearchBar from './SearchBar';
 import { CiSearch } from 'react-icons/ci';
 
-const EmployeeList = () => {
+const ManagerEmpLists = () => {
     const [employees, setEmployees] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [editingEmployee, setEditingEmployee] = useState(null);
 
-    const { setLoading, showLoader } = useContext(AuthContext)
+    const { userData, setLoading, showLoader } = useContext(AuthContext)
 
     useEffect(() => {
         fetchEmployees();
@@ -19,7 +19,7 @@ const EmployeeList = () => {
     const fetchEmployees = async () => {
         try {
             setLoading(true)
-            const response = await api.get('/getAllEmployees');
+            const response = await api.post('/getEmpListForManager', userData?.employeelist);
             setEmployees(response.data);
             showLoader(1000)
         } catch (error) {
@@ -59,7 +59,6 @@ const EmployeeList = () => {
         e.preventDefault()
         try {
             setLoading(true)
-            console.log("comming")
             await api.post('/updateEmployee', updatedEmployee);
             setEditingEmployee(null);
             showLoader(500)
@@ -137,4 +136,4 @@ const EmployeeList = () => {
     );
 };
 
-export default EmployeeList;
+export default ManagerEmpLists;

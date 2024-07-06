@@ -113,6 +113,7 @@ import NewComp from "./components/NewComp.jsx";
 import EmployeeList from "./components/EmployeeList.jsx";
 import NotFoundPage from './components/NotFoundPage.jsx';
 import Loader from './components/Loader.jsx';
+import ManagerEmpLists from './components/ManagerEmpLists.jsx';
 
 const Tour = () => {
   const [runTour, setRunTour] = useState(false);
@@ -212,6 +213,7 @@ function App() {
               <Route path="requestattendance" element={<RequestAttendanceForm />} />
               <Route path="requestprofileedit" element={<RequestProfileEdit />} />
               <Route path="forgotpassword" element={<ForgotPasswordPage />} />
+              <Route path="employeelist" element={<ManagerEmpLists />} />
             </Route>
             {/* <Route path="/admin" element={<AdminHome />}> */}
             <Route path="/admin" element={<PrivateRoute role={'Admin'}><AdminHome /></PrivateRoute>}>

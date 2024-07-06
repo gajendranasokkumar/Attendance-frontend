@@ -81,6 +81,13 @@ export const AuthProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(false);
 
+    const [isManager, setIsManager] = useState(false);
+
+    useEffect(()=>{
+        if(userData?.ismanager)
+            setIsManager(true)
+    }, [userData])
+
     const userDataRef = useRef(null);
 
     useEffect(() => {
@@ -124,7 +131,7 @@ export const AuthProvider = ({ children }) => {
     // }
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth, userData, setUserData, userDataRef, logout, loading, showLoader, setLoading }}>
+        <AuthContext.Provider value={{ auth, setAuth, userData, setUserData, userDataRef, logout, loading, showLoader, setLoading, isManager }}>
             {children}
             {loading && <Loader />}
         </AuthContext.Provider>
