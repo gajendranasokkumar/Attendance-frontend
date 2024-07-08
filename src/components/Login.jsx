@@ -185,7 +185,7 @@ const Login = () => {
                     <img src={image} className='h-[70%] w-[70%]' alt="Login" />
                 </div>
                 <div className='h-full w-full md:w-1/2 bg-loginBack grid place-items-center relative py-10 md:py-0'>
-                    <h2 className='md:absolute md:rotate-[-90deg] md:left-[-110px] text-[clamp(2rem,6vw,8rem)] px-4 md:px-16 py-5 text-white shadow-[2px_2px_10px_-1px_rgba(0,0,0,0.33)] font-[600] rounded mb-0 md:mb-0'>LOGIN</h2>
+                    <h2 className='md:absolute bottom-[-100px] md:bottom-auto md:rotate-[-90deg] md:left-[-110px] text-[clamp(2rem,6vw,8rem)] px-4 md:px-16 md:py-5 text-white shadow-[2px_2px_10px_-1px_rgba(0,0,0,0.33)] font-[600] rounded xs:mb-[-25%] xs:z-10 xs:py-4 md:mb-0'>LOGIN</h2>
                     <div className='bg-white w-[90%] md:w-[60%] h-auto md:h-[70%] rounded flex flex-col justify-center p-6 md:p-0'>
                         <form onSubmit={handleSubmit} className='text-[clamp(0.875rem,1.5vw,1rem)]'>
                             <div className='flex justify-center mb-6 md:mb-10'>
