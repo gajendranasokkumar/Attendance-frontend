@@ -15,6 +15,7 @@ const Input = ({ type, placeholder, name, state = {}, setState = () => {}, reado
                 className='input px-3 h-[50px] w-[100%] focus:outline-2 focus:outline-bgGreen text-black group font-semibold'
                 type={type}
                 name={name}
+                autoFocus
                 value={state[name] || ''}
                 readOnly={readonly}
                 onChange={(e) => { setState({ ...state, [name]: e.target.value }) }}
