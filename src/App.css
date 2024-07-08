@@ -25,6 +25,18 @@ body {
   background: #32845f;
 }
 
+@media (max-width: 768px) {
+  /* For Webkit browsers */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Firefox */
+  body {
+    scrollbar-width: none; /* For the entire page */
+  }
+}
+
 .box {
   background-color: red;
 }
