@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = ({ type, placeholder, name, state = {}, setState = () => {}, readonly = false }) => {
+const Input = ({ type, placeholder, name, state = {}, setState = () => { }, readonly = false }) => {
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
