@@ -6,7 +6,7 @@ const PersonDetails = () => {
 
 
     return (
-        <div className='personaldetails xs:w-[100%] lg:w-[45%] border-l-4 border-txtLGreen bg-shadeWhite h-fit py-5 rounded shadow-goodShadow flex flex-col justify-center items-center px-5 '>
+        <div className='personaldetails xs:w-[100vw] lg:w-[45%] border-l-4 border-txtLGreen bg-shadeWhite h-fit py-5 rounded shadow-goodShadow flex flex-col justify-center items-center px-5 '>
             <h3 className='text-txtLGreen font-semibold text-2xl mb-3 personaldetails'>Personal Details</h3>
             <div className='parent'>
                 <div className='left'>ID</div>
