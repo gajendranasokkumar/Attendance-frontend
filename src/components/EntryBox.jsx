@@ -291,44 +291,44 @@ const EntryBox = () => {
     }
 
     return (
-        <div className='xs:w-[100%] lg:w-[45%] border-l-4 border-l-txtLBlue bg-shadeWhite h-[50%] rounded shadow-goodShadow flex flex-col justify-center items-center px-5 checkinbox'>
-            <div className='w-[80%] h-[60px] flex rounded-lg'>
-                <div className='w-[50%] h-full rounded-s-lg bg-txtLBlue text-white grid place-content-center text-2xl'>
+        <div className='xs:w-[100vw] mx-0 md:w-[45%] border-l-4 border-l-txtLBlue bg-shadeWhite h-[50%] rounded shadow-goodShadow flex flex-col justify-center items-center px-10 checkinbox'>
+            <div className='xs:w-[90%] md:w-[70%] xs:h-[50px] md:h-[60px] flex rounded-lg'>
+                <div className='w-[50%] h-full rounded-s-lg bg-txtLBlue text-white grid place-content-center text-2xl text-[clamp(1rem,5vw,1.5rem)]'>
                     <p>{dateTime.date}</p>
                 </div>
-                <div className='w-[50%] h-full rounded-e-lg bg-bgLBlue border-2 border-txtLBlue font-bold text-txtLBlue grid place-content-center text-2xl'>
+                <div className='w-[50%] h-full rounded-e-lg bg-bgLBlue border-2 border-txtLBlue font-bold text-txtLBlue grid place-content-center text-2xl text-[clamp(1rem,5vw,1.5rem)]'>
                     {dateTime.day}
                 </div>
             </div>
-            <div className='font-mono text-4xl my-5 text-txtLBlue font-bold' id='clock'>
+            <div className='font-mono text-4xl my-5 text-txtLBlue font-bold text-[clamp(2rem,5vw,2.5rem)]' id='clock'>
                 {dateTime.time}
             </div>
-            <div className='flex gap-5'>
+            <div className='flex gap-5 mb-2'>
                 <button
                     type='button'
-                    className={`bg-txtLBlue w-[150px] h-[50px] text-white rounded-md text-xl border-2 border-white ${isCheckedInOrOut.ischeckedin ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`bg-txtLBlue xs:w-[120px] md:w-[150px] xs:h-[45px] md:h-[50px] text-white rounded-md text-xl border-2 border-white ${isCheckedInOrOut.ischeckedin ? 'opacity-50 cursor-not-allowed' : ''}  text-[clamp(0.5rem,5vw,1.5rem)]`}
                     onClick={enterCheckIn}
                     disabled={isCheckedInOrOut.ischeckedin}
                 >
                     Check IN
                 </button>
-                <button type='button' className={`bg-txtLBlue w-[150px] h-[50px] text-white rounded-md text-xl border-2 border-white ${isCheckedInOrOut.ischeckedout ? 'opacity-50 cursor-not-allowed' : ''}`}
+                <button type='button' className={`bg-txtLBlue xs:w-[120px] md:w-[150px] xs:h-[45px] md:h-[50px] text-white rounded-md text-xl border-2 border-white ${isCheckedInOrOut.ischeckedout ? 'opacity-50 cursor-not-allowed' : ''} text-[clamp(0.5rem,5vw,1.5rem)]`}
                     onClick={enterCheckout}
                     disabled={isCheckedInOrOut.ischeckedout}
                 >
                     Check OUT
                 </button>
             </div>
-            <div className='flex gap-8 mt-5 font-semibold text-grey'>
-                <div>
+            <div className='flex gap-8 mt-5 font-semibold text-grey xs:flex-col md:flex-row w-full md:justify-evenly'>
+                <div className='xs:flex xs:justify-between md:flex-col m-0 xs:leading-[2px] md:leading-relaxed'>
                     <p>Check IN Time</p>
                     <p>{checkInOutTime.checkintime || "00 : 00 : 00"}</p>
                 </div>
-                <div>
+                <div className='xs:flex xs:justify-between md:flex-col m-0 xs:leading-[2px] md:leading-relaxed'>
                     <p>Worked Time</p>
                     <p>{checkInOutTime.totalWorkedTime || "00 : 00 : 00"}</p>
                 </div>
-                <div>
+                <div className='xs:flex xs:justify-between md:flex-col m-0 xs:leading-[2px] md:leading-relaxed'>
                     <p>Check OUT Time</p>
                     <p>{checkInOutTime.checkouttime || "00 : 00 : 00"}</p>
                 </div>
