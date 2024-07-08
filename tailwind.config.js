@@ -18,7 +18,7 @@ export default {
         'spin-slow': 'spin 8s linear infinite',
       },
       screens: {
-        'xs': '400px',  // Extra small devices
+        'xs': '320px',  // Extra small devices
         'sm': '640px',  // Small devices
         'md': '768px',  // Medium devices
         'lg': '1024px', // Large devices
