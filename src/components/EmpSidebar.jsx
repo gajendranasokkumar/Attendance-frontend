@@ -34,10 +34,10 @@ const EmpSidebar = () => {
 
     return (
         <>
-            <div className=' h-[92vh] xs:min-w-[100%] bg-shadeWhite lg:pt-[30px] z-[400]'>
-                <div className='h-[50px] p-2 text-lg border-l-2 border-l-bgGreen ml-2 flex justify-center flex-col'>
-                    <p className='font-semibold text-inputBorder'>Emp ID: <span className='text-bgGreen'>{userData?.id}</span></p>
-                    <p className='font-semibold text-inputBorder'>Name: <span className='text-bgGreen text-sm'>{userData?.name}</span></p>
+            <div className=' h-[92vh] xs:min-w-[100%] bg-shadeWhite lg:pt-[30px] z-[999]'>
+                <div className='h-[50px] xs:py-10 md:py-0 p-2 text-lg border-l-2 border-l-bgGreen ml-2 flex justify-center flex-col'>
+                    <p className='font-semibold text-inputBorder text-[clamp(1rem,4vw,1.2rem)]'>Emp ID: <span className='text-bgGreen'>{userData?.id}</span></p>
+                    <p className='font-semibold text-inputBorder text-[clamp(1rem,4vw,1.2rem)]'>Name: <span className='text-bgGreen text-sm'>{userData?.name}</span></p>
                 </div>
                 <div className='h-[88%] overflow-y-auto  overflow-x-hidden lg:mt-5 '>
                     <ExpandBox key={1} number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
