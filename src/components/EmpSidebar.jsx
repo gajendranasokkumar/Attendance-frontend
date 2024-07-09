@@ -34,7 +34,7 @@ const EmpSidebar = () => {
 
     return (
         <>
-            <div className=' h-[92vh] xs:min-w-[100%] bg-shadeWhite lg:pt-[30px] z-[999]'>
+            <div className=' h-[92vh] xs:min-w-[100%] bg-shadeWhite lg:pt-[30px] z-[999] xs:shadow-[11px_0px_13px_-10px_rgba(0,0,0,0.75)] md:shadow-[none]'>
                 <div className='h-[50px] xs:py-10 md:py-0 p-2 text-lg border-l-2 border-l-bgGreen ml-2 flex justify-center flex-col'>
                     <p className='font-semibold text-inputBorder text-[clamp(1rem,4vw,1.2rem)]'>Emp ID: <span className='text-bgGreen'>{userData?.id}</span></p>
                     <p className='font-semibold text-inputBorder text-[clamp(1rem,4vw,1.2rem)]'>Name: <span className='text-bgGreen text-sm'>{userData?.name}</span></p>
