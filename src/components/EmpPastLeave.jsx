@@ -85,17 +85,15 @@ const EmpPastLeave = () => {
         <>
             <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] md:px-5 overflow-y-hidden pb-10'>
                 <div className='md:h-[10%] w-[100%] mt-8 border-l-4 border-l-bgGreen flex'>
-                    <div className='md:w-[80%] px-5 flex items-center gap-3 h-full flex-wrap'>
-                        <div className='flex gap-3'>
-                            <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
-                            <SmallDate placeholder={"To Date"} name={'todate'} state={searchQuery} setState={setSearchQuery} />
+                <div className='w-full md:w-[80%] px-2 sm:px-5 flex flex-col sm:flex-row items-center gap-3'>
+                        <div className='flex xs:flex-row w-full gap-3'>
+                            <SmallDate placeholder="From Date" name='fromdate' state={searchQuery} setState={setSearchQuery} />
+                            <SmallDate placeholder="To Date" name='todate' state={searchQuery} setState={setSearchQuery} />
                         </div>
-                        <div className='xs:w-full md:w-auto'>
-                            <SmallInput type={"search"} placeholder={"Search for anyone"} name={'content'} state={searchQuery} setState={setSearchQuery} />
-                        </div>
-                        <div className='flex gap-5'>
-                            <button type='button' className=' px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue' onClick={showFilteredResult}>Search</button>
-                            <button type='button' className='bg-shadeWhite px-1 py-1 rounded-md font-bold text-xl' onClick={clearFilter}><VscDebugRestart /></button>
+                        <SmallInput type="text" placeholder="Search for anyone" name='content' state={searchQuery} setState={setSearchQuery} />
+                        <div className='flex gap-2 xs:justify-end md:justify-start w-full xs:pr-5'>
+                            <button type='button' className='xs:order-2 md:order-1 px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue' onClick={showFilteredResult}>Search</button>
+                            <button type='button' className='xs:order-1 md:order-2 bg-shadeWhite px-1 py-1 rounded-md font-bold text-xl' onClick={clearFilter}><VscDebugRestart /></button>
                         </div>
                     </div>
                     {/* <div className='w-[20%] grid place-content-center gap-3 grid-flow-col'>
