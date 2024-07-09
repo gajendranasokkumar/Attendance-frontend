@@ -34,7 +34,7 @@ const AttendanceList = () => {
         <>
             <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
                 <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans text-[clamp(1.2rem,4vw,2.5rem)]'>Today's Attendance  ( {todayAttendance?.date} )</h1>
-                <div className='h-[85%] w-[100%] mt-5 overflow-x-auto flex justify-evenly flex-wrap gap-5'>
+                <div className='h-[85%] w-[100%] mt-5 overflow-x-auto flex justify-evenly flex-wrap '>
                     <div className='xs:w-[100%] lg:w-[45%] border-t-4 border-txtLBlue bg-shadeWhite h-fit py-5 rounded shadow-goodShadow flex flex-col justify-center items-center px-5'>
                         <div className='parent'>
                             <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>ID</div>
@@ -114,11 +114,11 @@ const AttendanceList = () => {
                         </div>
                         <div className='parent'>
                             <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Is Check In</div>
-                            <div className='right font-bold text-black text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedin ? "YES" : "NO"}</div>
+                            <div className='right font-semibold text-black text-[clamp(0.1rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedin ? "YES" : "NO"}</div>
                         </div>
                         <div className='parent '>
                             <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Is Check Out</div>
-                            <div className='right font-bold text-black text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedout ? "YES" : "NO"}</div>
+                            <div className='right font-semibold text-black text-[clamp(0.1rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedout ? "YES" : "NO"}</div>
                         </div>
                         {/* <div className='parent'>
                             <div className='left'>Check In Time</div>
