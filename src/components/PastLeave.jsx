@@ -77,7 +77,7 @@ const PastLeave = () => {
 
     return (
         <>
-            <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-hidden pb-10'>
+            <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-hidden pb-10'>
                 <div className='h-[10%] w-[100%] mt-8 border-l-4 border-l-bgGreen flex'>
                     <div className='w-[80%] px-5 flex items-center gap-3 h-full'>
                     <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />

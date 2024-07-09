@@ -83,14 +83,20 @@ const EmpPastLeave = () => {
 
     return (
         <>
-            <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-hidden pb-10'>
-                <div className='h-[10%] w-[100%] mt-8 border-l-4 border-l-bgGreen flex'>
-                    <div className='w-[80%] px-5 flex items-center gap-3 h-full'>
-                        <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
-                        <SmallDate placeholder={"To Date"} name={'todate'} state={searchQuery} setState={setSearchQuery} />
-                        <SmallInput type={"text"} placeholder={"Search for anyone"} name={'content'} state={searchQuery} setState={setSearchQuery} />
-                        <button type='button' className='px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue' onClick={showFilteredResult}>Search</button>
-                        <button type='button' className='bg-shadeWhite px-1 py-1 rounded-md font-bold text-xl' onClick={clearFilter}><VscDebugRestart /></button>
+            <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] md:px-5 overflow-y-hidden pb-10'>
+                <div className='md:h-[10%] w-[100%] mt-8 border-l-4 border-l-bgGreen flex'>
+                    <div className='md:w-[80%] px-5 flex items-center gap-3 h-full flex-wrap'>
+                        <div className='flex gap-3'>
+                            <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
+                            <SmallDate placeholder={"To Date"} name={'todate'} state={searchQuery} setState={setSearchQuery} />
+                        </div>
+                        <div className='xs:w-full md:w-auto'>
+                            <SmallInput type={"search"} placeholder={"Search for anyone"} name={'content'} state={searchQuery} setState={setSearchQuery} />
+                        </div>
+                        <div className='flex gap-5'>
+                            <button type='button' className=' px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue' onClick={showFilteredResult}>Search</button>
+                            <button type='button' className='bg-shadeWhite px-1 py-1 rounded-md font-bold text-xl' onClick={clearFilter}><VscDebugRestart /></button>
+                        </div>
                     </div>
                     {/* <div className='w-[20%] grid place-content-center gap-3 grid-flow-col'>
                         <button type='button' className='px-3 py-1 bg-bgLGreen rounded-md font-bold text-txtLGreen border-2 border-txtLGreen'>Approve</button>
@@ -116,7 +122,7 @@ const EmpPastLeave = () => {
                         </thead>
                         <tbody>
                             {
-                                searchList.filter((one)=>one.id == userData?.id).map((each) => (
+                                searchList.filter((one) => one.id == userData?.id).map((each) => (
                                     <tr key={each._id}>
                                         <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{each.name}</td>
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{each.fromdate}</td>
