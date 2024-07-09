@@ -97,7 +97,7 @@ const AttendanceList = () => {
                             <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.multibranchattendance}</div>
                         </div>
                     </div>
-                    <div className='xs:w-[100%] lg:w-[45%] border-t-4 border-txtLBlue bg-shadeWhite h-fit py-5 rounded shadow-goodShadow flex flex-col justify-center items-center px-5'>
+                    <div className='xs:w-[100%] lg:w-[45%] border-t-4 border-txtLBlue bg-shadeWhite h-fit py-5 rounded shadow-goodShadow flex flex-col justify-center items-center px-5 xs:mt-5 md:mt-0'>
                         <div className='parent'>
                             <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Status</div>
                             {/* <div className='right'>: {todayAttendance?.status}</div> */}
