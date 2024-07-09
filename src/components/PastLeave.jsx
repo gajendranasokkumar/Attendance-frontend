@@ -19,7 +19,7 @@ const PastLeave = () => {
 
     const navigate = useNavigate();
 
-    const { setLoading, showLoader } = useContext(AuthContext) 
+    const { setLoading, showLoader } = useContext(AuthContext)
 
 
     useEffect(() => {
@@ -80,8 +80,10 @@ const PastLeave = () => {
             <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-hidden pb-10'>
                 <div className='h-[10%] w-[100%] mt-8 border-l-4 border-l-bgGreen flex'>
                     <div className='w-[80%] px-5 flex items-center gap-3 h-full'>
-                    <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
-                        <SmallDate placeholder={"To Date"} name={'todate'} state={searchQuery} setState={setSearchQuery} />
+                        <div className='flex w-full'>
+                            <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
+                            <SmallDate placeholder={"To Date"} name={'todate'} state={searchQuery} setState={setSearchQuery} />
+                        </div>
                         <SmallInput type={"text"} placeholder={"Search for anyone"} name={'content'} state={searchQuery} setState={setSearchQuery} />
                         <button type='button' className='px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue' onClick={showFilteredResult}>Search</button>
                         <button type='button' className='bg-shadeWhite px-1 py-1 rounded-md font-bold text-xl' onClick={clearFilter}><VscDebugRestart /></button>
