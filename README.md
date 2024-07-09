@@ -130,34 +130,35 @@ To get a local copy up and running, follow these steps.
 ### Installation
 
 <!-- 1. Clone the repo
-   <code>
+   ```bash
    git clone https://github.com/gajendran2908/attendance-app.git
    cd attendance-app
-   </code> -->
+   ``` -->
 
 1. Pull Docker images
     <br />
-   <code>
+   ```bash
    docker pull gajendran2908/attendancefrontend
-   </code>
+   ```
    <br />
-   <code>
+   
+   ```bash
    docker pull gajendran2908/attendancebackend
-   </code>
+   ```
 
 ### Usage
 
 1. Run the React frontend (port 80 on host):
     <br />
-   <code>
+   ```bash
    docker run -d -p 80:80 gajendran2908/attendancefrontend
-   </code>
+   ```
 
 2. Run the Node.js backend (port 3000 on host):
     <br />
-   <code>
+   ```bash
    docker run -d -p 3000:3000 gajendran2908/attendancebackend
-   </code>
+   ```
 
 3. Access the app
    - Frontend: Open your web browser and go to \`http://localhost\` (or your Docker Machine IP if using Docker Toolbox).
