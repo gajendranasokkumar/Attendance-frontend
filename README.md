@@ -36,6 +36,8 @@
 
 ## 📅 Started 01 June 2024
 
+## 🔗 Link for the app ([PRESENT MARKER](https://attendance-frontend-iota.vercel.app/))
+
 ### Week 1
 | Date       | Task                                                             |
 | ---------- | ---------------------------------------------------------------- |
@@ -110,7 +112,7 @@
  - [x] Attendance Tracking
  - [ ] Responsive Design
  - [ ] Final Testing
- - [ ] Deployment
+ - [x] Deployment
 
 
 
