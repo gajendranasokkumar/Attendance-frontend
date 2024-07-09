@@ -114,11 +114,11 @@ const AttendanceList = () => {
                         </div>
                         <div className='parent'>
                             <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Is Check In</div>
-                            <div className='right font-semibold text-black text-[clamp(0.1rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedin ? "YES" : "NO"}</div>
+                            <div className='right font-semibold text-black text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedin ? "YES" : "NO"}</div>
                         </div>
                         <div className='parent '>
                             <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Is Check Out</div>
-                            <div className='right font-semibold text-black text-[clamp(0.1rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedout ? "YES" : "NO"}</div>
+                            <div className='right font-semibold text-black text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedout ? "YES" : "NO"}</div>
                         </div>
                         {/* <div className='parent'>
                             <div className='left'>Check In Time</div>
@@ -130,7 +130,7 @@ const AttendanceList = () => {
                         </div> */}
                         <div className='flex justify-between w-full'>
                             <div className='w-[50%]'>
-                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.2rem,4vw,1.2rem)]'>Check In Time</div>
+                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.1rem,4vw,1.2rem)]'>Check In Time</div>
                                 <div className='border-x-2 border-white'>
                                     {todayAttendance?.checkintime?.map((time, index) => (
                                         <div key={index} className='pl-2 text-sm border-b-2 py-1 font-semibold border-white text-[clamp(0.2rem,4vw,1.2rem)]'> {time}</div>
@@ -138,7 +138,7 @@ const AttendanceList = () => {
                                 </div>
                             </div>
                             <div className='w-[50%]'>
-                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.2rem,4vw,1.2rem)]'>Check Out Time</div>
+                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.1rem,4vw,1.2rem)]'>Check Out Time</div>
                                 <div className='border-x-2 border-white'>
                                     {todayAttendance?.checkouttime?.map((time, index) => (
                                         <div key={index} className='pl-2 text-sm border-b-2 py-1 font-semibold border-white text-[clamp(0.2rem,4vw,1.2rem)]'> {time}</div>
