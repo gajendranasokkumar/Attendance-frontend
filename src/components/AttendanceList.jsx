@@ -130,18 +130,18 @@ const AttendanceList = () => {
                         </div> */}
                         <div className='flex justify-between w-full'>
                             <div className='w-[50%]'>
-                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.1rem,4vw,1.2rem)]'>Check In Time</div>
+                                <div className=' border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.1rem,4vw,1.2rem)]'>Check In Time</div>
                                 <div className='border-x-2 border-white'>
                                     {todayAttendance?.checkintime?.map((time, index) => (
-                                        <div key={index} className='pl-2 text-sm border-b-2 py-1 font-semibold border-white text-[clamp(0.2rem,4vw,1.2rem)]'> {time}</div>
+                                        <div key={index} className='pl-2 border-b-2 py-1 font-semibold border-white text-[clamp(0.1rem,4vw,1.2rem)]'> {time}</div>
                                     ))}
                                 </div>
                             </div>
                             <div className='w-[50%]'>
-                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.1rem,4vw,1.2rem)]'>Check Out Time</div>
+                                <div className=' border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.1rem,4vw,1.2rem)]'>Check Out Time</div>
                                 <div className='border-x-2 border-white'>
                                     {todayAttendance?.checkouttime?.map((time, index) => (
-                                        <div key={index} className='pl-2 text-sm border-b-2 py-1 font-semibold border-white text-[clamp(0.2rem,4vw,1.2rem)]'> {time}</div>
+                                        <div key={index} className='pl-2  border-b-2 py-1 font-semibold border-white text-[clamp(0.1rem,4vw,1.2rem)]'> {time}</div>
                                     ))}
                                 </div>
                             </div>

@@ -72,7 +72,7 @@ const AttendanceHistory = () => {
 
     return (
         <>
-            <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
+            <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
                 <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans'>Attendance History</h1>
                 <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
                     <table className='min-w-full table-auto border-2 border-bgGreen'>
