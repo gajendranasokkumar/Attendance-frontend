@@ -25,7 +25,7 @@ const EmployeeHome = () => {
                 <div className={`lg:inline-block ${isSidebarVisible ? 'absolute' : 'hidden'} xs:w-[60%] lg:w-[18%] z-[999]`}>
                     <EmpSidebar />
                 </div>
-                <div className='w-[100%]'>
+                <div className='w-[100%] '>
                     {/* <EmpContent />
                     <LeaveList /> */}
                     <Outlet />

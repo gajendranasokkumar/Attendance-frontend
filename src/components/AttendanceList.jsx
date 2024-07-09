@@ -32,45 +32,45 @@ const AttendanceList = () => {
     }, [userData])
     return (
         <>
-            <div className='h-[92vh] w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
-                <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans'>Today's Attendance  ( {todayAttendance?.date} )</h1>
-                <div className='h-[85%] w-[100%] mt-5 overflow-x-auto flex justify-evenly'>
+            <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] px-5 overflow-y-auto pb-10'>
+                <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans text-[clamp(1.2rem,4vw,2.5rem)]'>Today's Attendance  ( {todayAttendance?.date} )</h1>
+                <div className='h-[85%] w-[100%] mt-5 overflow-x-auto flex justify-evenly flex-wrap gap-5'>
                     <div className='xs:w-[100%] lg:w-[45%] border-t-4 border-txtLBlue bg-shadeWhite h-fit py-5 rounded shadow-goodShadow flex flex-col justify-center items-center px-5'>
                         <div className='parent'>
-                            <div className='left'>ID</div>
-                            <div className='right'>: {todayAttendance?.id}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>ID</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.id}</div>
                         </div>
                         <div className='parent'>
-                            <div className='left'>Name</div>
-                            <div className='right'>: {todayAttendance?.name}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Name</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.name}</div>
                         </div>
                         <div className='parent'>
-                            <div className='left'>Date</div>
-                            <div className='right'>: {todayAttendance?.date}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Date</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.date}</div>
                         </div>
                         <div className='parent'>
-                            <div className='left'>Punch ID</div>
-                            <div className='right'>: {todayAttendance?.punchid}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Punch ID</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.punchid}</div>
                         </div>
                         <div className='parent'>
-                            <div className='left'>Company</div>
-                            <div className='right'>: {todayAttendance?.company}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Company</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.company}</div>
                         </div>
                         <div className='parent'>
-                            <div className='left'>Branch</div>
-                            <div className='right'>: {todayAttendance?.branch}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Branch</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.branch}</div>
                         </div>
                         {/* <div className='parent'>
-                            <div className='left'>Status</div>
-                            <div className='right'>: {todayAttendance?.status}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Status</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.status}</div>
                         </div> */}
                         <div className='parent'>
-                            <div className='left'>Entry time</div>
-                            <div className='right'>: {userData?.entrytime}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Entry time</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {userData?.entrytime}</div>
                         </div>
                         <div className='parent'>
-                            <div className='left'>Hours of Work</div>
-                            <div className='right'>: {todayAttendance?.hoursofwork}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Hours of Work</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.hoursofwork}</div>
                         </div>
                         {/* <div className='parent'>
                             <div className='left'>Is Check In</div>
@@ -93,15 +93,15 @@ const AttendanceList = () => {
                             <div className='right'>: {todayAttendance?.location}</div>
                         </div> */}
                         <div className='parent'>
-                            <div className='left'>Multi Branch Attendance</div>
-                            <div className='right'>: {todayAttendance?.multibranchattendance}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Multi Branch Attendance</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.multibranchattendance}</div>
                         </div>
                     </div>
                     <div className='xs:w-[100%] lg:w-[45%] border-t-4 border-txtLBlue bg-shadeWhite h-fit py-5 rounded shadow-goodShadow flex flex-col justify-center items-center px-5'>
                         <div className='parent'>
-                            <div className='left'>Status</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Status</div>
                             {/* <div className='right'>: {todayAttendance?.status}</div> */}
-                            <div className={`right font-bold
+                            <div className={`right font-bold text-[clamp(0.2rem,4vw,1.2rem)]
                                             ${todayAttendance?.status?.toUpperCase() === "PENDING" ? "text-txtLYellow" : ""}
                                             ${todayAttendance?.status?.toUpperCase() === "PERMITTED" ? "text-txtLGreen" : ""}
                                             ${todayAttendance?.status?.toUpperCase() === "DENIED" ? "text-txtLRed" : ""}`}>
@@ -109,16 +109,16 @@ const AttendanceList = () => {
                             </div>
                         </div>
                         <div className='parent'>
-                            <div className='left'>Location</div>
-                            <div className='right'>: {todayAttendance?.location}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Location</div>
+                            <div className='right text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.location}</div>
                         </div>
                         <div className='parent'>
-                            <div className='left'>Is Check In</div>
-                            <div className='right font-bold text-black'>: {todayAttendance?.ischeckedin ? "YES" : "NO"}</div>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Is Check In</div>
+                            <div className='right font-bold text-black text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedin ? "YES" : "NO"}</div>
                         </div>
-                        <div className='parent'>
-                            <div className='left'>Is Check Out</div>
-                            <div className='right font-bold text-black'>: {todayAttendance?.ischeckedout ? "YES" : "NO"}</div>
+                        <div className='parent '>
+                            <div className='left text-[clamp(0.2rem,4vw,1.2rem)]'>Is Check Out</div>
+                            <div className='right font-bold text-black text-[clamp(0.2rem,4vw,1.2rem)]'>: {todayAttendance?.ischeckedout ? "YES" : "NO"}</div>
                         </div>
                         {/* <div className='parent'>
                             <div className='left'>Check In Time</div>
@@ -130,18 +130,18 @@ const AttendanceList = () => {
                         </div> */}
                         <div className='flex justify-between w-full'>
                             <div className='w-[50%]'>
-                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue'>Check In Time</div>
+                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.2rem,4vw,1.2rem)]'>Check In Time</div>
                                 <div className='border-x-2 border-white'>
                                     {todayAttendance?.checkintime?.map((time, index) => (
-                                        <div key={index} className='pl-2 text-sm border-b-2 py-1 font-semibold border-white'> {time}</div>
+                                        <div key={index} className='pl-2 text-sm border-b-2 py-1 font-semibold border-white text-[clamp(0.2rem,4vw,1.2rem)]'> {time}</div>
                                     ))}
                                 </div>
                             </div>
                             <div className='w-[50%]'>
-                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue'>Check Out Time</div>
+                                <div className='text-xl border-x-2 border-white text-txtLBlue font-semibold border-b-2 pl-2 bg-bgLBlue text-[clamp(0.2rem,4vw,1.2rem)]'>Check Out Time</div>
                                 <div className='border-x-2 border-white'>
                                     {todayAttendance?.checkouttime?.map((time, index) => (
-                                        <div key={index} className='pl-2 text-sm border-b-2 py-1 font-semibold border-white'> {time}</div>
+                                        <div key={index} className='pl-2 text-sm border-b-2 py-1 font-semibold border-white text-[clamp(0.2rem,4vw,1.2rem)]'> {time}</div>
                                     ))}
                                 </div>
                             </div>
