@@ -104,29 +104,29 @@ const ForgotPasswordPage = () => {
 
     return (
         <>
-            <div className='w-[100vw] left-0 h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 grid place-content-center top-0 absolute z-50'>
-                <div className='w-[60vw] h-[60vh] bg-white rounded-2xl border-2 border-grey shadow-allBox overflow-y-auto'>
-                    <div className='flex justify-between w-[100%] h-[80px] items-center bg-white top-0 z-10 relative'>
-                        <div className='text-[25px] text-bgGreen font-bold pl-8'>Reset Your Password</div>
-                        <div className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer' onClick={goBack}><RxCross2 /></div>
+            <div className='w-[100vw] left-0 h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 flex justify-center items-center top-0 absolute z-[9999]'>
+                <div className='w-full md:w-[60vw] h-[60vh] bg-white rounded-2xl border-2 border-grey shadow-allBox overflow-y-auto'>
+                    <div className='flex justify-between w-full h-[clamp(4rem,5vw,6rem)] items-center bg-white top-0 z-10 relative'>
+                        <div className=' text-bgGreen font-bold pl-8 text-[clamp(1.3rem,4vw,2rem)]'>Reset Your Password</div>
+                        <div className=' bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer text-[clamp(1.5rem,4vw,2rem)]' onClick={goBack}><RxCross2 /></div>
                     </div>
                     <div className='p-5 flex flex-col justify-center z-0'>
                         <form onSubmit={checkuser}>
                             {
                                 (details.code !== 200) ?
-                                    <div className='w-[50%] mx-auto'>
+                                    <div className='xs:w-full md:w-[50%] mx-auto'>
                                         <Input readonly={false} type={"text"} placeholder={"Employee ID"} name={'id'} state={details} setState={setDetails} />
                                     </div> : <></>
                             }
                             {
                                 (details.code === 400) ?
-                                    <div className='w-[50%] mx-auto'>
+                                    <div className='xs:w-full md:w-[50%] mx-auto'>
                                         <p className='text-txtLRed'>*Invalid Employee ID</p>
                                     </div> : <></>
                             }
                             {
                                 (details.code !== 200) ?
-                                    <div className='flex justify-end gap-2 w-[50%] mx-auto'>
+                                    <div className='flex justify-end gap-2 xs:w-full md:w-[50%] mx-auto'>
                                         <SubmitButton />
                                     </div>
                                     : <></>
@@ -134,7 +134,7 @@ const ForgotPasswordPage = () => {
                         </form>
                         {
                             (details.code === 200 && message !== 'OTP verified successfully!') ?
-                                <div className='w-[50%] mx-auto'>
+                                <div className='xs:w-full md:w-[50%] mx-auto'>
                                     <form onSubmit={handleVerify}>
                                         <Input readonly={true} type={"text"} placeholder={"Employee ID"} name={'id'} state={details} setState={setDetails} />
                                         <OTPInput otp={otp} setOtp={setOtp} />
@@ -154,19 +154,19 @@ const ForgotPasswordPage = () => {
                         {
                             (message == "OTP verified successfully!") ?
                                 <form onSubmit={updatePassword}>
-                                    <div className='w-[50%] mx-auto'>
+                                    <div className='xs:w-full md:w-[50%] mx-auto'>
                                         <Input readonly={true} type={"text"} placeholder={"Employee ID"} name={'id'} state={details} setState={setDetails} />
                                         <Input readonly={false} type={"password"} placeholder={"Enter Password"} name={'password'} state={password} setState={setPassword} />
                                         <Input readonly={false} type={"password"} placeholder={"Confirm Password"} name={'confirmpassword'} state={password} setState={setPassword} />
                                     </div>
                                     {
                                         details.passwordcheck ?
-                                            <div className='w-[50%] mt-[-10px] mb-3 mx-auto'>
+                                            <div className='xs:w-full md:w-[50%] mt-[-10px] mb-3 mx-auto'>
                                                 <p className='text-txtLRed'>* Check the password</p>
                                             </div>
                                             : <></>
                                     }
-                                    <div className='flex justify-end gap-2 w-[50%] mx-auto'>
+                                    <div className='flex justify-end gap-2 xs:w-full md:w-[50%] mx-auto'>
                                         <CancelButton onClick={goBack} />
                                         <SubmitButton />
                                     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const OTPInput = ({otp, setOtp}) => {
-//   const [otp, setOtp] = useState(['', '', '', '', '', '']);
+const OTPInput = ({ otp, setOtp }) => {
+  //   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const inputRefs = useRef([]);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const OTPInput = ({otp, setOtp}) => {
     e.preventDefault();
     const pastedData = e.clipboardData.getData('text').slice(0, 6);
     const pastedOtp = pastedData.split('').map(char => isNaN(char) ? '' : char);
-    
+
     setOtp(prevOtp => {
       const newOtp = [...pastedOtp, ...Array(6 - pastedOtp.length).fill('')];
       return newOtp;
@@ -45,21 +45,23 @@ const OTPInput = ({otp, setOtp}) => {
   };
 
   return (
-    <div className="otp-container">
-        <span className='font-semibold text-inputBorder'>Enter the OTP : </span>
-      {otp.map((digit, index) => (
-        <input
-          key={index}
-          type="text"
-          maxLength={1}
-          ref={(input) => (inputRefs.current[index] = input)}
-          value={digit}
-          onChange={(e) => handleChange(e.target, index)}
-          onKeyDown={(e) => handleBackspace(e, index)}
-          onPaste={handlePaste}
-          className="otp-input"
-        />
-      ))}
+    <div className="otp-container flex xs:flex-col md:flex-row">
+      <p className='font-semibold text-inputBorder xs:mb-2 md:mb-0'>Enter the OTP : </p>
+      <div>
+        {otp.map((digit, index) => (
+          <input
+            key={index}
+            type="text"
+            maxLength={1}
+            ref={(input) => (inputRefs.current[index] = input)}
+            value={digit}
+            onChange={(e) => handleChange(e.target, index)}
+            onKeyDown={(e) => handleBackspace(e, index)}
+            onPaste={handlePaste}
+            className="otp-input"
+          />
+        ))}
+      </div>
     </div>
   );
 }
