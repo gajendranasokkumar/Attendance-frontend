@@ -13,7 +13,7 @@ const Radio = ({option1, option2, placeholder, name, state, setState }) => {
                         {option1}
                         <div className="control_indicator flex justify-center items-center text-white"><TiTick /></div>
                     </label>
-                    <label className="control control-radio ml-8 w-[50%] text-[clamp(0.7rem,4vw,1rem)]">
+                    <label className="control control-radio xs:ml-2 md:ml-8 w-[50%] text-[clamp(0.7rem,4vw,1rem)]">
                         <input type="radio" name={placeholder} value={option2} onChange={() => setState({ ...state, [name]: option2 })}/>
                         {option2}
                         <div className="control_indicator flex justify-center items-center text-white"><TiTick /></div>
