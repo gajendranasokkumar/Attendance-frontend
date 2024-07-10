@@ -131,7 +131,7 @@ const RequestAttendanceForm = () => {
                         <div className='text-[40px] bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer' onClick={goBack}><RxCross2 /></div>
                     </div> */}
                     <div className='flex justify-between w-[100%] h-[clamp(4rem,5vw,6rem)] items-center bg-white top-0 z-10 relative'>
-                        <div className=' text-bgGreen font-bold xs:pl-2 md:pl-8 text-[clamp(1.2rem,4vw,2rem)]'>Request Attendance Form</div>
+                        <div className=' text-bgGreen font-bold xs:pl-5 md:pl-8 text-[clamp(1.2rem,4vw,2rem)]'>Request Attendance Form</div>
                         <div className=' bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer text-[clamp(1.5rem,4vw,2rem)]' onClick={goBack}><RxCross2 /></div>
                     </div>
                     <div className='p-5 flex flex-col justify-center z-0'>
