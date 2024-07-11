@@ -99,7 +99,9 @@
 | 06.07.2024 | 💁‍♂️ Added the Manager to update the status of the repected team employees |
 | 07.07.2024 | 🚫 -------NIL------- (Sunday)                                            |
 | 08.07.2024 | 🔑 Updated the Login UI responsively                                      |
-| 09.07.2024 | 🤖 Update the Entry box, attendance page UI responsively   |
+| 09.07.2024 | 🤖 Updated the Entry box, attendance page UI responsively   |
+| 10.07.2024 | 🎈 Updated the leave page and leave form UI   |
+| 11.07.2024 | 🤳 Updated the navigation bar, personal details, reset password page UI   |
 
 
 
