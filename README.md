@@ -101,7 +101,7 @@
 | 08.07.2024 | 🔑 Updated the Login UI responsively                                      |
 | 09.07.2024 | 🤖 Updated the Entry box, attendance page UI responsively   |
 | 10.07.2024 | 🎈 Updated the leave page and leave form UI   |
-| 11.07.2024 | 🤳 Updated the navigation bar, personal details, reset password page UI   |
+| 11.07.2024 | 🤳 Updated the navigation bar, personal details, reset password page and <br /> admin home page UI   |
 
 
 
