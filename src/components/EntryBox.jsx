@@ -291,7 +291,7 @@ const EntryBox = () => {
     }
 
     return (
-        <div className='xs:w-[100vw] mx-0 md:w-[45%] border-l-4 border-l-txtLBlue bg-shadeWhite h-[50%] rounded shadow-goodShadow flex flex-col justify-center items-center px-10 checkinbox'>
+        <div className='xs:w-[100vw] mx-0 md:w-[45%] border-l-4 border-l-txtLBlue bg-shadeWhite min-h-[50%] py-5 rounded shadow-goodShadow flex flex-col justify-center items-center px-10 checkinbox'>
             <div className='xs:w-[90%] md:w-[70%] xs:h-[50px] md:h-[60px] flex rounded-lg'>
                 <div className='w-[50%] h-full rounded-s-lg bg-txtLBlue text-white grid place-content-center text-2xl text-[clamp(1rem,5vw,1.5rem)]'>
                     <p>{dateTime.date}</p>

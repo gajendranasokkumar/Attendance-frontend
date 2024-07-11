@@ -12,7 +12,7 @@ const Navbar = ({ toggleSidebar, isSidebarVisible = false }) => {
 
     return (
         <>
-            <div className='bg-shadeWhite w-[100%] h-[8vh] flex items-center xs:px-4 lg:px-8 intro'>
+            <div className='bg-shadeWhite w-[100%] min-h-[8vh] flex items-center xs:px-4 lg:px-8 intro'>
                 <button className='border-none focus:outline-none h-full' type='button' onClick={toggleSidebar}>
                     {isSidebarVisible ? (
                         <HiX className='text-bgGreen font-[600] mr-4 text-[25px] xs:block lg:hidden' />
@@ -20,7 +20,7 @@ const Navbar = ({ toggleSidebar, isSidebarVisible = false }) => {
                         <HiMiniBars3 className='text-bgGreen font-[600] mr-4 text-[25px] xs:block lg:hidden' />
                     )}
                 </button>
-                <div className=' xs:font-[500] lg:text-[20px] w-[100%] text-bgGreen lg:font-[700] text-[clamp(1rem,4vw,8rem)]'>PresentMarker</div>
+                <div className=' xs:font-[500] lg:text-[20px] w-[100%] text-bgGreen lg:font-[700] text-[clamp(1rem,4vw,6rem)]'>PresentMarker</div>
                 <div className='xs:w-[25%] lg:w-[20%] h-[100%] flex justify-end items-center'>
                     <div className='flex '>
                         <GoBellFill className='xs:h-[20px] xs:w-[20px] lg:h-[25px] lg:w-[25px] text-deepLightBlack' />
