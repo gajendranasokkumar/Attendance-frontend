@@ -17,9 +17,9 @@ import EntryBox from './EntryBox';
 const Content = () => {
     return (
         <>
-            <div className='h-[92vh] w-[100%] bg-white rounded-tl-[50px] px-5 overflow-y-auto'>
+            <div className='h-[92vh] w-[100%] bg-white md:rounded-tl-[50px] px-5 overflow-y-auto'>
                 <SearchBar placeholder={"Search Employee"} icon={<CiSearch className='h-[20px] w-[20px]' />} />
-                <div className='h-auto w-[100%] px-5 mt-8 flex gap-4 flex-wrap justify-center'>
+                <div className='h-auto w-[100%] px-5 mt-8 flex xs:flex-col md:flex-row gap-4 flex-wrap justify-center'>
                     <MainOptions value={45} boxName={"Strength"} background={"violetSvg"} icon={<HiMiniUserGroup />} />
                     <MainOptions value={30} boxName={"At Work"} background={"orangeSvg"} icon={<BsPersonWorkspace />} />
                     <MainOptions value={2} boxName={"Birthday"} background={"lightBlueSvg"} icon={<PiCakeBold />} />
