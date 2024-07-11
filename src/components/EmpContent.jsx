@@ -12,7 +12,7 @@ const EmpContent = () => {
                 <SearchBar placeholder={"Search Employee"} icon={<CiSearch className='h-[20px] w-[20px]' />} />
                 <div className='h-[100%] w-[100%]  mt-8 flex gap-4 flex-wrap justify-center pb-5 mb-5'>
                     <EntryBox />
-                    <div className='w-full h-full flex gap-5 flex-wrap my-5'>
+                    <div className='w-full h-full flex md:gap-5 flex-wrap my-5'>
                         <PersonDetails />
                     </div>
                 </div>

@@ -104,7 +104,7 @@ const ForgotPasswordPage = () => {
 
     return (
         <>
-            <div className='w-[100vw] left-0 h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 flex justify-center items-center top-0 absolute z-[9999]'>
+            <div className='w-[100vw] left-0 h-[100vh] backdrop-blur-sm bg-white/47 border border-gray-300/30 flex justify-center items-center top-0 absolute z-[9999] px-3'>
                 <div className='w-full md:w-[60vw] h-[60vh] bg-white rounded-2xl border-2 border-grey shadow-allBox overflow-y-auto'>
                     <div className='flex justify-between w-full h-[clamp(4rem,5vw,6rem)] items-center bg-white top-0 z-10 relative'>
                         <div className=' text-bgGreen font-bold pl-8 text-[clamp(1.3rem,4vw,2rem)]'>Reset Your Password</div>
