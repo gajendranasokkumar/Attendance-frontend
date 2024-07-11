@@ -89,7 +89,7 @@
 | 30.06.2024 | ⚒️ Added the calculation and storing of totalworkedtime                                                                                    |
 | 01.07.2024 | ⏱️ Updated the physical checkin and checkout to monitor the totalworkedtime                                                                |
 | 02.07.2024 | 🖊️ Added the feature to edit and delete the Employees <br /> and started working on creating the tour and added 404 page                   |
-| 03.07.2024 | ▲  Deployed in the vercel https://attendance-frontend-iota.vercel.app/ (frontend) and https://attendance-backend-xi.vercel.app/ (backend) |
+| 03.07.2024 | ▲  Deployed in the vercel https://attendance-frontend-iota.vercel.app/ (frontend) <br /> and https://attendance-backend-xi.vercel.app/ (backend) |
 | 04.07.2024 | 👉 Updated the checkin and checkout based on the punch type of the employee                                                                |
 | 05.07.2024 | 🙂‍↔️ Added the Manager selection while creting the employee                                                                                 |
 
