@@ -82,40 +82,72 @@
 
 // export default App
 
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
-import Joyride, { STATUS } from 'react-joyride';
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import Joyride, { STATUS } from 'react-joyride'
+import {
+  NotFoundPage,
+  PunchForm,
+  AddEmployeeForm,
+  ForgotPasswordPage,
+  EmployeeHome,
+  EmpContent,
+  LeaveForm,
+  EmpPastLeave,
+  CurrentLeavePage,
+  AttendanceList,
+  AttendanceHistory,
+  RequestAttendanceForm,
+  RequestProfileEdit,
+  ManagerEmpLists,
+  EmpTeamAttendance,
+  ManageTeamLeave,
+  AdminHome,
+  Content,
+  Dashboard,
+  LeaveList,
+  PastLeave,
+  ManageAttendanceRequest,
+  EmployeeList,
+  Success,
+  Failure,
+  Login,
+  OopsPage,
+  AuthProvider,
+  PrivateRoute,
+  Loader,
+  NewComp,
+  ActionBtns,
+  CancelButton,
+  ActionBtnsForAttendance,
+  CheckINbtn,
+  CheckOutBtn,
+  EmpSidebar,
+  Navbar,
+  EntryBox,
+  ExpandBox,
+  MainOptions,
+  PersonDetails,
+  Sidebar,
+  SmallProfileBox,
+  Date,
+  Input,
+  LoginButton,
+  LoginCancelBtn,
+  LoginOptionBtn,
+  LogoutButton,
+  NewButton,
+  OTPInput,
+  Radio,
+  SearchBar,
+  Select,
+  SmallInput,
+  SubmitButton,
+  Textarea
+} from './components';
 
-import AddEmployeeForm from "./components/AddEmployeeForm";
-import AdminHome from "./components/AdminHome";
-import EmployeeHome from "./components/EmployeeHome";
-import LeaveForm from "./components/LeaveForm";
-import Login from "./components/Login";
-import PunchForm from "./components/PunchForm";
-import EmpContent from "./components/EmpContent";
-import LeaveList from "./components/LeaveList";
-import Content from './components/Content';
-import OopsPage from "./components/NotFoundPage.jsx";
-import AttendanceList from "./components/AttendanceList";
-import { Success, Failure } from "./components/Notification";
-import CurrentLeavePage from "./components/CurrentLeavePage";
-import { AuthProvider } from './context/AuthContext.jsx';
-import PrivateRoute from './router/PrivateRoute.jsx';
-import PastLeave from "./components/PastLeave.jsx";
-import EmpPastLeave from "./components/EmpPastLeave.jsx";
-import AttendanceHistory from "./components/AttendanceHistory.jsx";
-import ForgotPasswordPage from "./components/ForgotPasswordPage.jsx";
-import RequestAttendanceForm from "./components/RequestAttendanceForm.jsx";
-import RequestProfileEdit from "./components/RequestProfileEdit.jsx";
-import Dashboard from "./components/Dashboard.jsx";
-import ManageAttendanceRequest from "./components/ManageAttendanceRequest.jsx";
-import NewComp from "./components/NewComp.jsx";
-import EmployeeList from "./components/EmployeeList.jsx";
-import NotFoundPage from './components/NotFoundPage.jsx';
-import Loader from './components/Loader.jsx';
-import ManagerEmpLists from './components/ManagerEmpLists.jsx';
-import EmpTeamAttendance from './components/EmpTeamAttendance.jsx';
-import ManageTeamLeave from './components/ManageTeamLeave.jsx';
+
+
 
 const Tour = () => {
   const [runTour, setRunTour] = useState(false);

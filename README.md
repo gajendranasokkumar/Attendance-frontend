@@ -105,6 +105,7 @@
 
 
 
+
 ## 📊 Progress Overview
 
  - [x] User Authentication & Authorization
@@ -115,6 +116,9 @@
  - [ ] Responsive Design
  - [ ] Final Testing
  - [x] Deployment
+ - [ ] Make the user to fill all the input fiels
+ - [ ] Enable the admin to upload the employees data using the excel sheet
+ - [ ] Make the approval of all the requests from the employees, manager,... in the form of hierarchy
 
 
 
