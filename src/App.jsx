@@ -262,6 +262,7 @@ function App() {
               <Route path="attendancehistory" element={<AttendanceHistory />} />
               <Route path="requestattendance" element={<RequestAttendanceForm />} />
               <Route path="addEmployee" element={<AddEmployeeForm />} />
+              <Route path="forgotpassword" element={<ForgotPasswordPage />} />
               <Route path="manageattendancerequest" element={<ManageAttendanceRequest />} />
               <Route path="employeelist" element={<EmployeeList />} />
             </Route>
