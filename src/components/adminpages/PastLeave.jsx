@@ -10,6 +10,7 @@ import api from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 
 
@@ -33,6 +34,7 @@ const PastLeave = () => {
             navigate('/');
         const fetchList = async () => {
             setLoading(true)
+            const toastId = toast.loading("Loading...Please wait!")
             await api.get("/leavelist")
                 .then((response) => {
                     console.log("🚀 ~ .then ~ respose:", response.data)
@@ -43,6 +45,7 @@ const PastLeave = () => {
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error)
+                    toast.error('Couldn\'t Fetch Details!', { id: toastId })
                 })
         }
 

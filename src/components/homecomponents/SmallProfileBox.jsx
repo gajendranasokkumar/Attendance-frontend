@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 const SmallProfileBox = () => {
     const { userData } = useContext(AuthContext);
 
+    const person = userData?.person?.toLowerCase()
+
     return (
         <>
             <div className='z-50 h-auto w-auto absolute right-5 top-12 border-1 border-grey rounded-lg bg-white flex flex-col items-center p-5 shadow-allBox'>
@@ -25,8 +27,8 @@ const SmallProfileBox = () => {
                     </div>
                 </div>
                 <div className='h-12 w-full cursor-pointer px-5 flex items-center text-lg rounded-md hover:border-b-2 border-black hover:shadow-allBox text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><CgProfile /></span>Profile</div>
-                <Link to={'/employee/forgotpassword'}><div className='h-12 w-full cursor-pointer  px-5 flex items-center text-lg rounded-md hover:border-b-2 border-black hover:shadow-allBox text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><RiLockPasswordFill /></span>Change Password</div></Link>
-                <Link to={'/employee/requestprofileedit'} className='m-0 w-full'><div className='h-12 w-full cursor-pointer hover:border-b-2 border-black hover:shadow-allBox  px-5 m-0 flex items-center text-lg rounded-md text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><BiSolidEditAlt /></span>Request Edit</div></Link>
+                <Link to={`/${person}/forgotpassword`}><div className='h-12 w-full cursor-pointer  px-5 flex items-center text-lg rounded-md hover:border-b-2 border-black hover:shadow-allBox text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><RiLockPasswordFill /></span>Change Password</div></Link>
+                <Link to={`/${person}/requestprofileedit`} className='m-0 w-full'><div className='h-12 w-full cursor-pointer hover:border-b-2 border-black hover:shadow-allBox  px-5 m-0 flex items-center text-lg rounded-md text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><BiSolidEditAlt /></span>Request Edit</div></Link>
                 <LogoutButton />
             </div>
         </>

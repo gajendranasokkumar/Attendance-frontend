@@ -5,6 +5,8 @@ import api from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from "react-icons/vsc";
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
+
 
 const LeaveList = () => {
     const [leaveList, setLeaveList] = useState([]);
@@ -37,6 +39,7 @@ const LeaveList = () => {
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error);
+                    toast.error('Couldn\'t Fetch Details!', { id: toastId })
                 });
         };
 
@@ -44,6 +47,8 @@ const LeaveList = () => {
     }, [navigate]);
 
     const updateStatus = async (currentStatus) => {
+        const toastId = toast.loading("Loading...Please wait!")
+
         try {
             setLoading(true)
             await Promise.all(selectedIds.map(formId =>
@@ -51,8 +56,10 @@ const LeaveList = () => {
             ));
             setLoading(false)
             navigate(0);
+            toast.success('Successfully Updated!', { id: toastId })
         } catch (err) {
             console.log("🚀 ~ updateStatus ~ err:", err);
+            toast.error('Couldn\'t Update!', { id: toastId })
         }
     };
 
@@ -123,8 +130,8 @@ const LeaveList = () => {
                 <div className='md:h-[10%] w-[100%] mt-8 border-l-4 border-l-bgGreen flex'>
                     <div className='w-full md:w-[80%] px-2 sm:px-5 flex flex-col sm:flex-row items-center gap-3'>
                         <div className='flex xs:flex-row w-full gap-3'>
-                        <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
-                        <SmallDate placeholder={"To Date"} name={'todate'} state={searchQuery} setState={setSearchQuery} />
+                            <SmallDate placeholder={"From Date"} name={'fromdate'} state={searchQuery} setState={setSearchQuery} />
+                            <SmallDate placeholder={"To Date"} name={'todate'} state={searchQuery} setState={setSearchQuery} />
                         </div>
                         <SmallInput type={"text"} placeholder={"Search for anyone"} name={'content'} state={searchQuery} setState={setSearchQuery} />
                         <div className='flex gap-2 justify-end  w-full'>

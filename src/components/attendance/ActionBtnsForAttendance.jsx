@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 
 
@@ -16,15 +17,18 @@ const ActionBtnsForAttendance = ({ formId }) => {
 
     const updateStatus = async (currentStatus) => {
         setLoading(true)
+        const toastId = toast.loading("Loading...Please wait!")
         console.log("🚀 ~ updateattendancerequest ~ formId:", formId, currentStatus)
         await api.post("/updateattendancerequest", { formId, currentStatus })
             .then((res) => {
                 console.log("🚀 ~ .then ~ res:", res)
                 showLoader(1000)
                 navigate(0);
+                toast.success('Successfully Updated!', { id: toastId })
             })
             .catch((err) => {
                 console.log("🚀 ~ updateStatus ~ err:", err)
+                toast.error('Couldn\'t Update!', { id: toastId })
             })
     }
 

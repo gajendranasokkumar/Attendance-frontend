@@ -108,6 +108,7 @@ import { AuthContext } from '../../context/AuthContext';
 import api from '../../utils/api';
 import { Failure } from '../index';
 import * as ReactDOM from 'react-dom/client';
+import toast from 'react-hot-toast';
 
 
 const Login = () => {

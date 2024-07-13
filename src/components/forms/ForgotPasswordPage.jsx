@@ -4,6 +4,7 @@ import { Input, Radio, Date, Textarea, SubmitButton, CancelButton, OTPInput } fr
 import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 
 
@@ -37,21 +38,25 @@ const ForgotPasswordPage = () => {
     const checkuser = async (e) => {
         e.preventDefault();
         setLoading(true)
+        const toastId = toast.loading("Loading...Please wait!")
         await api.post("/checkuser", { id: details.id })
             .then((response) => {
                 setDetails({ ...details, code: response.data.code })
                 console.log(response)
                 showLoader(500)
+                toast.success('OTP sent successfully to your registered email.')
             })
             .catch((error) => {
                 console.log(error);
+                showLoader(200)
+                toast.error('User doesn\'t exists', { id: toastId })
             })
     }
 
     const handleVerify = async (e) => {
         e.preventDefault();
         const otpString = otp.join('');
-
+        const toastId = toast.loading("Loading...Please wait!")
         try {
             setLoading(true)
             const response = await api.post('/verifyotp', {
@@ -62,8 +67,11 @@ const ForgotPasswordPage = () => {
             if (response.data.code === 200 && response.data.message === 'OTP verified successfully') {
                 setMessage('OTP verified successfully!');
                 showLoader(800)
+                toast.success('OTP verified successfully!', { id: toastId })
             } else {
                 setMessage('Invalid OTP');
+                showLoader(200)
+                toast.error('Invalid OTP', { id: toastId })
             }
         } catch (error) {
             if (error.response) {
@@ -74,12 +82,15 @@ const ForgotPasswordPage = () => {
                 setMessage('An error occurred. Please try again.');
             }
             console.error('Error:', error);
+            showLoader(200)
+            toast.error('An error occurred. Please try again.', { id: toastId })
         }
     };
 
     const updatePassword = async (e) => {
         e.preventDefault();
         setDetails({ ...details, passwordcheck: false })
+        const toastId = toast.loading("Loading...Please wait!")
         if (password.password === password.confirmpassword) {
             setLoading(true)
             await api.post("/updatepassword", { id: details?.id, password: password.password })
@@ -87,13 +98,16 @@ const ForgotPasswordPage = () => {
                     console.log(response)
                     showLoader(800)
                     navigate(-1)
+                    toast.success('Password Updated Successfully!', { id: toastId })
                 })
                 .catch((error) => {
                     console.log(error)
+                    toast.error('Couldn\'t update the password!', { id: toastId })
                 })
         }
         else {
             setDetails({ ...details, passwordcheck: true })
+            toast.error('Please check the password!', { id: toastId })
         }
     }
 

@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { parseISO } from 'date-fns';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 
 
@@ -54,6 +55,8 @@ const ManageAttendanceRequest = () => {
     }, [navigate]);
 
     const updateStatus = async (currentStatus) => {
+        const toastId = toast.loading("Loading...Please wait!")
+
         try {
             setLoading(true)
             await Promise.all(selectedIds.map(formId =>
@@ -61,8 +64,11 @@ const ManageAttendanceRequest = () => {
             ));
             setLoading(false)
             navigate(0);
+            toast.success('Successfully Updated!',{id: toastId})
         } catch (err) {
             console.log("🚀 ~ updateStatus ~ err:", err);
+            toast.error('Couldn\'t Update!',{id: toastId})
+
         }
     };
 

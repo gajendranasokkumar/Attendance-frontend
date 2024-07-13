@@ -4,6 +4,7 @@ import { Input, Radio, Date, Textarea, SubmitButton, CancelButton, Select } from
 import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 
 const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "create" }) => {
@@ -56,12 +57,13 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
         const fetManagerList = async () => {
             await api.get("/fetchmanager")
                 .then((response) => {
-                    const managerArray = response.data.map(one => one.id);  
+                    const managerArray = response.data.map(one => one.id);
                     // console.log("Manager List", managerArray);
                     setManagerList(["nil", ...managerArray])
                 })
                 .catch((error) => {
                     console.log(error)
+                    toast.error('An error occured :(')
                 })
         }
 
@@ -76,14 +78,17 @@ const AddEmployeeForm = ({ receivedEmployee = null, onSubmit = null, mode = "cre
         e.preventDefault();
         setLoading(true);
         console.log("🚀 ~ submitForm ~ employee:", employee)
+        const toastId = toast.loading("Loading...Please wait!")
         await api.post("/addemployee", employee)
             .then((respose) => {
                 console.log("🚀 ~ .then ~ respose:", respose)
                 setLoading(false)
                 navigate(-1);
+                toast.success('Successfully Added!', { id: toastId })
             })
             .catch((error) => {
                 console.log("🚀 ~ applyleave ~ error:", error)
+                toast.error('Couldn\'t Add :(', { id: toastId })
             })
     }
 

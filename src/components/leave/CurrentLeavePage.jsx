@@ -4,6 +4,7 @@ import ActionBtns from './ActionBtns';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import api from '../../utils/api';
+import toast from 'react-hot-toast';
 
 
 const CurrentLeavePage = () => {
@@ -23,7 +24,7 @@ const CurrentLeavePage = () => {
                     let result = response.data.filter(one => {
                         const specificDate = new Date(one.todate);
                         specificDate.setHours(0, 0, 0, 0);
-                        if (today <= specificDate && one.id == userData?.id){
+                        if (today <= specificDate && one.id == userData?.id) {
                             return one;
                         }
                     })
@@ -32,6 +33,7 @@ const CurrentLeavePage = () => {
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error)
+                    toast.error('An error occured!')
                 })
         }
 

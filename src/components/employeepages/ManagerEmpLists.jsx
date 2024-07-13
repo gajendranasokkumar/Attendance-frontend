@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 import api from '../../utils/api';
 import { AddEmployeeForm, SearchBar } from '../index';
 import { CiSearch } from 'react-icons/ci';
+import toast from 'react-hot-toast';
 
 
 
@@ -25,6 +26,7 @@ const ManagerEmpLists = () => {
             showLoader(1000);
         } catch (error) {
             console.error('Error fetching employees:', error);
+            toast.error('Couldn\'t get employee list')
         }
     };
 
@@ -33,7 +35,7 @@ const ManagerEmpLists = () => {
     };
 
     const filteredEmployees = employees.filter(employee =>
-        Object.values(employee).some(value =>   
+        Object.values(employee).some(value =>
             value?.toString().toLowerCase().includes(searchTerm.toLowerCase())
         )
     );
@@ -44,28 +46,34 @@ const ManagerEmpLists = () => {
 
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this employee?')) {
+            const toastId = toast.loading("Loading...Please wait!")
             try {
                 setLoading(true);
                 const response = await api.delete(`/deleteEmployee/${id}`);
                 console.log('Delete response:', response);
                 showLoader(1000);
                 fetchEmployees();
+                toast.success('Successfully Deleted!', { id: toastId })
             } catch (error) {
                 console.error('Error deleting employee:', error.response ? error.response.data : error.message);
+                toast.error('Couldn\'t Delete!', { id: toastId })
             }
         }
     };
 
     const handleUpdateEmployee = async (e, updatedEmployee) => {
         e.preventDefault();
+        const toastId = toast.loading("Loading...Please wait!")
         try {
             setLoading(true);
             await api.post('/updateEmployee', updatedEmployee);
             setEditingEmployee(null);
             showLoader(500);
             fetchEmployees();
+            toast.success('Successfully Updated!', { id: toastId })
         } catch (error) {
             console.error('Error updating employee:', error);
+            toast.error('Couldn\'t Update!', { id: toastId })
         }
     };
 
@@ -120,7 +128,7 @@ const ManagerEmpLists = () => {
                 </div>
             </div>
             {editingEmployee && (
-                <AddEmployeeForm 
+                <AddEmployeeForm
                     receivedEmployee={editingEmployee}
                     onSubmit={handleUpdateEmployee}
                     mode={"update"}

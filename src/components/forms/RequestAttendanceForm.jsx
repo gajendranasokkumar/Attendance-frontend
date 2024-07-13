@@ -4,6 +4,7 @@ import { Input, Radio, DatePicker, Textarea, SubmitButton, CancelButton } from '
 import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 
 const RequestAttendanceForm = () => {
@@ -50,6 +51,7 @@ const RequestAttendanceForm = () => {
                     setLoading(false)
                 })
                 .catch((error) => {
+                    toast.error('An error occured!')
                     console.log("🚀 ~ applyLeave ~ error:", error);
                 });
         };
@@ -77,6 +79,7 @@ const RequestAttendanceForm = () => {
     const requestAttendanceFun = async (e) => {
         e.preventDefault();
         let location = ""
+        const toastId = toast.loading("Loading...Please wait!")
         try {
             const getLocation = () => {
                 return new Promise((resolve, reject) => {
@@ -88,10 +91,12 @@ const RequestAttendanceForm = () => {
                             },
                             (error) => {
                                 reject(error);
+                                toast.error('Couldn\'t get location!', { id: toastId })
                             }
                         );
                     } else {
                         reject(new Error("Geolocation is not supported by this browser."));
+                        toast.error('Couldn\'t get location!', { id: toastId })
                     }
                 });
             };
@@ -104,6 +109,7 @@ const RequestAttendanceForm = () => {
 
         } catch (error) {
             console.log("🚀 ~ EntryBox ~ error:", error);
+            toast.error('Couldn\'t get location!', { id: toastId })
         }
 
         setLoading(true)
@@ -112,9 +118,11 @@ const RequestAttendanceForm = () => {
                 console.log("🚀 ~ .then ~ response:", response.data);
                 setLoading(false)
                 navigate(-1);
+                toast.success('Attendance request Successful!', { id: toastId })
             })
             .catch((error) => {
                 console.log("🚀 ~ requestattendance ~ error:", error);
+                toast.error('Couldn\'t request attendance!', { id: toastId })
             });
     };
 

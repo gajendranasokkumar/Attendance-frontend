@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import api from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
-
+import toast from 'react-hot-toast';
 
 const EntryBox = () => {
     const [dateTime, setDateTime] = useState({
@@ -76,7 +76,7 @@ const EntryBox = () => {
                         checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1], 
                         totalWorkedTime: response.data.totalWorkedTime 
                     });
-                    console.log("🚀 ~ .then ~ First Fetch:", response);
+                    // console.log("🚀 ~ .then ~ First Fetch:", response);
                     if (userData?.punchtype != 'web' && response.data) {
                         setIsCheckedInOrOut({
                             ischeckedin: true,
@@ -86,8 +86,10 @@ const EntryBox = () => {
                 }
             
                 setLoading(false);
+                
             } catch (error) {
-                console.log("🚀 ~ EntryBox ~ error:", error);
+                // console.log("🚀 ~ EntryBox ~ error:", error);
+                toast.error('Sorry Something went wrong :(')
                 setLoading(false); // Ensure loading is stopped in case of an error
             }
             
@@ -115,7 +117,7 @@ const EntryBox = () => {
                 geolocation: userData.geolocation,
                 hoursofwork: userData.hoursofwork
             }));
-
+            
         }
     }, [userData]);
 
@@ -201,7 +203,7 @@ const EntryBox = () => {
 
 
         if (userData?.entrytime < timeString && isCheckedInOrOut.ischeckedin != true && isCheckedInOrOut.ischeckedout != true) {
-            userData?.person != "employee" ? navigate("/employee/requestattendance") : navigate("/admin/requestattendance")
+            userData?.person?.toLowerCase() == "employee" ? navigate("/employee/requestattendance") : navigate("/admin/requestattendance")
         }
         else {
             const day = String(now.getDate()).padStart(2, '0');
@@ -209,7 +211,9 @@ const EntryBox = () => {
             const year = now.getFullYear();
             const formattedDate = `${day}-${month}-${year}`;
 
+            const toastId = toast.loading("Loading...Please wait!")
             try {
+
                 const getLocation = () => {
                     return new Promise((resolve, reject) => {
                         if (navigator.geolocation) {
@@ -219,10 +223,12 @@ const EntryBox = () => {
                                     resolve(location);
                                 },
                                 (error) => {
+                                    toast.error('Cannot get the Location!',{id: toastId})
                                     reject(error);
                                 }
                             );
                         } else {
+                            toast.error('Cannot get the Location!',{id: toastId})
                             reject(new Error("Geolocation is not supported by this browser."));
                         }
                     });
@@ -242,11 +248,13 @@ const EntryBox = () => {
                     // remainingtime: dateTime.remainingTime,
                 });
 
-                console.log("🚀 ~ .then ~ response:", response);
+                // console.log("🚀 ~ .then ~ response:", response);
+                toast.success('Successfully Checked In!',{id: toastId})
                 setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedin: true, ischeckedout: false });
                 setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime[response.data.checkintime.length - 1] });
             } catch (error) {
                 console.log("🚀 ~ EntryBox ~ error:", error);
+                toast.error('Check In Failed!',{id: toastId})
             }
         }
     };
@@ -266,7 +274,9 @@ const EntryBox = () => {
         const formattedDate = `${day}-${month}-${year}`;
 
 
+        const toastId = toast.loading("Loading...Please wait!")
         try {
+
             const response = await api.post("/checkout", {
                 id: checkINDetails?.id,
                 date: formattedDate,
@@ -275,11 +285,13 @@ const EntryBox = () => {
                 ischeckedin: false,
                 // remainingtime: dateTime.remainingTime,
             });
-            console.log("🚀 ~ .then ~ response:", response);
+            // console.log("🚀 ~ .then ~ response:", response);
+            toast.success('Successfully Checked Out!', {id: toastId})
             setIsCheckedInOrOut({ ...isCheckedInOrOut, ischeckedout: true, ischeckedin: false });
             setCheckInOutTime({ ...checkInOutTime, checkouttime: response.data.checkouttime[response.data.checkouttime.length - 1], totalWorkedTime: response.data.totalWorkedTime })
         } catch (error) {
             console.log("🚀 ~ EntryBox ~ error:", error);
+            toast.error('Check Out Failed!',{id: toastId})
         }
     }
 

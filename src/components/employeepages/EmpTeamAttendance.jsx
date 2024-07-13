@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
-  SmallInput,
-  SmallDate,
-  SmallTime,
-  SmallCheckBox,
-  ActionBtns,
-  ActionBtnsForAttendance
+    SmallInput,
+    SmallDate,
+    SmallTime,
+    SmallCheckBox,
+    ActionBtns,
+    ActionBtnsForAttendance
 } from '../index';
 import axios from 'axios';
 import api from '../../utils/api';
@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { parseISO } from 'date-fns';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
+
 
 
 
@@ -40,7 +42,7 @@ const EmpTeamAttendance = () => {
             await api.get("/getrequestforms")
                 .then((response) => {
                     let result = response.data.filter(one => {
-                        if(one.status.toUpperCase() === "PENDING" && userData?.employeelist.includes(one.id))
+                        if (one.status.toUpperCase() === "PENDING" && userData?.employeelist.includes(one.id))
                             return one;
                     });
                     setRequestList(result);
@@ -50,6 +52,7 @@ const EmpTeamAttendance = () => {
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error);
+                    toast.error('An error occured!')
                 });
         };
 
@@ -57,6 +60,7 @@ const EmpTeamAttendance = () => {
     }, [navigate]);
 
     const updateStatus = async (currentStatus) => {
+        const toastId = toast.loading("Loading...Please wait!")
         try {
             setLoading(true)
             await Promise.all(selectedIds.map(formId =>
@@ -64,8 +68,10 @@ const EmpTeamAttendance = () => {
             ));
             setLoading(false)
             navigate(0);
+            toast.success('Successfully Updated!', { id: toastId })
         } catch (err) {
             console.log("🚀 ~ updateStatus ~ err:", err);
+            toast.error('Couldn\'t Update!', { id: toastId })
         }
     };
 
@@ -74,8 +80,7 @@ const EmpTeamAttendance = () => {
             requestList.filter((one) => {
                 let formDate;
                 let searchDate;
-                if(searchQuery.date)
-                {
+                if (searchQuery.date) {
                     const today = new Date(searchQuery.date).toISOString().split('T')[0];
                     const reversedDate = today.split('-').reverse().join('-');
                     searchDate = reversedDate;

@@ -6,6 +6,7 @@ import api from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 
 
@@ -45,6 +46,7 @@ const EmpPastLeave = () => {
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error)
+                    toast.error('An error occured')
                 })
         }
 
@@ -107,7 +109,7 @@ const EmpPastLeave = () => {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
                     <table className='min-w-full table-auto border-2 border-bgGreen'>
                         <thead>

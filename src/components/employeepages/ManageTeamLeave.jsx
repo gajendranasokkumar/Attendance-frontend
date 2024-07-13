@@ -5,6 +5,7 @@ import api from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 
 
@@ -34,7 +35,7 @@ const ManageTeamLeave = () => {
             await api.get("/leavelist")
                 .then((response) => {
                     let result = response.data.filter(one => {
-                        if(one.status.toUpperCase() === "PENDING" && userData?.employeelist.includes(one.id))
+                        if (one.status.toUpperCase() === "PENDING" && userData?.employeelist.includes(one.id))
                             return one
                     });
                     setLeaveList(result);
@@ -44,6 +45,7 @@ const ManageTeamLeave = () => {
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error);
+                    toast.error('An error occured :(')
                 });
         };
 
@@ -51,6 +53,7 @@ const ManageTeamLeave = () => {
     }, [navigate]);
 
     const updateStatus = async (currentStatus) => {
+        const toastId = toast.loading("Loading...Please wait!")
         try {
             setLoading(true)
             await Promise.all(selectedIds.map(formId =>
@@ -58,8 +61,10 @@ const ManageTeamLeave = () => {
             ));
             setLoading(false)
             navigate(0);
+            toast.success('Successfully Updated!', { id: toastId })
         } catch (err) {
             console.log("🚀 ~ updateStatus ~ err:", err);
+            toast.error('Couldn\'t Update!', { id: toastId })
         }
     };
 

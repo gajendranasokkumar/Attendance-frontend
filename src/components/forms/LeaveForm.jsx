@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import api from '../../utils/api';
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 
 
@@ -29,22 +30,23 @@ const LeaveForm = () => {
 
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        const getLeaveCount = async() => {
+    useEffect(() => {
+        const getLeaveCount = async () => {
             setLoading(true)
-            await api.post("/currentleavecount", {id: leaveDetails.id})
+            await api.post("/currentleavecount", { id: leaveDetails.id })
                 .then((response) => {
                     console.log(response)
-                    setLeaveDetails({...leaveDetails, leavetaken: response.data.count})
+                    setLeaveDetails({ ...leaveDetails, leavetaken: response.data.count })
                     setLoading(false)
                 })
                 .catch((error) => {
+                    toast.error('An error occured!')
                     console.log("🚀 ~ applyLeave ~ error:", error)
                 })
         }
 
         getLeaveCount();
-    },[])
+    }, [])
 
     const goBack = () => {
         navigate(-1);
@@ -55,14 +57,17 @@ const LeaveForm = () => {
         e.preventDefault();
         setLoading(true)
         console.log(leaveDetails)
+        const toastId = toast.loading("Loading...Please wait!")
         await api.post("/leaveform", leaveDetails)
             .then((respose) => {
                 console.log("🚀 ~ .then ~ respose:", respose)
                 setLoading(false)
                 navigate(-1);
+                toast.success('Leave Applied Successfully!', { id: toastId })
             })
             .catch((error) => {
                 console.log("🚀 ~ applyLeave ~ error:", error)
+                toast.error('Couldn\'t apply leave!', { id: toastId })
             })
     }
 

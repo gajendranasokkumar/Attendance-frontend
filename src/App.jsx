@@ -145,6 +145,7 @@ import {
   SubmitButton,
   Textarea
 } from './components';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -228,6 +229,43 @@ function App() {
     <>
       <AuthProvider>
         <BrowserRouter>
+          <Toaster
+            position="top-center"
+            reverseOrder={true}
+            toastOptions={{
+              style: {
+                fontSize: '17px',
+                padding: '10px',
+              },
+              duration: 5000,
+              loading: {
+                style: {
+                  background: '#FEF3C7',
+                  color: '#B45309',
+                  zIndex: 2147483640
+                },
+                spinner: {
+                  style: {
+                    borderTopColor: '#B45309',
+                  }
+                }
+              },
+              success: {
+                style: {
+                  background: '#CCFBF1',
+                  color: '#0F766E',
+                  zIndex: 2147483640
+                },
+              },
+              error: {
+                style: {
+                  background: '#FFD9D9',
+                  color: '#E41300',
+                  zIndex: 2147483640
+                },
+              },
+            }}
+          />
           <Tour />
           {/* <Loader />   */}
           <Routes>
