@@ -104,6 +104,14 @@
 | 11.07.2024 | 🤳 Updated the navigation bar, personal details, reset password page and <br /> admin home page UI   |
 | 12.07.2024 | 🎟️ Made the Admin page UI as responsive, and altered the project folder structures <br /> and updated all the imports  |
 
+### Week 7
+| Date       | Task                                                                    |
+| ---------- | ----------------------------------------------------------------------- |
+| 13.07.2024 | 🏢 Worked with UI updation |
+| 14.07.2024 | ⭕ -------NIL------- (Sunday) had a meeting |
+| 15.07.2024 | 🥪 Added the toast notifications for all the pages |
+| 16.07.2024 | 🎼 Feature to add the employees through uploading execel sheets |
+| 17.07.2024 | 💿 Added the functionality of admin home page options(strength, birthday, atwork, latein) |
 
 
 ## 📊 Progress Overview

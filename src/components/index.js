@@ -57,6 +57,7 @@ export { default as Select } from './inputs/Select.jsx';
 export { SmallInput, SmallDate, SmallTime, SmallCheckBox } from './inputs/SmallInput.jsx';
 export { default as SubmitButton } from './inputs/SubmitButton.jsx';
 export { default as Textarea } from './inputs/Textarea.jsx';
+export { default as ExcelUploader } from './forms/ExcelUploader.jsx';
 
 // import NotFoundPage from './components/homecomponents/NotFoundPage.jsx'
 // import PunchForm from './components/forms/PunchForm.jsx'

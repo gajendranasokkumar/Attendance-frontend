@@ -39,6 +39,7 @@ const LeaveList = () => {
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error);
+                    setLoading(false)
                     toast.error('Couldn\'t Fetch Details!', { id: toastId })
                 });
         };
@@ -59,6 +60,7 @@ const LeaveList = () => {
             toast.success('Successfully Updated!', { id: toastId })
         } catch (err) {
             console.log("🚀 ~ updateStatus ~ err:", err);
+            setLoading(false)
             toast.error('Couldn\'t Update!', { id: toastId })
         }
     };

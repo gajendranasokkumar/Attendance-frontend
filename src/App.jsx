@@ -143,7 +143,8 @@ import {
   Select,
   SmallInput,
   SubmitButton,
-  Textarea
+  Textarea,
+  ExcelUploader
 } from './components';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -303,6 +304,7 @@ function App() {
               <Route path="forgotpassword" element={<ForgotPasswordPage />} />
               <Route path="manageattendancerequest" element={<ManageAttendanceRequest />} />
               <Route path="employeelist" element={<EmployeeList />} />
+              <Route path="upload" element={<ExcelUploader />} />
             </Route>
           </Routes>
         </BrowserRouter>

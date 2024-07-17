@@ -84,7 +84,7 @@ const EmployeeList = () => {
     return (
         <>
             <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] xs:px-1 md:px-5 overflow-y-auto pb-10'>
-                <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans'>Employee List</h1>
+                <h1 className='text-txtLBlue text-3xl text-center mt-10 font-bold font-sans '>Employee List</h1>
                 {/* <input
                 type="text"
                 placeholder="Search employees..."

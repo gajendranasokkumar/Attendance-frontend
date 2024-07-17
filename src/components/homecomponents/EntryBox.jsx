@@ -115,7 +115,8 @@ const EntryBox = () => {
                 shift: userData.shift,
                 punchtype: userData.punchtype,
                 geolocation: userData.geolocation,
-                hoursofwork: userData.hoursofwork
+                hoursofwork: userData.hoursofwork,
+                entrytime: userData.entrytime
             }));
             
         }

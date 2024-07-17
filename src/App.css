@@ -1,5 +1,5 @@
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   background-color: #e4e6eb;
 }
 
@@ -451,4 +451,99 @@ tr:hover {
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 99999;
+}
+
+
+/* ExcelUploader.css */
+.excel-uploader {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  height: fit-content;
+}
+
+.dropzone {
+  border: 3px dashed #9f9d9d;
+  border-radius: 4px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(246, 246, 246);
+}
+
+.dropzone.active {
+  border-color: #2196f3;
+  background-color: #bac0c4;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.upload-button, .cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.upload-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.success-count {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.field-names {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.field-names ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.field-names li {
+  margin-bottom: 5px;
 }
