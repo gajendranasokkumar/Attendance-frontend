@@ -114,6 +114,7 @@
 | 17.07.2024 | 💿 Added the functionality of admin home page options(strength, birthday, atwork, latein) |
 
 
+
 ## 📊 Progress Overview
 
  - [x] User Authentication & Authorization
