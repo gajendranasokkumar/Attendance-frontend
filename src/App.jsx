@@ -147,6 +147,7 @@ import {
   ExcelUploader
 } from './components';
 import toast, { Toaster } from 'react-hot-toast';
+import WorkingHours from './components/adminpages/WorkingHours';
 
 
 
@@ -271,6 +272,7 @@ function App() {
           {/* <Loader />   */}
           <Routes>
             <Route path="*" element={<NotFoundPage />} />
+            <Route path="week" element={<WorkingHours />} />
             <Route index element={<Login />} />
             <Route path="/addnew" element={<AddEmployeeForm />} />
             <Route path="/punch" element={<PunchForm />} />
@@ -289,6 +291,7 @@ function App() {
               <Route path="employeelist" element={<ManagerEmpLists />} />
               <Route path="teamattendance" element={<EmpTeamAttendance />} />
               <Route path="teamleave" element={<ManageTeamLeave />} />
+              <Route path="profile" element={<PersonDetails />} />
             </Route>
             {/* <Route path="/admin" element={<AdminHome />}> */}
             <Route path="/admin" element={<PrivateRoute role={'Admin'}><AdminHome /></PrivateRoute>}>
@@ -305,6 +308,7 @@ function App() {
               <Route path="manageattendancerequest" element={<ManageAttendanceRequest />} />
               <Route path="employeelist" element={<EmployeeList />} />
               <Route path="upload" element={<ExcelUploader />} />
+              <Route path="profile" element={<PersonDetails />} />
             </Route>
           </Routes>
         </BrowserRouter>

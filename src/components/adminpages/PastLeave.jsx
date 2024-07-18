@@ -34,7 +34,7 @@ const PastLeave = () => {
             navigate('/');
         const fetchList = async () => {
             setLoading(true)
-            const toastId = toast.loading("Loading...Please wait!")
+            // const toastId = toast.loading("Loading...Please wait!")
             await api.get("/leavelist")
                 .then((response) => {
                     console.log("🚀 ~ .then ~ respose:", response.data)
@@ -42,10 +42,11 @@ const PastLeave = () => {
                     setLeaveList(result)
                     setSearchList(result)
                     setLoading(false)
+                    // toast.success('Data fetched !', { id: toastId })
                 })
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error)
-                    toast.error('Couldn\'t Fetch Details!', { id: toastId })
+                    // toast.error('Couldn\'t Fetch Details!', { id: toastId })
                 })
         }
 

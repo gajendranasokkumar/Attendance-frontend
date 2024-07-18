@@ -26,11 +26,11 @@ const AdminHome = () => {
     return (
         <>
             <Navbar toggleSidebar={toggleSidebar} isSidebarVisible={isSidebarVisible} />
-            <div className="flex w-[100vw]">
+            <div className="flex w-[100vw] h-min">
                 <div className={`lg:inline-block ${isSidebarVisible ? 'absolute' : 'hidden'} xs:w-[60%] lg:w-[18%] z-[999]`}>
                     <Sidebar />
                 </div>
-                <div className='w-[100%]'>
+                <div className='w-[100%] '>
                     <Outlet />
                 </div>
             </div>

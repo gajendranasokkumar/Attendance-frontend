@@ -26,8 +26,8 @@ const SmallProfileBox = () => {
                         <p className='underline'>{userData?.id}</p>
                     </div>
                 </div>
-                <div className='h-12 w-full cursor-pointer px-5 flex items-center text-lg rounded-md hover:border-b-2 border-black hover:shadow-allBox text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><CgProfile /></span>Profile</div>
-                <Link to={`/${person}/forgotpassword`}><div className='h-12 w-full cursor-pointer  px-5 flex items-center text-lg rounded-md hover:border-b-2 border-black hover:shadow-allBox text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><RiLockPasswordFill /></span>Change Password</div></Link>
+                <Link to={`/${person}/profile`} className='m-0 w-full'><div className='h-12 w-full cursor-pointer px-5 flex items-center text-lg rounded-md hover:border-b-2 border-black hover:shadow-allBox text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><CgProfile /></span>Profile</div></Link>
+                <Link to={`/${person}/forgotpassword`} className='m-0 w-full'><div className='h-12 w-full cursor-pointer  px-5 flex items-center text-lg rounded-md hover:border-b-2 border-black hover:shadow-allBox text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><RiLockPasswordFill /></span>Change Password</div></Link>
                 <Link to={`/${person}/requestprofileedit`} className='m-0 w-full'><div className='h-12 w-full cursor-pointer hover:border-b-2 border-black hover:shadow-allBox  px-5 m-0 flex items-center text-lg rounded-md text-[clamp(1rem,4vw,1.2rem)]'><span className='mr-3'><BiSolidEditAlt /></span>Request Edit</div></Link>
                 <LogoutButton />
             </div>

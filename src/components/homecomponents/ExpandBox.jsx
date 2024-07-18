@@ -61,10 +61,10 @@ const ExpandBox = ({ number, name, icon, options }) => {
         <div className={`hover:cursor-pointer border-t-2 border-t-white text-deepLightBlack hover:bg-bgGreen relative step-${number+1}`}>
             <button
                 id={`toggleButton${number}`}
-                className={`w-full hover:bg-bgGreen h-10 flex items-center px-3 hover:text-white text-lg ${isExpanded ? 'dropDownButton' : ''}`}
+                className={`w-full hover:bg-bgGreen h-10 flex items-center px-3 hover:text-white text-[16px] ${isExpanded ? 'dropDownButton' : ''}`}
                 onClick={toggleBox}
             >
-                <span className='mr-3'>{icon}</span>
+                <span className='mr-3 '>{icon}</span>
                 {name}
                 <RiArrowDropDownLine
                     id={`arrow${number}`}
@@ -72,12 +72,12 @@ const ExpandBox = ({ number, name, icon, options }) => {
                 />
             </button>
             <div id={`box${number}`} className={`w-full bg-white transition-all overflow-hidden ${isExpanded ? 'max-h-' : 'max-h-0'}`}>
-                <ul className='flex justify-center flex-col text-[15px] font-semibold'>
+                <ul className='flex justify-center flex-col text-[15px]'>
                     {
                         options.map((one, index) => (
                             <Link key={index} to={one.link ? one.link : "*"}>
-                                <li className='text-center h-10 flex items-center hover:bg-lightGrey text-deepLightBlack pl-5 border-t-2 border-t-white summa'>
-                                    <span className='mr-2 text-lg'>{one.icon}</span>
+                                <li className='text-center h-10 flex items-center hover:bg-lightGrey text-deepLightBlack pl-5 border-t-2 border-t-white summa text-sm'>
+                                    <span className='mr-2 text-sm'>{one.icon}</span>
                                     {one.title}
                                 </li>
                             </Link>

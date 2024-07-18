@@ -35,7 +35,13 @@ const EmpSidebar = () => {
                     <p className='font-semibold text-inputBorder text-[clamp(1rem,4vw,1.2rem)]'>Name: <span className='text-bgGreen text-sm'>{userData?.name}</span></p>
                 </div>
                 <div className='h-[88%] overflow-y-auto  overflow-x-hidden lg:mt-5 '>
-                    <ExpandBox key={1} number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
+                    <Link to={dashboardOptions[0].link || "*"}>
+                        <div className=' h-10 flex items-center hover:bg-lightGrey text-lightBlack text-[15px] pl-3 border-t-2 border-t-white'>
+                            <span className='mr-2 text-lg'>{dashboardOptions[0].icon}</span>
+                            {dashboardOptions[0].title}
+                        </div>
+                    </Link>
+                    {/* <ExpandBox key={1} number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} /> */}
                     {
                         isManager ?
                             <ExpandBox key={2} number={2} name={"Team"} icon={<FaPeopleGroup />} options={employeeOptions} />

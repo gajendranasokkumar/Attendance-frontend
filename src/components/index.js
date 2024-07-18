@@ -1,4 +1,3 @@
-
 export { default as NotFoundPage } from './homecomponents/NotFoundPage.jsx';
 export { default as PunchForm } from './forms/PunchForm.jsx';
 export { default as AddEmployeeForm } from './forms/AddEmployeeForm.jsx';
@@ -58,6 +57,8 @@ export { SmallInput, SmallDate, SmallTime, SmallCheckBox } from './inputs/SmallI
 export { default as SubmitButton } from './inputs/SubmitButton.jsx';
 export { default as Textarea } from './inputs/Textarea.jsx';
 export { default as ExcelUploader } from './forms/ExcelUploader.jsx';
+export { default as WorkingHours } from './adminpages/WorkingHours';
+export { default as AttendanceCalendar } from './attendance/AttendanceCalender.jsx';
 
 // import NotFoundPage from './components/homecomponents/NotFoundPage.jsx'
 // import PunchForm from './components/forms/PunchForm.jsx'

@@ -68,8 +68,9 @@ const Sidebar = () => {
 
     const employeeOptions = [{ icon: <IoPeopleCircleOutline />, title: 'Employees List', link: 'employeelist' }]
     const dashboardOptions = [{ icon: <RxDashboard />, title: 'Admin Dashboard', link: '/admin' }, { icon: <MdOutlineSpaceDashboard />, title: 'Employee Dashboard', link: '/admin/dashboard' }];
-    const attendanceOptions = [{ icon: <TbListDetails />, title: 'Attendance Details', link: 'attendancelist' }, { icon: <MdHistory />, title: 'Attendance History', link: 'attendancehistory' }, { icon: <MdManageHistory />, title: 'Manage Request', link: 'manageattendancerequest' }];
-    const leaveOptions = [{ icon: <FiPlus />, title: 'New Leave', link: 'leaveform' }, { icon: <MdOutlineWorkOff />, title: "Employee's Leave", link: 'leavelist' }, { icon: <MdHistory />, title: "Past Leave", link: 'pastleave' }];
+    const attendanceOptions = [{ icon: <TbListDetails />, title: 'Attendance Details', link: 'attendancelist' }, { icon: <MdHistory />, title: 'Attendance History', link: 'attendancehistory' }];
+    const leaveOptions = [{ icon: <FiPlus />, title: 'New Leave', link: 'leaveform' }, { icon: <MdHistory />, title: "Past Leave", link: 'pastleave' }];
+    const statusapproval = [{ icon: <MdManageHistory />, title: 'Manage Request', link: 'manageattendancerequest' }, { icon: <MdOutlineWorkOff />, title: "Employee's Leave", link: 'leavelist' } ]
 
     return (
         <>
@@ -84,8 +85,9 @@ const Sidebar = () => {
                 <div className='h-[88%] overflow-y-auto overflow-x-hidden lg:mt-5 '>
                     <ExpandBox number={1} name={"Dashboard"} icon={<TbLayoutDashboardFilled />} options={dashboardOptions} />
                     <ExpandBox number={2} name={"Employees"} icon={<FaPeopleGroup />} options={employeeOptions} />
-                    <ExpandBox number={3} name={"Attendance"} icon={<MdCoPresent />} options={attendanceOptions} />
+                    <ExpandBox number={3} name={"Time Sheet"} icon={<MdCoPresent />} options={attendanceOptions} />
                     <ExpandBox number={4} name={"Leave"} icon={<MdDateRange />} options={leaveOptions} />
+                    <ExpandBox number={5} name={"Status & Approvals"} icon={<MdDateRange />} options={statusapproval} />
                 </div>
             </div>
         </>
