@@ -48,12 +48,28 @@
 // export default Dashboard
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SearchBar, EntryBox, PersonDetails, WorkingHours, AttendanceCalendar } from '../index';
 import { CiSearch } from 'react-icons/ci';
+import api from '../../utils/api';
 
 const Dashboard = () => {
     const [selectedMonth, setSelectedMonth] = useState('');
+    const [leavedata, setLeavedata] = useState([])
+
+    useEffect(() => {
+        const getAttendanceDetails = async () => {
+            try {
+                const response = await api.get(`/getattendancedetails?id=${'p215'}&month=${selectedMonth}`)
+                setLeavedata(response.data)
+                console.log(response.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        if(selectedMonth != '')
+        getAttendanceDetails()
+    }, [selectedMonth])
 
     return (
         <>
@@ -76,7 +92,7 @@ const Dashboard = () => {
                                     <WorkingHours key={1} id={'p215'} month={selectedMonth} />
                                 </div>
                                 <div className='xs:w-[100%] md:w-[50%] border-t-4 border-txtLBlue bg-white h-fit py-5 rounded shadow-goodShadow flex flex-col justify-center items-center px-5 xs:mt-5 md:mt-5 my-5'>
-                                    <AttendanceCalendar key={2} month={selectedMonth} />
+                                    <AttendanceCalendar key={2} month={selectedMonth} leavedata={leavedata} />
                                 </div>
                             </>
                         )}

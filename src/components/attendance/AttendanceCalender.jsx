@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const AttendanceCalendar = ({ month }) => {
+const AttendanceCalendar = ({ month, leavedata }) => {
     const [selectedDate, setSelectedDate] = useState(month);
     const [calendarDays, setCalendarDays] = useState([]);
     const [attendanceData, setAttendanceData] = useState({});
@@ -10,7 +10,7 @@ const AttendanceCalendar = ({ month }) => {
     useEffect(() => {
         generateCalendarDays();
         fetchAttendanceData();
-    }, [selectedDate]);
+    }, [selectedDate, leavedata]);
 
     useEffect(() => {
         setSelectedDate(month);
@@ -35,20 +35,20 @@ const AttendanceCalendar = ({ month }) => {
     };
 
     const fetchAttendanceData = async () => {
-        const data = [
-            { date: "2024-07-16", status: "Present" },
-            { date: "2024-07-17", status: "Present" },
-            { date: "2024-07-18", status: "Present" },
-            { date: "2024-07-19", status: "Present" },
-            { date: "2024-07-23", status: "Present" },
-            { date: "2024-07-24", status: "Absent" },
-            { date: "2024-07-25", status: "Present" },
-            { date: "2024-07-26", status: "Present" },
-            { date: "2024-07-30", status: "Sick Leave" },
-            { date: "2024-07-31", status: "Present" }
-        ];
+        // const data = [
+        //     { date: "2024-07-16", status: "Present" },
+        //     { date: "2024-07-17", status: "Present" },
+        //     { date: "2024-07-18", status: "Present" },
+        //     { date: "2024-07-19", status: "Present" },
+        //     { date: "2024-07-23", status: "Present" },
+        //     { date: "2024-07-24", status: "Absent" },
+        //     { date: "2024-07-25", status: "Present" },
+        //     { date: "2024-07-26", status: "Present" },
+        //     { date: "2024-07-30", status: "Leave" },
+        //     { date: "2024-07-31", status: "Present" }
+        // ];
 
-        const formattedData = data.reduce((acc, item) => {
+        const formattedData = leavedata.reduce((acc, item) => {
             acc[item.date] = item.status;
             return acc;
         }, {});
@@ -62,7 +62,7 @@ const AttendanceCalendar = ({ month }) => {
                 return 'bg-[#d1f7d6] border-[#a3e4b8]';
             case 'Absent':
                 return 'bg-[#ffd1d1] border-[#ff9999]';
-            case 'Sick Leave':
+            case 'Leave':
                 return 'bg-[#e6d1f7] border-[#c4a3e4]';
             default:
                 return 'bg-[#e0e0e0] border-[#b0b0b0]';
@@ -83,7 +83,7 @@ const AttendanceCalendar = ({ month }) => {
                 {calendarDays.map((day, index) => {
                     const date = formatDate(day);
                     const status = attendanceData[date];
-                    console.log(`Date: ${date}, Status: ${status}`); // Debugging line
+                    // console.log(`Date: ${date}, Status: ${status}`); // Debugging line
                     return (
                         <div
                             key={index}
@@ -94,11 +94,11 @@ const AttendanceCalendar = ({ month }) => {
                             {day && (
                                 <>
                                     <div className={`text-xl font-semibold ${status === 'Absent' ? 'text-txtLRed' :
-                                        status === 'Sick Leave' ? 'text-[#8e1eff]' :
+                                        status === 'Leave' ? 'text-[#8e1eff]' :
                                         status === 'Present' ? 'text-txtLGreen' : 'text-[#b0b0b0]'
                                         }`}>{day}</div>
                                     <div className={`text-xs mt-1 font-semibold ${status === 'Absent' ? 'text-txtLRed' :
-                                        status === 'Sick Leave' ? 'text-[#8e1eff]' :
+                                        status === 'Leave' ? 'text-[#8e1eff]' :
                                             'text-txtLGreen'
                                         }`}>
                                         {status || ''}
