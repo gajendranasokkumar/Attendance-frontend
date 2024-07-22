@@ -88,16 +88,16 @@ const AttendanceCalendar = ({ month, leavedata }) => {
                         <div
                             key={index}
                             className={`
-                md:p-1 rounded-lg  ${day ? `${getStatusStyle(status)} border-l-2` : 'bg-white'}
-                transition-colors duration-200 h-15 md:w-16 xs:m-0.5 `}
+                 rounded-lg  ${day ? `${getStatusStyle(status)} border-l-2` : 'bg-white'}
+                transition-colors duration-200 h-15 md:w-16 xs:m-0.5 p-1 px-2 text-sm`}
                         >
                             {day && (
                                 <>
-                                    <div className={`text-xl font-semibold ${status === 'Absent' ? 'text-txtLRed' :
+                                    <div className={`text-sm font-semibold ${status === 'Absent' ? 'text-txtLRed' :
                                         status === 'Leave' ? 'text-[#8e1eff]' :
                                         status === 'Present' ? 'text-txtLGreen' : 'text-[#b0b0b0]'
-                                        }`}>{day}</div>
-                                    <div className={`text-[clamp(2px,5vh,14px)] mt-1 font-semibold text-end ${status === 'Absent' ? 'text-txtLRed' :
+                                        } `}>{day}</div>
+                                    <div className={`text-sm mt-1 font-semibold text-end ${status === 'Absent' ? 'text-txtLRed' :
                                         status === 'Leave' ? 'text-[#8e1eff]' :
                                             'text-txtLGreen'
                                         }`}>
