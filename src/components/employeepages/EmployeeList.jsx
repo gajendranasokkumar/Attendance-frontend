@@ -84,7 +84,7 @@ const EmployeeList = () => {
     return (
         <>
             <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] xs:px-1 md:px-5 overflow-y-auto pb-10'>
-                <h1 className='text-txtLBlue text-3xl text-center mt-10 font-bold font-sans '>Employee List</h1>
+                <h1 className='text-txtLBlue text-3xl text-center mt-10 font-bold font-sans text-[clamp(1rem,4vw,1.5rem)]'>Employee List</h1>
                 {/* <input
                 type="text"
                 placeholder="Search employees..."
@@ -94,7 +94,7 @@ const EmployeeList = () => {
             /> */}
                 <SearchBar placeholder={"Search Employee"} icon={<CiSearch className='h-[20px] w-[20px]' />} value={searchTerm} onchange={handleSearch} />
                 <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
-                    <table className='min-w-full table-auto border-2 border-bgGreen'>
+                    <table className='min-w-full table-auto border-2 border-bgGreen text-sm'>
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -108,7 +108,7 @@ const EmployeeList = () => {
                         </thead>
                         <tbody>
                             {filteredEmployees.map(employee => (
-                                <tr key={employee.id} className='h-12 min-h-12 max-h-20 impo'>
+                                <tr key={employee.id} className='h-12 min-h-12 max-h-20 impo text-sm'>
                                     <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{employee.id}</td>
                                     <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{employee.name}</td>
                                     <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{employee.role}</td>

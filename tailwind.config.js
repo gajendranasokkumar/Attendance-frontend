@@ -27,7 +27,8 @@ export default {
       }
     },
     colors:{
-      bgGreen: "#006769",
+      // bgGreen: "#006769", //F8843F
+      bgGreen: "#287DBE", //F8843F
       lightGreen: "#40A578",
       paleGreen: "#9DDE8B",
       yellow: "#E6FF94",
@@ -36,6 +37,7 @@ export default {
       red: "#f23737",
       grey: "#9EA5B1",
       lightGrey: "#78787886",
+      // shadeWhite: "#e4e6eb",
       shadeWhite: "#e4e6eb",
       loginBack: "#b5b6b7",
       selectedBlue: "#C2E7FF",

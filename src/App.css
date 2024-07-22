@@ -22,7 +22,7 @@ body {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #32845f;
+  background: #287DBE;
 }
 
 @media (max-width: 768px) {
@@ -132,7 +132,7 @@ body {
 }
 
 .dropDownButton {
-  background-color: #006769;
+  background-color: #287DBE;
   color: white;
 }
 
@@ -285,7 +285,7 @@ tr {
 th {
   border: 1px solid white;
   color: white;
-  background: #006769;
+  background: #287DBE;
 }
 
 td {
@@ -316,7 +316,8 @@ tr:hover {
   width: 100%;
   font-size: 18px;
   border-bottom: 2px solid white;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
+  padding-top: 3px;
   font-weight: 500;
   color: #4d4b4b;
 }
@@ -354,7 +355,7 @@ tr:hover {
 }
 
 .otp-input:focus {
-  border-color: #006769; /* Change border color on focus */
+  border-color: #287DBE; /* Change border color on focus */
 }
 
 

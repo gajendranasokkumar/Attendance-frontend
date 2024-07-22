@@ -163,7 +163,7 @@ const ManageAttendanceRequest = () => {
                     </div>
                 </div>
                 <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
-                    <table className='min-w-full table-auto border-2 border-bgGreen'>
+                    <table className='min-w-full table-auto border-2 border-bgGreen text-sm'>
                         <thead>
                             <tr className='sticky top-0'>
                                 <th><SmallCheckBox

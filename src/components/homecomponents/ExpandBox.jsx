@@ -58,17 +58,17 @@ const ExpandBox = ({ number, name, icon, options }) => {
     };
 
     return (
-        <div className={`hover:cursor-pointer border-t-2 border-t-white text-deepLightBlack hover:bg-bgGreen relative step-${number+1}`}>
+        <div className={`hover:cursor-pointer border-t-2 border-t-white text-deepLightBlack hover:bg-bgGreen relative step-${number+1} text-sm`}>
             <button
                 id={`toggleButton${number}`}
-                className={`w-full hover:bg-bgGreen h-10 flex items-center px-3 hover:text-white text-[16px] ${isExpanded ? 'dropDownButton' : ''}`}
+                className={`w-full hover:bg-bgGreen h-10 flex items-center px-3 hover:text-white text-sm ${isExpanded ? 'dropDownButton' : ''}`}
                 onClick={toggleBox}
             >
                 <span className='mr-3 '>{icon}</span>
                 {name}
                 <RiArrowDropDownLine
                     id={`arrow${number}`}
-                    className={`h-15 w-9 ml-auto text-[30px] transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                    className={`h-15 w-9 ml-auto text-[25px] transition-transform ${isExpanded ? 'rotate-180' : ''}`}
                 />
             </button>
             <div id={`box${number}`} className={`w-full bg-white transition-all overflow-hidden ${isExpanded ? 'max-h-' : 'max-h-0'}`}>

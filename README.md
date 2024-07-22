@@ -72,8 +72,8 @@
 | 21.06.2024 | 📍 Added location accessing functionality and attendance history display             |
 
 ### Week 4
-| Date       | Task                                                                                                  |
-| ---------- | ----------------------------------------------------------------------------------------------------- |
+| Date       | Task                                                                    |
+| ---------- | ----------------------------------------------------------------------- |
 | 22.06.2024 | 👊 Added punch form functionality                                                                      |
 | 23.06.2024 | 🔧 Made minor changes in the code of backend and UI (Sunday)                                           |
 | 24.06.2024 | 🔑 Added password changing functionality                                                               |
@@ -83,8 +83,8 @@
 | 28.06.2024 | 📅 Added the approval functionality of the attendance request                                          |
 
 ### Week 5
-| Date       | Task                                                                                                                                      |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Date       | Task                                                                    |
+| ---------- | ----------------------------------------------------------------------- |
 | 29.06.2024 | 🖌️ Updated the alternative checkin and checkout functionality and <br /> had a meeting to make some changes in the UI                      |
 | 30.06.2024 | ⚒️ Added the calculation and storing of totalworkedtime                                                                                    |
 | 01.07.2024 | ⏱️ Updated the physical checkin and checkout to monitor the totalworkedtime                                                                |
@@ -112,6 +112,15 @@
 | 15.07.2024 | 🥪 Added the toast notifications for all the pages |
 | 16.07.2024 | 🎼 Feature to add the employees through uploading execel sheets |
 | 17.07.2024 | 💿 Added the functionality of admin home page options(strength, birthday, atwork, latein) |
+| 18.07.2024 | 📊 Included the Grapical representation of the employee's total working hours in <br /> the admin page |
+| 19.07.2024 | 🗓️ Designed the calender for the admin page |
+
+### Week 8
+| Date       | Task                                                                    |
+| ---------- | ----------------------------------------------------------------------- |
+| 20.07.2024 | ✅ Added the functionality to retrive the data of present and leave of <br /> employee in the calender |
+| 21.07.2024 | ⭕ -------NIL------- (Sunday) had a small meeting |
+| 22.07.2024 | 💬 Altered the font size across all the UI and changed the size of the calender<br /> and added the bar chart in the employee login as well |
 
 
 
@@ -120,13 +129,13 @@
  - [x] User Authentication & Authorization
  - [x] Employee Management
  - [x] Leave Management
- - [ ] Manager Section
+ - [x] Manager Section
  - [x] Attendance Tracking
- - [ ] Responsive Design
+ - [x] Responsive Design
  - [ ] Final Testing
  - [x] Deployment
  - [ ] Make the user to fill all the input fiels
- - [ ] Enable the admin to upload the employees data using the excel sheet
+ - [x] Enable the admin to upload the employees data using the excel sheet
  - [ ] Make the approval of all the requests from the employees, manager,... in the form of hierarchy
 
 

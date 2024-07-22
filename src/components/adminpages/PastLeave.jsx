@@ -104,7 +104,7 @@ const PastLeave = () => {
                         <button type='button' className='px-3 py-1 bg-bgLRed rounded-md font-semibold text-txtLRed border-2 border-x-txtLRed'>Reject</button>
                     </div> */}
                 </div>
-                <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
+                <div className='h-[85%] w-[100%] mt-5 overflow-x-auto text-sm'>
                     <table className='min-w-full table-auto border-2 border-bgGreen'>
                         <thead>
                             <tr className='sticky top-0'>

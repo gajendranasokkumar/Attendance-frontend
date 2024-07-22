@@ -21,7 +21,7 @@ const SmallProfileBox = () => {
                     <div className='w-[60px] bg-grey rounded-full grid place-content-center text-2xl'>
                         {userData?.name[0]}
                     </div>
-                    <div className='pl-5 font-sans text-lg h-auto'>
+                    <div className='pl-5 font-sans text-sm h-auto my-auto'>
                         <p className='text-[18px]'>{userData?.name}</p>
                         <p className='underline'>{userData?.id}</p>
                     </div>

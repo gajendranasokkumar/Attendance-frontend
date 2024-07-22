@@ -50,17 +50,17 @@ const AttendanceHistory = () => {
         const latestTime = times[times.length - 1];
 
         return (
-            <div className="relative">
+            <div className="relative text-sm">
                 <button 
                     onClick={() => toggleDropdown(id, type)}
                     className="bg-gray-200 px-2 py-1 rounded w-full flex justify-center items-center"
                 >
-                    {latestTime} <span className='ml-3 text-lg'>{!isOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}</span>
+                    {latestTime} <span className='ml-3 text-sm'>{!isOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}</span>
                 </button>
                 {isOpen && (
                     <ul className="absolute z-10 border border-gray-300 mt-1 rounded shadow-lg p-2 shadow-allBox bg-bgLGreen w-full">
                         {[...times].reverse().map((time, index) => (
-                            <li key={index} className="px-2 py-1 text-lg font-semibold hover:bg-lightGrey w-full">
+                            <li key={index} className="px-2 py-1 text-sm font-semibold hover:bg-lightGrey w-full">
                                 {time}
                             </li>
                         ))}
@@ -73,9 +73,9 @@ const AttendanceHistory = () => {
     return (
         <>
             <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] xs:px-[0.5px] md:px-5 overflow-y-auto pb-10'>
-                <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans text-[clamp(1.5rem,4vw,2rem)]'>Attendance History</h1>
+                <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans text-[clamp(1rem,4vw,1.5rem)]'>Attendance History</h1>
                 <div className='h-[85%] w-[100%] mt-5 overflow-x-auto'>
-                    <table className='min-w-full table-auto border-2 border-bgGreen'>
+                    <table className='min-w-full table-auto border-2 border-bgGreen text-sm'>
                         <thead>
                             <tr>
                                 <th>Date</th>
@@ -95,7 +95,7 @@ const AttendanceHistory = () => {
                         <tbody>
                             {
                                 allAttendance.map((one) => (
-                                    <tr key={one._id}>
+                                    <tr key={one._id} >
                                         <td className='px-1 min-w-[100px] max-w-[200px] whitespace-normal'>{one.date}</td>
                                         <td className='px-1 min-w-[120px] max-w-[200px] whitespace-normal'>{one.id}</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.name}</td>
@@ -110,7 +110,7 @@ const AttendanceHistory = () => {
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>
                                             {renderTimeDropdown(one.checkouttime, one._id, 'checkout')}
                                         </td>
-                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.location}</td>
+                                        <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal h-12'>{one.location}</td>
                                         <td className='px-1 min-w-[150px] max-w-[200px] whitespace-normal'>{one.multibranchattendance}</td>
                                     </tr>
                                 ))

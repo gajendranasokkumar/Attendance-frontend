@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { useDropzone } from 'react-dropzone';
 import * as XLSX from 'xlsx';
 import axios from 'axios';
+import { SiMicrosoftexcel } from "react-icons/si";
+
 
 const ExcelUploader = () => {
   const [file, setFile] = useState(null);
@@ -74,7 +76,7 @@ const ExcelUploader = () => {
     'Yes | No',             // ismanager
     '09:00:00 | 14:00:00'   // entrytime
   ];
-  
+
 
 
   const onDrop = (acceptedFiles) => {
@@ -105,7 +107,7 @@ const ExcelUploader = () => {
       cancelTokenSource.current = axios.CancelToken.source();
 
       // Skip the header row
-      for (let i = 1; i < jsonData.length-1; i++) {
+      for (let i = 1; i < jsonData.length - 1; i++) {
         if (cancelTokenSource.current.token.reason) {
           // Upload was cancelled
           break;
@@ -149,7 +151,7 @@ const ExcelUploader = () => {
   return (
     <>
       <div className='h-[92vh] sm:w-full md:w-[84vw] bg-white lg:rounded-tl-[50px] xs:px-1 md:px-5 overflow-y-auto pb-16'>
-        <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans'>Upload excel to create employees</h1>
+        <h1 className='text-txtLBlue text-3xl text-center mb-10 mt-10 font-bold font-sans text-[clamp(1rem,4vw,1.5rem)]'>Upload excel to create employees</h1>
         <div className="excel-uploader ">
           <div {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''}`}>
             <input {...getInputProps()} />
@@ -168,6 +170,9 @@ const ExcelUploader = () => {
                 Cancel
               </button>
             )}
+            <a href="assets/download.png" download>
+              <button title='Click to download' className='border-2 border-txtLGreen text-txtLGreen bg-bgLGreen p-2 rounded-lg flex items-center gap-2'><SiMicrosoftexcel />Sample Excel</button>
+            </a>
           </div>
           {uploading && (
             <div className="progress-container">
@@ -187,7 +192,7 @@ const ExcelUploader = () => {
         </div>
         <ul className='flex gap-5 flex-wrap text-lightBlack'>
           {fieldNames.map((field, index) => (
-            <li key={index} className='bg-bgLBlue pl-3 rounded-xl py-0.5 pr-0.5'>{index+1 + ". " + field} <span className='bg-bgLRed px-2 ml-2 h-full my-0 rounded-lg'>{sampleValues[index]}</span></li>
+            <li key={index} className='bg-bgLBlue pl-3 rounded-xl py-0.5 pr-0.5'>{index + 1 + ". " + field} <span className='bg-bgLRed px-2 ml-2 h-full my-0 rounded-lg'>{sampleValues[index]}</span></li>
           ))}
         </ul>
       </div>

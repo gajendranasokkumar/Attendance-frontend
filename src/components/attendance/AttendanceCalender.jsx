@@ -59,7 +59,7 @@ const AttendanceCalendar = ({ month, leavedata }) => {
     const getStatusStyle = (status) => {
         switch (status) {
             case 'Present':
-                return 'bg-[#d1f7d6] border-[#a3e4b8]';
+                return 'bg-[#d1f7d6] border-[#a3e4b9]';
             case 'Absent':
                 return 'bg-[#ffd1d1] border-[#ff9999]';
             case 'Leave':
@@ -75,10 +75,10 @@ const AttendanceCalendar = ({ month, leavedata }) => {
     };
 
     return (
-        <div className="w-full mx-auto p-4 font-sans">
-            <div className="grid grid-cols-7 gap-2">
+        <div className="w-full mx-auto p-0 md:p-4 font-sans">
+            <div className="grid grid-cols-7 gap-0.5 md:gap-2">
                 {days.map(day => (
-                    <div key={day} className="text-center font-semibold text-sm text-gray-600 pb-2">{day}</div>
+                    <div key={day} className="w-16 text-center font-semibold text-sm text-gray-600 pb-2">{day}</div>
                 ))}
                 {calendarDays.map((day, index) => {
                     const date = formatDate(day);
@@ -88,8 +88,8 @@ const AttendanceCalendar = ({ month, leavedata }) => {
                         <div
                             key={index}
                             className={`
-                p-2 rounded-lg  ${day ? `${getStatusStyle(status)} border-l-2` : 'bg-white'}
-                transition-colors duration-200 h-24 `}
+                md:p-1 rounded-lg  ${day ? `${getStatusStyle(status)} border-l-2` : 'bg-white'}
+                transition-colors duration-200 h-15 md:w-16 xs:m-0.5 `}
                         >
                             {day && (
                                 <>
@@ -97,11 +97,11 @@ const AttendanceCalendar = ({ month, leavedata }) => {
                                         status === 'Leave' ? 'text-[#8e1eff]' :
                                         status === 'Present' ? 'text-txtLGreen' : 'text-[#b0b0b0]'
                                         }`}>{day}</div>
-                                    <div className={`text-xs mt-1 font-semibold ${status === 'Absent' ? 'text-txtLRed' :
+                                    <div className={`text-[clamp(2px,5vh,14px)] mt-1 font-semibold text-end ${status === 'Absent' ? 'text-txtLRed' :
                                         status === 'Leave' ? 'text-[#8e1eff]' :
                                             'text-txtLGreen'
                                         }`}>
-                                        {status || ''}
+                                        {status?.substring(0,1) || ''}
                                     </div>
                                 </>
                             )}
