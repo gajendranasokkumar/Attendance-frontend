@@ -58,7 +58,7 @@ const AttendanceHistory = () => {
                     {latestTime} <span className='ml-3 text-sm'>{!isOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}</span>
                 </button>
                 {isOpen && (
-                    <ul className="absolute z-10 border border-gray-300 mt-1 rounded shadow-lg p-2 shadow-allBox bg-bgLGreen w-full">
+                    <ul className="absolute z-10 border border-gray-300 mt-1 rounded shadow-lg p-2 shadow-allBox bg-bgLBlue w-full">
                         {[...times].reverse().map((time, index) => (
                             <li key={index} className="px-2 py-1 text-sm font-semibold hover:bg-lightGrey w-full">
                                 {time}
