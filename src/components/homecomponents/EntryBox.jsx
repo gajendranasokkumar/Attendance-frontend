@@ -255,7 +255,7 @@ const EntryBox = () => {
                 setCheckInOutTime({ ...checkInOutTime, checkintime: response.data.checkintime[response.data.checkintime.length - 1] });
             } catch (error) {
                 console.log("🚀 ~ EntryBox ~ error:", error);
-                toast.error('Check In Failed!',{id: toastId})
+                toast.error('Cannot get the Location!',{id: toastId})
             }
         }
     };
