@@ -1,15 +1,15 @@
 {
-    "short_name": "XP",
-    "name": "XP Attendance",
+    "short_name": "P",
+    "name": "Present Marker",
     "icons": [
       {
-        "src": "xplogo.png",
-        "type": "image/png",
+        "src": "presentMarker.jpg",
+        "type": "image/jpg",
         "sizes": "192x192"
       },
       {
-        "src": "xplogo.png",
-        "type": "image/png",
+        "src": "presentMarker.jpg",
+        "type": "image/jpg",
         "sizes": "512x512"
       }
     ],
