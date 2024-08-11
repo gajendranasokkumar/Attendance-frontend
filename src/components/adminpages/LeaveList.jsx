@@ -40,7 +40,7 @@ const LeaveList = () => {
                 .catch((error) => {
                     console.log("🚀 ~ useEffect ~ error:", error);
                     setLoading(false)
-                    toast.error('Couldn\'t Fetch Details!', { id: toastId })
+                    toast.error('Couldn\'t Fetch Details!')
                 });
         };
 

@@ -35,7 +35,6 @@ const LeaveForm = () => {
             setLoading(true)
             await api.post("/currentleavecount", { id: leaveDetails.id })
                 .then((response) => {
-                    console.log(response)
                     setLeaveDetails({ ...leaveDetails, leavetaken: response.data.count })
                     setLoading(false)
                 })
@@ -81,8 +80,8 @@ const LeaveForm = () => {
                         <div className=' bg-shadeWhite w-[80px] h-[100%] rounded-tr-lg grid place-content-center rounded-bl-[35px] text-deepLightBlack hover:cursor-pointer text-[clamp(1.5rem,4vw,2rem)]' onClick={goBack}><RxCross2 /></div>
                     </div>
                     <div className='flex justify-center mt-5 mb-5 xs:flex-col md:flex-row gap-5 w-full text-center'>
-                        <div className='text-lg text-txtLYellow font-semibold'>Total leave permitted for this month : <span className='bg-grey text-black px-2 py-1 rounded-lg'>{leaveDetails.leavepermitted}</span></div>
-                        <div className='text-lg text-txtLYellow font-semibold'>Leave taken : <span className='bg-grey text-black px-2 py-1 rounded-lg'>{leaveDetails.leavetaken}</span></div>
+                        <div className='text-lg text-txtLYellow font-semibold'>Total leave permitted for this month : <span className='bg-grey text-black px-2 py-1 rounded-lg'>{leaveDetails.leavepermitted || "N/A"}</span></div>
+                        <div className='text-lg text-txtLYellow font-semibold'>Leave taken : <span className='bg-grey text-black px-2 py-1 rounded-lg'>{leaveDetails.leavetaken > 0 ? leaveDetails.leavetaken : 0}</span></div>
                     </div>
                     <div className='p-5 flex flex-col justify-center z-0'>
                         <form onSubmit={applyLeave}>

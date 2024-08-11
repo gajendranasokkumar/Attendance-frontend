@@ -28,7 +28,7 @@ const EmpContent = () => {
             }
         }
         if(selectedMonth != '')
-        getAttendanceDetails()
+            getAttendanceDetails()
     }, [selectedMonth])
 
     return (

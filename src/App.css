@@ -179,11 +179,11 @@ body {
 }
 
 .control input:checked ~ .control_indicator {
-  background: #154f5d;
+  background: #287DBE;
 }
 .control:hover input:not([disabled]):checked ~ .control_indicator,
 .control input:checked:focus ~ .control_indicator {
-  background: #154f5d;
+  background: #287DBE;
 }
 .control input:disabled ~ .control_indicator {
   background: #e6e6e6;
@@ -266,7 +266,7 @@ fieldset {
 }
 
 legend {
-  color: #154f5d;
+  color: #287DBE;
   padding: 5px 10px;
   position: relative;
   font-weight: 600;

@@ -101,11 +101,11 @@ const EmpPastLeave = () => {
                             <SmallDate placeholder="To Date" name='todate' state={searchQuery} setState={setSearchQuery} />
                         </div>
                         <SmallInput type="text" placeholder="Search for anyone" name='content' state={searchQuery} setState={setSearchQuery} />
-                        <div className='flex gap-2 justify-end  w-full'>
+                        <div className='flex gap-2 xs:justify-end md:justify-start   w-full'>
                             <button type='button' className='xs:order-2 md:order-1 px-3 py-1 bg-bgLBlue rounded-md font-bold text-txtLBlue border-2 border-txtLBlue' onClick={showFilteredResult}>Search</button>
                             <button type='button' className='xs:order-1 md:order-2 bg-shadeWhite px-1 py-1 rounded-md font-bold text-xl' onClick={clearFilter}><VscDebugRestart /></button>
-                            <button type='button' className='order-3 px-3 py-1 bg-bgLGreen rounded-md font-bold text-txtLGreen border-2 border-txtLGreen' onClick={() => updateStatus('PERMITTED')}>Approve</button>
-                            <button type='button' className='order-4 px-3 py-1 bg-bgLRed rounded-md font-semibold text-txtLRed border-2 border-x-txtLRed' onClick={() => updateStatus('DENIED')}>Reject</button>
+                            {/* <button type='button' className='order-3 px-3 py-1 bg-bgLGreen rounded-md font-bold text-txtLGreen border-2 border-txtLGreen' onClick={() => updateStatus('PERMITTED')}>Approve</button>
+                            <button type='button' className='order-4 px-3 py-1 bg-bgLRed rounded-md font-semibold text-txtLRed border-2 border-x-txtLRed' onClick={() => updateStatus('DENIED')}>Reject</button> */}
                         </div>
                     </div>
                 </div>
