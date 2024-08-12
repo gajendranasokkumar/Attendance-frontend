@@ -31,7 +31,7 @@ const LeaveList = () => {
             setLoading(true)
             await api.get("/leavelist")
                 .then((response) => {
-                    let result = response.data.filter(one => one.status.toUpperCase() === "PENDING");
+                    let result = response.data.filter(one => one.status && one.status.toUpperCase() === "PENDING");
                     setLeaveList(result);
                     setSearchList(result);
                     setLoading(false)

@@ -38,7 +38,7 @@ const PastLeave = () => {
             await api.get("/leavelist")
                 .then((response) => {
                     console.log("🚀 ~ .then ~ respose:", response.data)
-                    let result = response.data.filter(one => one.status.toUpperCase() !== "PENDING")
+                    let result = response.data.filter(one => one.status && one.status.toUpperCase() !== "PENDING")
                     setLeaveList(result)
                     setSearchList(result)
                     setLoading(false)
