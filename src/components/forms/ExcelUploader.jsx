@@ -170,7 +170,7 @@ const ExcelUploader = () => {
                 Cancel
               </button>
             )}
-            <a href="assets/download.png" download>
+            <a href="/public/assets/excel.xlsx" download>
               <button title='Click to download' className='border-2 border-txtLGreen text-txtLGreen bg-bgLGreen p-2 rounded-lg flex items-center gap-2'><SiMicrosoftexcel />Sample Excel</button>
             </a>
           </div>
