@@ -31,8 +31,6 @@
 // import Tour from "./components/Tour.jsx"
 
 
-
-
 // function App() {
 
 //   return (
